@@ -38,7 +38,7 @@ function App() {
                 id="journal-title-input"
                 className="field__input"
                 placeholder="Give this entry a short title"
-                maxLength="80" // Corrected: maxlength in JSX is maxLength
+                maxLength="80" // Corrected: max_length in JSX is maxLength
               />
             </label>
 

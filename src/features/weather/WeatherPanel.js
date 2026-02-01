@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import React from "react";
@@ -6,6 +7,7 @@ import "./WeatherCard.css";
 import { tickTime, loadWeather } from "../weather/weatherSlice";
 import {
   WiDaySunny,
+  // eslint-disable-next-line no-unused-vars
   WiCloud,
   WiCloudy,
   WiStrongWind,
@@ -16,7 +18,8 @@ import {
   WiSunrise,
   WiSunset,
   WiRain,
-WiThunderstorm } from "react-icons/wi";
+WiThunderstorm,
+WiFog} from "react-icons/wi";
 import "./WeatherCard.css";
 
 export default function WeatherCard({ tempC, condition, icon }) {
@@ -25,6 +28,10 @@ export default function WeatherCard({ tempC, condition, icon }) {
     if (condition.includes("cloud")) return "#6EC6FF";     // sky blue
     if (condition.includes("rain")) return "#4DA8DA";      // cool blue
     if (condition.includes("snow")) return "#AEE1F9";      // icy blue
+    if (condition.includes("fog"))  return "#AFC4D6";      // foggy gray-blue
+    if (condition.includes("Thunderstorm")) return "#A8B4FF"; // electric lavender
+    if (condition.includes("mist")) return "#B0C4DE";
+    // misty gray-blue"
     return "#FFD1DC";                                      // soft coral fallback
   };
 
@@ -67,22 +74,32 @@ export function WeatherPanel() {
      else if (hour >= 17 && hour < 20) timeOfDay = "sunset";
     else timeOfDay = "night";
 
+  const iconColorMap = {
+    sunrise: "#FFB38A",   // peach
+    day: "#6EC6FF",       // sky blue
+    sunset: "#FF8FA3",    // coral pink
+    night: "#C8D6FF",     // moonlit silver
+  };
+
+  const iconColor = iconColorMap[timeOfDay];
 
   // Map weather conditions to icons
 
+
   const iconMap = {
-  Clear:  <WiDaySunny size={64} color="#FFD447" />,
-  Sunny:  <WiDaySunny size={64} color="#FFD447" />,
-  Clouds: <WiCloudy size={64} color="#6EC6FF" />,
-  Cloudy: <WiCloudy size={64} color="#6EC6FF" />,
-  Overcast: <WiCloudy size={64} color="#6EC6FF" />,
-  "few clouds": <WiCloudy size={64} color="#6EC6FF" />,
-  Rain: <WiRain size={64} color="#4A90E2" />,
-  Snow: <WiSnow size={64} color="#A8F0E6" />,
-  Thunderstorm: <WiThunderstorm size={64} color="#6A5AE0" />,
+  Clouds: <WiCloudy size={64} color={iconColor} />,
+  Rain: <WiRain size={64} color={iconColor} />,
+  Snow: <WiSnow size={64} color={iconColor} />,
+  Mist: <WiFog size={64} color={iconColor} />,
+  Clear: <WiDaySunny size={64} color={iconColor} />,
+  Thunderstorm: <WiThunderstorm size={64} color="#A8B4FF" />,
 };
 
-  const fallbackIcon = <WiCloud size={64} color="#6EC6FF" />;
+
+
+
+  const fallbackIcon = <WiCloudy size={64} color={iconColor} />
+
 
   useEffect(() => {
     dispatch(tickTime());
@@ -103,8 +120,7 @@ export function WeatherPanel() {
   }
 
   return (
-    <section className={`weather-panel ${timeOfDay}`} aria-label="Today's weather">
-
+    <section className={`weather-panel ${condition.toLowerCase()} ${timeOfDay}`} aria-label="Today's weather">
       <div className="weather-location-row">
         <span className="weather-city">{city}</span>
         <div className="weather-meta-top">
@@ -130,6 +146,14 @@ export function WeatherPanel() {
             {tempC} °C feels like {tempF} °F
           </span>
       </div>
+
+      <div className="time-of-day-icon">
+        {timeOfDay === "sunrise" && <span>🌅</span>}
+        {timeOfDay === "day" && <span>☀️</span>}
+        {timeOfDay === "sunset" && <span>🌇</span>}
+        {timeOfDay === "night" && <span>🌙</span>}
+      </div>
+
 
 
 
