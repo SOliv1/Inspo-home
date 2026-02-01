@@ -113,11 +113,16 @@ export function WeatherPanel() {
         </div>
       </div>
 
-      {/* Weather header with icon + label */}
-      <div className="weather-header">
-        {(iconMap[condition] || fallbackIcon)}
-        <span className="weather-header-label">{condition}</span>
+      {/* Weather header with icon */}
+      <div className="weather-condition">
+        {condition}
+        {detail !== condition && (
+          <div className="separator">
+              <span className="weather-detail">{detail}</span>
+          </div>
+        )}
       </div>
+
 
       <div className="weather-main-row">
         <div className="weather-temp-block">
