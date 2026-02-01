@@ -117,33 +117,28 @@ export function WeatherPanel() {
       <div className="weather-condition">
         {condition}
 
-        {detail !== condition && (
-          <div className="separator">
-            <span className="weather-detail">{detail}</span>
-      </div>
+      {detail !== condition && (
+        <div className="separator">
+          <span className="weather-detail">{detail}</span>
+        </div>
       )}
       </div>
 
-
       <div className="weather-main-row">
-        <div className="weather-temp-block">
-          <span className="weather-temp">
+        <div className={`weather-temp-block ${condition.toLowerCase()}`}>
+          <span className={`weather-temp weather-temp-${timeOfDay}`}>
             {tempC} °C and about {tempF} °F
           </span>
-        </div>
+      </div>
+
+
 
         <div className="weather-meta-block">
           <div className="weather-icon">
             {iconMap[condition] || fallbackIcon}
           </div>
 
-          <div className="weather-condition">
-            {condition}
-            <div className="separator">
-              <span className="weather-detail">{detail}</span>
-            </div>
           </div>
-        </div>
       </div>
     </section>
   );
