@@ -85,6 +85,41 @@
   border-radius: 10px;
 }
 
+.weather-temp {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  margin-top: 6px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Sunrise — warm peach */
+.weather-temp-sunrise {
+  color: #FFD1A1;
+  text-shadow: 0 0 6px rgba(255, 209, 161, 0.4);
+}
+
+/* Day — crisp blue-white */
+.weather-temp-day {
+  color: #EAF8FF;
+  text-shadow: 0 0 6px rgba(224, 244, 255, 0.5);
+}
+
+/* Sunset — coral warmth */
+.weather-temp-sunset {
+  color: #FFB6B9;
+  text-shadow: 0 0 6px rgba(255, 182, 185, 0.4);
+}
+
+/* Night — moonlit silver */
+.weather-temp-night {
+  color: #D6E4F0;
+  text-shadow: 0 0 6px rgba(214, 228, 240, 0.4);
+}
+
+
 /* Temperature text */
 .temperature {
     font-size: 3rem;
