@@ -379,7 +379,7 @@ border-radius: 8px; }
 48% { opacity: 0.32; } /* soft lightning moment */
 52% { opacity: 0.18; }
 100% { opacity: 0.15; }
- }
+}
 
 .weather-panel.thunderstorm::after {
   background: radial-gradient(
@@ -395,12 +395,6 @@ border-radius: 8px; }
 }
 
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 2682eac (Complete the following changes as part of commit 9f8e7d6:)
 /* Night star */
 .weather-panel.night::before {
   content: "";
