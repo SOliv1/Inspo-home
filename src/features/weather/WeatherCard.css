@@ -102,14 +102,14 @@
   transition: all 0.3s ease;
 }
 
-/* Temperature text styles for different times of day- slightly brighter emphasis in warmer tones
+/* Temperature text styles for different times of day- slightly brighter emphasis */
 .temperature {
     font-size: 3rem;
     font-weight: 700;
     color: #ffffff;
     margin-bottom: 6px;
 }
-*/
+
 
 /* Warm and accessible emphasis on temperature text
  .temperature {
@@ -393,6 +393,7 @@ border-radius: 8px; }
   0%   { transform: translateX(0px); }
   100% { transform: translateX(-12px); }
 }
+
 
 
 /* Night star */
