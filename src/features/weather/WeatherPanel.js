@@ -127,7 +127,7 @@ export function WeatherPanel() {
       <div className="weather-main-row">
         <div className={`weather-temp-block ${condition.toLowerCase()}`}>
           <span className={`weather-temp weather-temp-${timeOfDay}`}>
-            {tempC} °C and about {tempF} °F
+            {tempC} °C feels like {tempF} °F
           </span>
       </div>
 
