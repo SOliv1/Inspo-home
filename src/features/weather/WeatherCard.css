@@ -395,9 +395,6 @@ border-radius: 8px; }
 }
 
 
-
-
-
 /* Night star */
 .weather-panel.night::before {
   content: "";
