@@ -11,7 +11,7 @@ function App() {
     <main className="app-shell">
       <header className="app-header">
         <div className='header-left'>
-          <p className='app-kicker'>Good Morning, User!</p>
+          <p className='app-kicker'>Good Morning, Sara!</p>
             <h1 className="title">Daily Checklist
             </h1>
             <p className='subtitle'>Light, colorful to-dos for a focused day.</p>

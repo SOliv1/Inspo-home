@@ -116,11 +116,12 @@ export function WeatherPanel() {
       {/* Weather header with icon */}
       <div className="weather-condition">
         {condition}
+
         {detail !== condition && (
           <div className="separator">
-              <span className="weather-detail">{detail}</span>
-          </div>
-        )}
+            <span className="weather-detail">{detail}</span>
+      </div>
+      )}
       </div>
 
 
