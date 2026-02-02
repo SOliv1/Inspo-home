@@ -60,12 +60,6 @@ export function WeatherPanel() {
     status,
   } = useSelector((state) => state.weather);
 
-  const hour = new Date().getHours();
-    let timeOfDay = "day";
-    if (hour >= 5 && hour < 9) timeOfDay = "sunrise";
-    else if (hour >= 9 && hour < 17) timeOfDay = "day";
-     else if (hour >= 17 && hour < 20) timeOfDay = "sunset";
-    else timeOfDay = "night";
 
   const iconColorMap = {
     sunrise: "#FFB38A",   // peach
@@ -108,6 +102,7 @@ export function WeatherPanel() {
       </section>
     );
   }
+
 
   return (
     <section className={`weather-panel ${condition.toLowerCase()} ${timeOfDay}`} aria-label="Today's weather">

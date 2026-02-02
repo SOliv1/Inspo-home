@@ -394,37 +394,117 @@ border-radius: 8px; }
   100% { transform: translateX(-12px); }
 }
 
+.weather-panel {
+  position: relative;
+  z-index: 0;
+}
 
+.weather-panel.night::before {
+  z-index: -1; /* pushes stars behind everything */
+  filter: brightness(1.3); /* brighten the stars */
+}
 
-/* Night star */
+/* Add faint nebula haze */
+.weather-panel.night::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1), transparent 70%),
+              radial-gradient(circle at 70% 60%, rgba(200, 200, 255, 0.08), transparent 80%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Detail text color changes with time of day */
+.weather-detail,
+.weather-condition {
+  color: var(--detail-text-color, #ffffff);
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.4),
+    0 0 12px rgba(255, 255, 255, 0.25);
+}
+
+/* Soften glowing box edges */
+.weather-icon,
+.weather-header {
+  background: rgba(255, 255, 255, 0.18); /* softer background */
+  border-radius: 12px; /* soften edges */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  padding: 1rem 1.5rem; /* adjust spacing for comfort */
+  margin-bottom: 1rem;
+}
+
+/* Adjust spacing globally to avoid cramped feeling */
+.weather-panel {
+  padding: 2rem 2.5rem;
+  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Optional: CSS variables for time-based colors (to be set dynamically in JS or CSS) */
+:root {
+  --detail-text-color-morning: #FFDDAA;
+  --detail-text-color-day: #FFFFFF;
+  --detail-text-color-evening: #FFCC88;
+  --detail-text-color-night: #AABBFF;
+}
+
+/* Example usage: set --detail-text-color based on time of day in JS */
+
+/*
+function updateDetailTextColor(timeOfDay) {
+  const root = document.documentElement;
+  switch(timeOfDay) {
+    case 'morning':
+      root.style.setProperty('--detail-text-color', 'var(--detail-text-color-morning)');
+      break;
+    case 'day':
+      root.style.setProperty('--detail-text-color', 'var(--detail-text-color-day)');
+      break;
+    case 'evening':
+      root.style.setProperty('--detail-text-color', 'var(--detail-text-color-evening)');
+      break;
+    case 'night':
+      root.style.setProperty('--detail-text-color', 'var(--detail-text-color-night)');
+      break;
+    default:
+      root.style.setProperty('--detail-text-color', 'var(--detail-text-color-day)');
+  }
+}
+*/
+
+---
+
+/* What this update does for you
+
+* Stars are brighter and visible behind the panel
+* A faint nebula haze adds depth and atmosphere
+* Detail text color adapts to time of day for mood
+* Glowing boxes have softer edges and gentle shadows
+* Spacing is increased for a comfortable, airy layout
+
+This direction keeps your night sky UI feeling alive, cosy, and balanced, with every element clear and harmonious.
+
+/* Consolidated night star and constellation-style stars */
+.weather-panel {
+  position: relative;
+  z-index: 0;
+}
+
 .weather-panel.night::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-
-  background-image:
-    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.9), transparent),
-    radial-gradient(2px 2px at 70% 20%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(2px 2px at 40% 70%, rgba(255,255,255,0.85), transparent),
-    radial-gradient(2px 2px at 80% 60%, rgba(255,255,255,0.75), transparent);
-
-  opacity: 0.9;
-  animation: twinkle 3s ease-in-out infinite alternate;
-}
-
-/* Constellation-style stars */
-
- .weather-panel {
-  position: relative;
-  z-index: 0;
-}
-
-  .weather-panel.night::before {
   z-index: -1; /* pushes stars behind everything */
-
-    /* Cluster 1 */
+  opacity: 0.9;
+  animation: constellationTwinkle 4s ease-in-out infinite alternate;
   background-image:
+    /* Cluster 1 */
     radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.95), transparent),
     radial-gradient(3px 3px at 22% 33%, rgba(255,255,255,0.8), transparent),
     radial-gradient(1.5px 1.5px at 18% 28%, rgba(255,255,255,0.7), transparent),
@@ -442,9 +522,6 @@ border-radius: 8px; }
     /* Lone stars for realism */
     radial-gradient(2px 2px at 85% 60%, rgba(255,255,255,0.8), transparent),
     radial-gradient(1.5px 1.5px at 55% 40%, rgba(255,255,255,0.75), transparent);
-
-  opacity: 0.9;
-  animation: constellationTwinkle 4s ease-in-out infinite alternate;
 }
 
 @keyframes constellationTwinkle {
@@ -457,5 +534,4 @@ border-radius: 8px; }
   from { opacity: 0.4; }
   to   { opacity: 0.8; }
 }
-
 
