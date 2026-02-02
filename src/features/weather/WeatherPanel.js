@@ -46,7 +46,7 @@ export default function WeatherCard({ tempC, condition, icon }) {
   );
 }
 
-export function WeatherPanel() {
+export function WeatherPanel({ timeOfDay }) {
   const dispatch = useDispatch();
 
   const {
@@ -104,6 +104,7 @@ export function WeatherPanel() {
   }
 
 
+
   return (
     <section className={`weather-panel ${condition.toLowerCase()} ${timeOfDay}`} aria-label="Today's weather">
       <div className="weather-location-row">
@@ -124,6 +125,8 @@ export function WeatherPanel() {
         </div>
       )}
       </div>
+
+
 
       <div className="weather-main-row">
         <div className={`weather-temp-block ${condition.toLowerCase()}`}>
