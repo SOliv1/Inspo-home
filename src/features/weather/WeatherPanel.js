@@ -7,19 +7,12 @@ import "./WeatherCard.css";
 import { tickTime, loadWeather } from "../weather/weatherSlice";
 import {
   WiDaySunny,
-  // eslint-disable-next-line no-unused-vars
-  WiCloud,
   WiCloudy,
-  WiStrongWind,
-  WiWindy,
   WiSnow,
-  WiSnowWind,
-  WiSprinkle,
-  WiSunrise,
-  WiSunset,
   WiRain,
-WiThunderstorm,
-WiFog} from "react-icons/wi";
+  WiThunderstorm,
+  WiFog
+  } from "react-icons/wi";
 import "./WeatherCard.css";
 
 export default function WeatherCard({ tempC, condition, icon }) {
@@ -95,9 +88,6 @@ export function WeatherPanel() {
   Thunderstorm: <WiThunderstorm size={64} color="#A8B4FF" />,
 };
 
-
-
-
   const fallbackIcon = <WiCloudy size={64} color={iconColor} />
 
 
@@ -167,6 +157,6 @@ export function WeatherPanel() {
     </section>
   );
 
-}
+  }
 
-//         state.error = action.error.message;
+//state.error = action.error.message;
