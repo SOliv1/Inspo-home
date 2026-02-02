@@ -1,6 +1,6 @@
 #This Project deployed on Netlify. view deployment [Here](https://inspo-home.netlify.app/)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f01c4e03-ab03-45dd-9d6e-3a98f4846ec4/deploy-status)](https://app.netlify.com/projects/inspo-home/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f01c4e03-ab03-45dd-9d6e-3a98f4846ec4/deploy-status?branch=master)](https://app.netlify.com/projects/inspo-home/deploys)
 
 # Getting Started with Create React App
 
