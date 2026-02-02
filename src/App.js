@@ -7,17 +7,31 @@ import { WeatherPanel } from './features/weather/WeatherPanel';
 // import { QuoteDisplay } from './features/quotes/QuoteDisplay'; // You might uncomment this later
 
 function App() {
+  const hour = new Date().getHours();
+
+    let timeOfDay = "day";
+    if (hour >= 5 && hour < 9) timeOfDay = "sunrise";
+    else if (hour >= 9 && hour < 17) timeOfDay = "day";
+    else if (hour >= 17 && hour < 20) timeOfDay = "sunset";
+    else timeOfDay = "night";
+
+
+    let greeting = "Good Evening";
+    if (hour < 12) greeting = "Good Morning";
+      else if (hour < 18) greeting = "Good Afternoon";
+    else greeting = "Good Evening";
+
   return (
     <main className="app-shell">
       <header className="app-header">
         <div className='header-left'>
-          <p className='app-kicker'>Good Morning, Sara!</p>
-            <h1 className="title">Daily Checklist
-            </h1>
+          <p className="app-kicker">{greeting}, Sara!</p>
+            <h1 className="title">Daily Checklist</h1>
             <p className='subtitle'>Light, colorful to-dos for a focused day.</p>
         </div>
           {/* You might put TimeDisplay here later */}
-        <WeatherPanel />
+        <WeatherPanel timeOfDay={timeOfDay} />
+
           {/* Example: <WeatherPanel /> */}
         {/* Potentially other header content like navigation or user info */}
       </header>
