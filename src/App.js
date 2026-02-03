@@ -5,25 +5,30 @@ import './App.css';
 import { WeatherPanel } from './features/weather/WeatherPanel';
 // import { JournalPanel } from './features/journal/JournalPanel'; // You might uncomment this later
 // import { QuoteDisplay } from './features/quotes/QuoteDisplay'; // You might uncomment this later
+import { useState, useEffect } from "react";
 
 function App() {
-  const hour = new Date().getHours();
+  const [greeting, setGreeting] = useState("");
 
+  useEffect(() => {
+    const hour = new Date().getHours();
+
+    let message = "";
+    if (hour < 6) message = "Good early morning";
+    else if (hour < 12) message = "Good morning";
+    else if (hour < 17) message = "Good afternoon";
+    else if (hour < 21) message = "Good evening";
+    else message = "Good night";
+
+    setGreeting(message);
+  }, []);
+
+  const hour = new Date().getHours();
   let timeOfDay = "day";
   if (hour >= 5 && hour < 9) timeOfDay = "sunrise";
   else if (hour >= 9 && hour < 17) timeOfDay = "day";
   else if (hour >= 17 && hour < 20) timeOfDay = "sunset";
   else timeOfDay = "night";
-
-  function getGreeting() {
-    if (hour < 6) return "Good early morning";
-    if (hour < 12) return "Good morning";
-    if (hour < 17) return "Good afternoon";
-    if (hour < 21) return "Good evening";
-    return "Good night";
-  }
-
-  const greeting = getGreeting();
 
   return (
     <main className="app-shell">
@@ -39,6 +44,8 @@ function App() {
     </main>
   );
 }
+
+
 
 
 
