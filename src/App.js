@@ -9,18 +9,21 @@ import { WeatherPanel } from './features/weather/WeatherPanel';
 function App() {
   return (
     <main className="app-shell">
-      <header className="app-header">
-        <div className='header-left'>
-          <p className='app-kicker'>Good Morning, Sara!</p>
-            <h1 className="title">Daily Checklist
-            </h1>
-            <p className='subtitle'>Light, colorful to-dos for a focused day.</p>
-        </div>
-          {/* You might put TimeDisplay here later */}
-        <WeatherPanel />
-          {/* Example: <WeatherPanel /> */}
-        {/* Potentially other header content like navigation or user info */}
-      </header>
+      <div className="frost-overlay"></div>
+      <div className="app-content">
+
+        <header className="app-header">
+          <div className='header-left'>
+            <p className='app-kicker'>Good Morning, Sara!</p>
+              <h1 className="title">Daily Checklist
+              </h1>
+              <p className='subtitle'>Light, colorful to-dos for a focused day.</p>
+          </div>
+            {/* You might put TimeDisplay here later */}
+          <WeatherPanel />
+            {/* Example: <WeatherPanel /> */}
+          {/* Potentially other header content like navigation or user info */}
+        </header>
 
 
         {/* ================================================ */}
@@ -62,25 +65,26 @@ function App() {
             <p>Your journal entries will appear here.</p>
           </div>
 
-        {/* ================================================ */}
-        {/* Todo List Section - Active JSX (assuming you want to add this back) */}
-        {/* ================================================ */}
-        {/* If you already have a TodoList component, you'd just use it like this: */}
-        {/*<TodoList />
-        {/* Otherwise, you'd put its HTML structure here, similar to the Journal section */}
+          {/* ================================================ */}
+          {/* Todo List Section - Active JSX (assuming you want to add this back) */}
+          {/* ================================================ */}
+          {/* If you already have a TodoList component, you'd just use it like this: */}
+          {/*<TodoList />
+          {/* Otherwise, you'd put its HTML structure here, similar to the Journal section */}
 
-        {/* Closing the main content area */}
+          {/* Closing the main content area */}
 
-      {/* ================================================ */}
-      {/* Footer Section (Quotes) - Active JSX */}
-      {/* ================================================ */}
-      <footer className="QuotesFooter">
-        {/* Your actual QuoteDisplay component would go here */}
-        {/* For example: <QuoteDisplay /> */}
-        <p className="quote-text">"The only way to do great work is to love what you do."</p>
-        <p className="quote-author">- Steve Jobs</p>
-        {/* You could add a "New Quote" button here */}
-      </footer>
+        {/* ================================================ */}
+        {/* Footer Section (Quotes) - Active JSX */}
+        {/* ================================================ */}
+        <footer className="QuotesFooter">
+          {/* Your actual QuoteDisplay component would go here */}
+          {/* For example: <QuoteDisplay /> */}
+          <p className="quote-text">"The only way to do great work is to love what you do."</p>
+          <p className="quote-author">- Steve Jobs</p>
+          {/* You could add a "New Quote" button here */}
+        </footer>
+      </div>
     </main>
   );
 }
