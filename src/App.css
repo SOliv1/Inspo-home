@@ -72,6 +72,61 @@ body {
   font-size: calc(10px + 2vmin);
 }
 
+/* === WARMER DYNAMIC GREETING STYLES ======================= */
+
+.dynamic-greeting {
+  font-size: 1.45rem;      /* smaller + calmer */
+  font-weight: 600;        /* slightly less heavy */
+  margin: 0 0 3px;
+  color: #fff7ef;
+  letter-spacing: 0.35px;
+
+  text-shadow:
+    0 0 6px rgba(255, 240, 220, 0.5),
+    0 1px 4px rgba(0, 0, 0, 0.25),
+    0 0 12px rgba(255, 200, 150, 0.28);
+
+  animation: greetingFade 0.6s ease forwards;
+}
+
+@keyframes greetingFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dynamic-greeting {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #fffaf3; /* warm white */
+  letter-spacing: 0.5px;
+
+  text-shadow:
+    0 0 10px rgba(255, 240, 220, 0.6),
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    0 0 18px rgba(255, 200, 150, 0.35);
+
+  animation: greetingFade 0.6s ease forwards;
+}
+
+@keyframes greetingFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 .weather-location-row {
   display: flex;
   justify-content: space-between;
