@@ -4,12 +4,12 @@ import fetch from "node-fetch";
 
 export async function handler(event) {
   try {
-    const { lat, lon } = event.queryStringParameters;
+    const { city } = event.queryStringParameters;
 
-    if (!lat || !lon) {
+    if (!city) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: "Missing latitude or longitude" })
+        body: JSON.stringify({ error: "Missing city parameter " })
       };
     }
 
@@ -22,7 +22,8 @@ export async function handler(event) {
       };
     }
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=metric&appid=${apiKey}`;
+
 
     const response = await fetch(url);
     const data = await response.json();
