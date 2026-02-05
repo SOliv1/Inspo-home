@@ -100,7 +100,7 @@ body {
 }
 
 .dynamic-greeting {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   margin: 0 0 6px;
   color: #fffaf3; /* warm white */
@@ -240,8 +240,10 @@ body {
 
 /* Card container
 === WEATHER PANEL STYLES — BRIGHTER + WARMER ======================= */
+/* Universal text color inside weather panel */
 
 .weather-panel {
+  color: #fffaf3; /* warm white */
   width: 260px;
   padding: 20px;
   border-radius: 22px;
@@ -258,6 +260,19 @@ body {
   }
  */
 
+ /* Make all text inside the weather panel readable */
+.weather-panel,
+.weather-temp,
+.weather-condition,
+.weather-date,
+.weather-time,
+.weather-city,
+.weather-meta-block,
+.weather-meta-top {
+  color: #fffaf3 !important; /* warm white */
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.35);
+}
+
 /* Fade + scale animation */
 .fade-scale {
   opacity: 0;
@@ -270,10 +285,6 @@ body {
     opacity: 1;
     transform: scale(1);
   }
-}
-
-.weather-panel {
-  width: 100%;
 }
 
 /* Top row: city + date/time */
