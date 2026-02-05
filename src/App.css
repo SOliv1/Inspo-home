@@ -37,6 +37,8 @@ body {
 } */
 
 .app-content {
+  display: flex;
+  flex-direction: column;
   max-width: 1100px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
@@ -78,6 +80,10 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
 }
+
+.app-header, .weather-panel {
+  align-self: flex-end;
+ }
 
 /* === WARMER DYNAMIC GREETING STYLES ======================= */
 
@@ -250,6 +256,7 @@ body {
 /* Universal text color inside weather panel */
 
 .weather-panel {
+  margin-left: auto;
   color: #fffaf3; /* warm white */
   width: 260px;
   padding: 20px;
