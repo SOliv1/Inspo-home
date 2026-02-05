@@ -84,6 +84,8 @@
   padding: 6px 10px;
   border-radius: 10px;
 }
+
+
 /*Warm + Cosy Main Temperature Text Style */
 .temperature {
   font-size: 3.4rem;
@@ -208,6 +210,12 @@ border-radius: 8px; }
 /* -------------------------------------- */
 /* WEATHER MOOD BACKGROUNDS (NEW)         */
 /* -------------------------------------- */
+
+.weather-panel * {
+  text-shadow:
+    0 0 6px rgba(0,0,0,0.25),
+    0 0 10px rgba(255,255,255,0.15);
+}
 
 .weather-panel.rain {
   background: linear-gradient(135deg, #6ea8d9 0%, #4d7aa6 100%);

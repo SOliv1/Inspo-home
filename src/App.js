@@ -57,7 +57,7 @@ if (hour >= 5 && hour < 12) {
             </p>
 
             <h1 className="app-title">Daily Checklist</h1>
-            <p className="app-subtitle">Light, colorful to-dos for a focused day.</p>
+            <p className="app-subtitle">Light, colourful to-dos for a focused day.</p>
           </div>
 
           <WeatherPanel />
