@@ -439,6 +439,45 @@ body {
   color: #d1d5db;
 }
 
+.header-divider {
+  width: 100%;
+  height: 1px;
+  margin: 0.5rem 0 1.5rem;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+}
+
+/* === JOURNAL ENTRIES STYLES ===================================== */
+.journal-entries {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow:
+    0 4px 12px rgba(255, 255, 255, 0.2),
+    0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+/* === GREETING VARIANTS ===================================== */
+.greeting-sunrise { color: #FFD1A1; }
+.greeting-day     { color: #ffffff; }
+.greeting-sunset  { color: #FFB6B9; }
+.greeting-night   { color: #D6E4F0; }
+
+.greeting-icon {
+  font-size: 1.2rem;
+  margin-right: 0.4rem;
+  display: inline-block;
+  transform: translateY(1px);
+
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.4),
+    0 0 10px rgba(255, 200, 150, 0.35);
+}
+
+
+
 
 /* Responsive tweak for smaller widths */
 @media (max-width: 768px) {
