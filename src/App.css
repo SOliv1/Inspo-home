@@ -23,19 +23,14 @@ body {
   z-index: 0;
 }
 
-/*
-.app-content {
-  position: relative;
-  z-index: 1;
-} */
 
 .app-content {
   display: flex;
   flex-direction: column;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 24px;
+  position: relative;
+  z-index: 2; /* ensures content sits above the frosted layer */
 }
+
 
 
 .layout-grid {
@@ -473,15 +468,12 @@ body {
 } */
 
 .journal-entries {
-  box-shadow:
-    0 4px 14px rgba(255, 255, 255, 0.25),
-    0 2px 8px rgba(0, 0, 0, 0.15);
-
-  max-width: 900px;
-  margin: 0 auto 2rem;
-  line-height: 1.55;
-  color: #fffdf8;
-  text-shadow: 0 0 6px rgba(0,0,0,0.25);
+  width: 100%;
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  position: relative;
+  z-index: 3; /* ensures it’s above overlays */
 }
 
 /* quote styling */
