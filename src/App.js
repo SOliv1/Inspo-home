@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import './App.css';
 import { WeatherPanel } from './features/weather/WeatherPanel';
 
@@ -37,6 +37,26 @@ if (hour >= 5 && hour < 12) {
   greetingIcon = "🌙"; // night moon
 }
 
+useEffect(() => {
+  const elements = document.querySelectorAll('.fade-on-scroll');
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  elements.forEach(el => observer.observe(el));
+
+  return () => observer.disconnect();
+}, []);
 
   return (
     <main className="app-shell">
