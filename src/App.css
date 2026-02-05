@@ -75,7 +75,7 @@ body {
 /* === WARMER DYNAMIC GREETING STYLES ======================= */
 
 .dynamic-greeting {
-  font-size: 1.45rem;      /* smaller +   font-weight: 600;        /* slightly less heavy */
+  font-size: 1.35rem;      /* smaller +   font-weight: 600;        /* slightly less heavy */
   margin: 0 0 3px;
   color: #fff7ef;
   letter-spacing: 0.35px;
@@ -181,17 +181,23 @@ body {
 }
 
 
+/* Header layout refinement */
 .app-header {
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
-  gap: 24px;
-  margin-bottom: 32px;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 1rem 0 2rem;
 }
 
+/* Left column spacing */
 .header-left {
-  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem; /* tighter, elegant spacing */
+  max-width: 60%;
 }
+
 
 .app-kicker {
   font-size: 0.8rem;
@@ -202,9 +208,29 @@ body {
 }
 
 .app-title {
-  font-size: 2rem;
-  margin: 0 0 8px;
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin: 0;
+  color: #fffdf8;
+
+  text-shadow:
+    0 0 10px rgba(255, 240, 220, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.25);
+
+  animation: titleFade 0.6s ease forwards;
 }
+
+@keyframes titleFade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .app-subtitle {
   margin: 0;
