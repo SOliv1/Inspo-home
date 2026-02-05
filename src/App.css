@@ -23,15 +23,15 @@ body {
   z-index: 0;
 }
 
-
 .app-content {
+  max-width: 720px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
   position: relative;
-  z-index: 2; /* ensures content sits above the frosted layer */
+  z-index: 2;
 }
-
-
 
 .layout-grid {
     display: grid;
@@ -179,8 +179,6 @@ body {
       center/cover no-repeat fixed;
   color: #f9fafb;
   box-sizing: border-box;
-}
-.app-shell {
   position: relative;
   z-index: 1;
 }
