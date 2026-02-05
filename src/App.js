@@ -69,25 +69,38 @@ function App() {
       <div className="frost-overlay"></div>
 
       <div className="app-content">
-        <header className="app-header">
-          <div className="header-left">
-            <p className={`dynamic-greeting ${greetingClass}`}>
-              <span className="greeting-icon">{greetingIcon}</span>
-              {greeting}
-            </p>
 
-            <h1 className="app-title">Daily Checklist</h1>
-            <p className="app-subtitle">Light, colourful to-dos for a focused day.</p>
+        {/* TWO‑COLUMN GRID STARTS HERE */}
+        <div className="main-grid">
+
+          {/* LEFT COLUMN */}
+          <div className="left-column">
+            <header className="app-header">
+              <p className={`dynamic-greeting ${greetingClass}`}>
+                <span className="greeting-icon">{greetingIcon}</span>
+                {greeting}
+              </p>
+
+              <h1 className="app-title">Daily Checklist</h1>
+              <p className="app-subtitle">Light, colourful to-dos for a focused day.</p>
+            </header>
+
+            <div className="header-divider"></div>
+
+            {/* Your checklist + todos will go here */}
           </div>
-        </header>
 
-        <WeatherPanel />
+          {/* RIGHT COLUMN */}
+          <div className="right-column">
+            <WeatherPanel />
 
-        <div className="header-divider"></div>
+            <section className="journal-entries">
+              <p>Your journal entries will appear here.</p>
+            </section>
+          </div>
 
-        <section className="journal-entries">
-          <p>Your journal entries will appear here.</p>
-        </section>
+        </div>
+        {/* END GRID */}
 
         <footer className="QuotesFooter">
           <p className="inspo-quote fade-on-scroll">
@@ -95,6 +108,7 @@ function App() {
           </p>
           <p className="quote-author">– Steve Jobs</p>
         </footer>
+
       </div>
     </main>
   );
