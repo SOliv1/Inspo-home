@@ -260,19 +260,6 @@ body {
   }
  */
 
- /* Make all text inside the weather panel readable */
-.weather-panel,
-.weather-temp,
-.weather-condition,
-.weather-date,
-.weather-time,
-.weather-city,
-.weather-meta-block,
-.weather-meta-top {
-  color: #fffaf3 !important; /* warm white */
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.35);
-}
-
 /* Fade + scale animation */
 .fade-scale {
   opacity: 0;

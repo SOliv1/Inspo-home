@@ -456,5 +456,17 @@ border-radius: 8px; }
   from { opacity: 0.4; }
   to   { opacity: 0.8; }
 }
+/* Color styles for text elements to ensure readability and match the mood of the backgrounds */
 
+.weather-panel,
+.weather-temp,
+.weather-condition,
+.weather-date,
+.weather-time,
+.weather-city,
+.weather-meta-block,
+.weather-meta-top {
+  color: #fffaf3 !important;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.35);
+}
 
