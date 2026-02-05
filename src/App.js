@@ -3,9 +3,6 @@ import React, { useEffect } from "react";
 import './App.css';
 import { WeatherPanel } from './features/weather/WeatherPanel';
 
-
-
-
 function App() {
 
   // Dynamic greeting logic
@@ -13,25 +10,24 @@ function App() {
   let greeting = "";
   let greetingClass = "";
 
-if (hour >= 5 && hour < 12) {
-  greeting = "Good Morning, Sara";
-  greetingClass = "greeting-sunrise";
-} else if (hour >= 12 && hour < 17) {
-  greeting = "Good Afternoon, Sara";
-  greetingClass = "greeting-day";
-} else if (hour >= 17 && hour < 22) {
-  greeting = "Good Evening, Sara";
-  greetingClass = "greeting-sunset";
-} else {
-  greeting = "Good Night, Sara";
-  greetingClass = "greeting-night";
-}
+  if (hour >= 5 && hour < 12) {
+    greeting = "Good Morning, Sara";
+    greetingClass = "greeting-sunrise";
+  } else if (hour >= 12 && hour < 17) {
+    greeting = "Good Afternoon, Sara";
+    greetingClass = "greeting-day";
+  } else if (hour >= 17 && hour < 22) {
+    greeting = "Good Evening, Sara";
+    greetingClass = "greeting-sunset";
+  } else {
+    greeting = "Good Night, Sara";
+    greetingClass = "greeting-night";
+  }
 
-// Make the mood time‑based only for now, until weather data is wired in
-
-function App() {
+  // Get weather from Redux
   const weather = useSelector((state) => state.weather);
 
+  // Mood logic
   useEffect(() => {
     if (!weather || !weather.weather) return;
 
@@ -46,59 +42,35 @@ function App() {
     }
   }, [weather]);
 
-  // ...rest of your App component
-}
+  // Greeting icon
+  let greetingIcon = "";
+  if (hour >= 5 && hour < 12) greetingIcon = "🌅";
+  else if (hour >= 12 && hour < 17) greetingIcon = "☀️";
+  else if (hour >= 17 && hour < 22) greetingIcon = "🌇";
+  else greetingIcon = "🌙";
 
-/* Icon selection based on time of day */
+  // Fade-on-scroll effect
+  useEffect(() => {
+    const elements = document.querySelectorAll('.fade-on-scroll');
 
-let greetingIcon = "";
-
-if (hour >= 5 && hour < 12) {
-  greetingIcon = "🌅"; // sunrise
-} else if (hour >= 12 && hour < 17) {
-  greetingIcon = "☀️"; // day sun
-} else if (hour >= 17 && hour < 22) {
-  greetingIcon = "🌇"; // sunset
-} else {
-  greetingIcon = "🌙"; // night moon
-}
-
-useEffect(() => {
-  const elements = document.querySelectorAll('.fade-on-scroll');
-
-  const observer = new IntersectionObserver(
-    entries => {
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        } else {
-          entry.target.classList.remove('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+        else entry.target.classList.remove('visible');
       });
-    },
-    { threshold: 0.2 }
-  );
+    }, { threshold: 0.2 });
 
-  elements.forEach(el => observer.observe(el));
-
-  return () => observer.disconnect();
-}, []);
+    elements.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   return (
-
-
     <main className="app-shell">
-
-      {/* Frosted background layer */}
       <div className="frost-overlay"></div>
 
-      {/* All visible UI */}
       <div className="app-content">
-
         <header className="app-header">
           <div className="header-left">
-
-            {/* Dynamic greeting */}
             <p className={`dynamic-greeting ${greetingClass}`}>
               <span className="greeting-icon">{greetingIcon}</span>
               {greeting}
@@ -107,10 +79,10 @@ useEffect(() => {
             <h1 className="app-title">Daily Checklist</h1>
             <p className="app-subtitle">Light, colourful to-dos for a focused day.</p>
           </div>
-
-          <WeatherPanel onWeatherLoaded={(data) => setWeather(data)} />
-
         </header>
+
+        <WeatherPanel />
+
         <div className="header-divider"></div>
 
         <section className="journal-entries">
@@ -123,7 +95,6 @@ useEffect(() => {
           </p>
           <p className="quote-author">– Steve Jobs</p>
         </footer>
-
       </div>
     </main>
   );
