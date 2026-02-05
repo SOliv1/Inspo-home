@@ -529,6 +529,19 @@ body {
     0 0 10px rgba(255, 200, 150, 0.35);
 }
 
+/* Silhouette mood varients — pale luminous grey into deep charcoal */
+.mood-silhouette {
+  background: linear-gradient(
+    to bottom,
+    #e5e5e5 0%,     /* luminous pale grey */
+    #c7c7c7 20%,    /* soft mist transition */
+    #5a5a5a 60%,    /* deep grey */
+    #2b2b2b 100%    /* charcoal silhouette */
+  );
+  background-attachment: fixed;
+  background-size: cover;
+  color: #f2f2f2; /* gentle readable contrast */
+}
 
 
 

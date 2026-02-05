@@ -1,6 +1,10 @@
+import { useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import './App.css';
 import { WeatherPanel } from './features/weather/WeatherPanel';
+
+
+
 
 function App() {
 
@@ -21,6 +25,28 @@ if (hour >= 5 && hour < 12) {
 } else {
   greeting = "Good Night, Sara";
   greetingClass = "greeting-night";
+}
+
+// Make the mood time‑based only for now, until weather data is wired in
+
+function App() {
+  const weather = useSelector((state) => state.weather);
+
+  useEffect(() => {
+    if (!weather || !weather.weather) return;
+
+    const hour = new Date().getHours();
+    const isOvercast = weather.weather[0].main === "Clouds";
+    const isAfternoon = hour >= 14 && hour <= 17;
+
+    if (isOvercast && isAfternoon) {
+      document.body.classList.add("mood-silhouette");
+    } else {
+      document.body.classList.remove("mood-silhouette");
+    }
+  }, [weather]);
+
+  // ...rest of your App component
 }
 
 /* Icon selection based on time of day */
@@ -59,6 +85,8 @@ useEffect(() => {
 }, []);
 
   return (
+
+
     <main className="app-shell">
 
       {/* Frosted background layer */}
@@ -80,7 +108,8 @@ useEffect(() => {
             <p className="app-subtitle">Light, colourful to-dos for a focused day.</p>
           </div>
 
-          <WeatherPanel />
+          <WeatherPanel onWeatherLoaded={(data) => setWeather(data)} />
+
         </header>
         <div className="header-divider"></div>
 
