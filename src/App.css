@@ -75,8 +75,7 @@ body {
 /* === WARMER DYNAMIC GREETING STYLES ======================= */
 
 .dynamic-greeting {
-  font-size: 1.45rem;      /* smaller + calmer */
-  font-weight: 600;        /* slightly less heavy */
+  font-size: 1.45rem;      /* smaller +   font-weight: 600;        /* slightly less heavy */
   margin: 0 0 3px;
   color: #fff7ef;
   letter-spacing: 0.35px;
