@@ -69,8 +69,8 @@ if (hour >= 5 && hour < 12) {
         </section>
 
         <footer className="QuotesFooter">
-          <p className="quote-text">
-            "The only way to do great work is to love what you do."
+          <p className="inspo-quote fade-on-scroll">
+            “The only way to do great work is to love what you do.” — Steve Jobs
           </p>
           <p className="quote-author">– Steve Jobs</p>
         </footer>
