@@ -65,17 +65,6 @@ body {
   max-width: 720px;
 }
 
-.app-shell {
-  width: 100%;
-  background: linear-gradient(135deg, #fffdf9, #fff7ff);
-  border-radius: 32px;
-  box-shadow: var(--color-shadow-soft);
-  padding: var(--space-xl);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-}
-
 /* Header */
 
 .app-header {

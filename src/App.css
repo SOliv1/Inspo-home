@@ -180,6 +180,10 @@ body {
   color: #f9fafb;
   box-sizing: border-box;
 }
+.app-shell {
+  position: relative;
+  z-index: 1;
+}
 
 
 /* Header layout refinement */
