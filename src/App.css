@@ -23,13 +23,6 @@ body {
   z-index: 0;
 }
 
-.frost-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  z-index: 0;
-}
 /*
 .app-content {
   position: relative;
@@ -41,7 +34,7 @@ body {
   flex-direction: column;
   max-width: 1100px;
   margin: 0 auto;
-  
+  padding: 24px;
 }
 
 
@@ -471,14 +464,15 @@ body {
     0 4px 12px rgba(255, 255, 255, 0.2),
     0 2px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
+}
+
+.journal-entries {
+  width: 100%;
+  max-width: 700px; /* or whatever size you prefer
+  margin: 0 auto;   /* keeps it centered 
 } */
 
 .journal-entries {
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(12px);
-  padding: 1.4rem 1.6rem;
-  border-radius: 16px;
-
   box-shadow:
     0 4px 14px rgba(255, 255, 255, 0.25),
     0 2px 8px rgba(0, 0, 0, 0.15);
