@@ -87,6 +87,10 @@ function App() {
 
           <div className="header-divider"></div>
 
+          <section className="journal-entries">
+            <p>Your journal entries will appear here.</p>
+          </section>
+
           {/* Checklist + todos go here */}
         </div>
 
@@ -94,9 +98,7 @@ function App() {
         <div className="right-column">
           <WeatherPanel />
 
-          <section className="journal-entries">
-            <p>Your journal entries will appear here.</p>
-          </section>
+
         </div>
 
       </div>
@@ -104,7 +106,7 @@ function App() {
       {/* FOOTER OUTSIDE GRID */}
       <footer className="QuotesFooter">
         <p className="inspo-quote fade-on-scroll">
-          “The only way to do great work is to love what you do.” — Steve Jobs
+          “The only way to do great work is to love what you do.” 
         </p>
         <p className="quote-author">– Steve Jobs</p>
       </footer>
