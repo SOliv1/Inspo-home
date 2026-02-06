@@ -101,12 +101,12 @@ function App() {
 
         </div>
 
-      </div>
+      </div
 
       {/* FOOTER OUTSIDE GRID */}
       <footer className="QuotesFooter">
         <p className="inspo-quote fade-on-scroll">
-          “The only way to do great work is to love what you do.” 
+          “The only way to do great work is to love what you do.”
         </p>
         <p className="quote-author">– Steve Jobs</p>
       </footer>
