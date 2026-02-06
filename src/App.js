@@ -64,53 +64,53 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
-  return (
-    <main className="app-shell">
-      <div className="frost-overlay"></div>
+ return (
+  <main className="app-shell">
+    <div className="frost-overlay"></div>
 
-      <div className="app-content">
+    <div className="app-content">
 
-        {/* TWO‑COLUMN GRID STARTS HERE */}
-        <div className="main-grid">
+      {/* TWO‑COLUMN GRID */}
+      <div className="main-grid">
 
-          {/* LEFT COLUMN */}
-          <div className="left-column">
-            <header className="app-header">
-              <p className={`dynamic-greeting ${greetingClass}`}>
-                <span className="greeting-icon">{greetingIcon}</span>
-                {greeting}
-              </p>
+        {/* LEFT COLUMN */}
+        <div className="left-column">
+          <header className="app-header">
+            <p className={`dynamic-greeting ${greetingClass}`}>
+              <span className="greeting-icon">{greetingIcon}</span>
+              {greeting}
+            </p>
 
-              <h1 className="app-title">Daily Checklist</h1>
-              <p className="app-subtitle">Light, colourful to-dos for a focused day.</p>
-            </header>
+            <h1 className="app-title">Daily Checklist</h1>
+            <p className="app-subtitle">Light, colourful to-dos for a focused day.</p>
+          </header>
 
-            <div className="header-divider"></div>
+          <div className="header-divider"></div>
 
-            {/* Your checklist + todos will go here */}
-          </div>
-
-          {/* RIGHT COLUMN */}
-          <div className="right-column">
-            <WeatherPanel />
-
-            <section className="journal-entries">
-              <p>Your journal entries will appear here.</p>
-            </section>
-          </div>
-
+          {/* Checklist + todos go here */}
         </div>
-        {/* END GRID */}
 
-        <footer className="QuotesFooter">
-          <p className="inspo-quote fade-on-scroll">
-            “The only way to do great work is to love what you do.” — Steve Jobs
-          </p>
-          <p className="quote-author">– Steve Jobs</p>
-        </footer>
+        {/* RIGHT COLUMN */}
+        <div className="right-column">
+          <WeatherPanel />
+
+          <section className="journal-entries">
+            <p>Your journal entries will appear here.</p>
+          </section>
+        </div>
 
       </div>
-    </main>
+
+      {/* FOOTER OUTSIDE GRID */}
+      <footer className="QuotesFooter">
+        <p className="inspo-quote fade-on-scroll">
+          “The only way to do great work is to love what you do.” — Steve Jobs
+        </p>
+        <p className="quote-author">– Steve Jobs</p>
+      </footer>
+
+    </div>
+  </main>
   );
 }
 
