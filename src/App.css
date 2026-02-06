@@ -24,11 +24,8 @@ body {
 }
 
 .app-content {
-  max-width: 720px;
+  max-width: 1200px; /* gives room for two columns */
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
   position: relative;
   z-index: 2;
 }
@@ -59,19 +56,6 @@ body {
     animation: App-logo-float infinite 3s ease-in-out;
   }
 }
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.app-header, .weather-panel {
-  align-self: flex-end;
- }
 
 /* === WARMER DYNAMIC GREETING STYLES ======================= */
 
@@ -197,10 +181,10 @@ body {
 .header-left {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem; /* tighter, elegant spacing */
-  max-width: 60%;
+  gap: 0.35rem;
+  max-width: 420px;
+  color: #e5e7eb;
 }
-
 
 .app-kicker {
   font-size: 0.8rem;
@@ -430,11 +414,6 @@ body {
   background: rgba(255, 255, 255, 0.95);
 }
 
-.header-left {
-  max-width: 420px;
-  color: #e5e7eb;
-}
-
 .app-kicker {
   color: #9ca3af;
 }
@@ -468,15 +447,6 @@ body {
   max-width: 700px; /* or whatever size you prefer
   margin: 0 auto;   /* keeps it centered 
 } */
-
-.journal-entries {
-  width: 100%;
-  max-width: 700px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  position: relative;
-  z-index: 3; /* ensures it’s above overlays */
-}
 
 /* quote styling */
 .fade-on-scroll {
@@ -536,6 +506,32 @@ body {
   background-attachment: fixed;
   background-size: cover;
   color: #f2f2f2; /* gentle readable contrast */
+}
+
+/* === LAYOUT GRID (NEW) === */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+  align-items: start;
+}
+
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Frosted journal box */
+.journal-entries {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  padding: 1.5rem;
+  min-height: 200px;
+  width: 100%;
 }
 
 

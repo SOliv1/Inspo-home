@@ -67,11 +67,6 @@ body {
 
 /* Header */
 
-.app-header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-}
 
 .app-badge {
   font-size: var(--text-xs);
@@ -442,14 +437,5 @@ body {
     border-radius: 24px;
   }
 
-  .app-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .list-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 
