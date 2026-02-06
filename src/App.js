@@ -101,7 +101,7 @@ function App() {
 
         </div>
 
-      </div
+      </div>
 
       {/* FOOTER OUTSIDE GRID */}
       <footer className="QuotesFooter">
