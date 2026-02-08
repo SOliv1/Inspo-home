@@ -1,27 +1,34 @@
+    /* === GLOBAL STYLES ===================================== */
+
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-
-  background:
-    linear-gradient(135deg, rgba(64, 64, 204, 0.15), #1e3c94),
-    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80")
-      center/cover no-repeat fixed;
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #f9fafb;
 }
 
+
+/* Frosted glass overlay for better text contrast */
 .frost-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 180, 140, 0.18); /* warm tint, not too bright */
+  backdrop-filter: blur(16px);           /* dreamy, soft-focus blur */
+  -webkit-backdrop-filter: blur(16px);
   z-index: 0;
 }
+
+
+.app-shell {
+  min-height: 100vh;
+  padding: 24px;
+  background:
+  linear-gradient(135deg, rgba(255, 200, 180, 0.12), rgba(30, 60, 148, 0.45)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80")
+      center/cover no-repeat fixed;
+  position: relative;
+  z-index: 1;
+}
+
 
 .app-content {
   max-width: 1200px; /* gives room for two columns */
@@ -30,6 +37,7 @@ body {
   z-index: 2;
 }
 
+/* === LAYOUT GRID (NEW) === */
 .layout-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
@@ -60,29 +68,27 @@ body {
 /* === WARMER DYNAMIC GREETING STYLES ======================= */
 
 .dynamic-greeting {
-  font-size: 1.35rem;      /* smaller +   font-weight: 600;        /* slightly less heavy */
-  margin: 0 0 3px;
-  color: #fff7ef;
+  font-size: 1.5rem;
+  margin: 0;
+
+  color: rgba(255, 240, 230, 0.97);
+  font-weight: 500;
   letter-spacing: 0.35px;
 
   text-shadow:
-    0 0 6px rgba(255, 240, 220, 0.5),
-    0 1px 4px rgba(0, 0, 0, 0.25),
-    0 0 12px rgba(255, 200, 150, 0.28);
+    0 0 10px rgba(255, 170, 130, 0.50),
+    0 0 18px rgba(255, 150, 110, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.30);
 
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  padding: 0.25rem 0.7rem;
+  border-radius: 6px;
+
+  opacity: 0;
   animation: greetingFade 0.6s ease forwards;
 }
 
-@keyframes greetingFade {
-  from {
-    opacity: 0;
-    transform: translateY(-6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 @keyframes greetingFade {
   from {
@@ -95,7 +101,18 @@ body {
   }
 }
 
+@keyframes greetingFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+/* === WEATHER PANEL STYLES ===================================== */
 .weather-location-row {
   display: flex;
   justify-content: space-between;
@@ -136,24 +153,9 @@ body {
   }
 }
 
-/* === WEATHER PANEL STYLES ===================================== */
-
-.app-shell {
-  min-height: 100vh;
-  padding: 24px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background:
-    linear-gradient(135deg, rgba(64, 64, 204, 0.15), #1e3c94),
-    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80")
-      center/cover no-repeat fixed;
-  color: #f9fafb;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 1;
-}
 
 
-/* Header layout refinement */
+/* Header layout */
 .app-header {
   display: flex;
   justify-content: space-between;
@@ -171,6 +173,7 @@ body {
   color: #e5e7eb;
 }
 
+/* Header text styles */
 .app-kicker {
   font-size: 0.8rem;
   letter-spacing: 0.12em;
@@ -178,19 +181,25 @@ body {
   color: #6b7280;
   margin: 0 0 4px;
 }
-
 .app-title {
-  font-size: 2.1rem;
-  font-weight: 700;
+  font-size: 2rem;
   margin: 0;
-  color: #fffdf8;
+
+  color: rgba(255, 240, 230, 0.98);
+  font-weight: 600;
+  letter-spacing: 0.4px;
 
   text-shadow:
-    0 0 10px rgba(255, 240, 220, 0.45),
-    0 2px 6px rgba(0, 0, 0, 0.25);
+    0 0 12px rgba(255, 170, 130, 0.55),   /* warm dusk glow */
+    0 0 22px rgba(255, 150, 110, 0.35),   /* soft halo */
+    0 3px 6px rgba(0, 0, 0, 0.28);        /* grounding, but gentler */
 
-  animation: titleFade 0.6s ease forwards;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
 }
+
 
 @keyframes titleFade {
   from {
@@ -205,10 +214,25 @@ body {
 
 
 .app-subtitle {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #4b5563;
+  font-size: 1rem;                 /* keep your size */
+  margin: 0;                       /* keep your spacing */
+
+  color: rgba(255, 240, 230, 0.98); /* warm, readable */
+  font-weight: 500;                 /* gentle presence */
+  letter-spacing: 0.3px;            /* subtle lift */
+
+  text-shadow:
+    0 0 8px rgba(255, 170, 130, 0.55),   /* warm dusk glow */
+    0 0 14px rgba(255, 150, 110, 0.35),  /* soft halo */
+    0 2px 6px rgba(0, 0, 0, 0.35);       /* grounding */
+
+  backdrop-filter: blur(3px);           /* clarity pocket */
+  -webkit-backdrop-filter: blur(3px);
+  padding: 0.25rem 0.6rem;              /* subtle cushion */
+  border-radius: 6px;                   /* soft shape */
 }
+
+
 
 /* Card container
 === WEATHER PANEL STYLES — BRIGHTER + WARMER ======================= */
@@ -279,7 +303,7 @@ body {
 .weather-date,
 .weather-time {
   font-size: 0.75rem;
- /* color: #6b7280;*/
+  color: #6b7280;
 }
 
 /* Middle row: temp + condition */
@@ -314,7 +338,6 @@ body {
   gap: 8px;
   margin-top: 12px;
 }
-
 
 .weather-condition {
   font-size: 0.85rem;
@@ -531,7 +554,7 @@ body {
   }
   .container {
     padding: 1.2rem;
-    max-width: 480px;
+    max-width: 900px;
     margin: 0 auto;
   }
   .main-grid {
@@ -540,4 +563,3 @@ body {
 }
 
 }
-

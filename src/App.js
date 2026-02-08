@@ -67,7 +67,6 @@ function App() {
  return (
   <main className="app-shell">
     <div className="frost-overlay"></div>
-
     <div className="app-content">
 
       {/* TWO‑COLUMN GRID */}
@@ -94,16 +93,13 @@ function App() {
           {/* Checklist + todos go here */}
         </div>
 
-        {/* RIGHT COLUMN */}
+          {/* RIGHT COLUMN */}
         <div className="right-column">
           <WeatherPanel />
-
-
         </div>
-
       </div>
 
-      {/* FOOTER OUTSIDE GRID */}
+           {/* FOOTER OUTSIDE GRID */}
       <footer className="QuotesFooter">
         <p className="inspo-quote fade-on-scroll">
           “The only way to do great work is to love what you do.”
@@ -113,6 +109,7 @@ function App() {
 
     </div>
   </main>
+
   );
 }
 
