@@ -545,24 +545,11 @@ body {
 
   .weather-card {
     max-width: 100%;
+  }@media (max-width: 768px) {
+  .main-grid {
+    grid-template-columns: 1fr;
   }
 }
 
-/* Optional: stack columns on mobile */
-.container {
-  padding: 1.2rem;
-  max-width: 480px;
-  margin: 0 auto;
-  }
-
- .main-grid {
-    grid-template-columns: 1fr;
-  }
-/* Responsive typography 
-  h1 {
-    font-size: clamp(1.4rem, 4vw, 2.1rem);
-  }
-  p {
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-  } */
+}
 
