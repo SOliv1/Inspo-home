@@ -84,21 +84,6 @@ body {
   }
 }
 
-.dynamic-greeting {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 0 0 6px;
-  color: #fffaf3; /* warm white */
-  letter-spacing: 0.5px;
-
-  text-shadow:
-    0 0 10px rgba(255, 240, 220, 0.6),
-    0 2px 6px rgba(0, 0, 0, 0.25),
-    0 0 18px rgba(255, 200, 150, 0.35);
-
-  animation: greetingFade 0.6s ease forwards;
-}
-
 @keyframes greetingFade {
   from {
     opacity: 0;
@@ -430,24 +415,6 @@ body {
   backdrop-filter: blur(4px);
 }
 
-/* === JOURNAL ENTRIES STYLES =====================================
-.journal-entries {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  padding: 1.5rem;
-  border-radius: 14px;
-  box-shadow:
-    0 4px 12px rgba(255, 255, 255, 0.2),
-    0 2px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-}
-
-.journal-entries {
-  width: 100%;
-  max-width: 700px; /* or whatever size you prefer
-  margin: 0 auto;   /* keeps it centered
-} */
-
 /* quote styling */
 .fade-on-scroll {
   opacity: 0;
@@ -469,12 +436,6 @@ body {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
-}
-
-
-.fade-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* === GREETING VARIANTS ===================================== */
@@ -524,6 +485,25 @@ body {
   gap: 1.5rem;
 }
 
+/* === JOURNAL ENTRIES STYLES =====================================
+.journal-entries {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow:
+    0 4px 12px rgba(255, 255, 255, 0.2),
+    0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.journal-entries {
+  width: 100%;
+  max-width: 700px; /* or whatever size you prefer
+  margin: 0 auto;   /* keeps it centered
+} */
+
+
 /* Frosted journal box */
 .journal-entries {
   backdrop-filter: blur(12px);
@@ -546,6 +526,14 @@ body {
   .weather-card {
     max-width: 100%;
   }@media (max-width: 768px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+  .container {
+    padding: 1.2rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
   .main-grid {
     grid-template-columns: 1fr;
   }
