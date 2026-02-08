@@ -10,4 +10,5 @@ export async function fetchCurrentWeather(city = 'Evesham,GB') {
   const data = await res.json();
   console.log(data);
   return data;
+
 }
