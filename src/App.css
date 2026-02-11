@@ -8,6 +8,103 @@ body {
   color: #f9fafb;
 }
 
+/* Smooth transitions for background and text colors */
+.app-container {
+  animation: parallaxDrift var(--parallax-speed) ease-in-out infinite alternate;
+}
+
+.app-container::before {
+  animation: skyDrift var(--overlay-drift) ease-in-out infinite;
+}
+
+.star-shimmer::after {
+  opacity: var(--shimmer-strength);
+}
+
+
+:root {
+  --parallax-speed: 40s;
+  --overlay-drift: 18s;
+  --shimmer-strength: 0.35;
+}
+
+
+/* Time-based background variants with subtle overlays for mood */
+.greeting-latenight::before {
+  background: rgba(0, 0, 20, 0.55);
+}
+
+.greeting-night::before {
+  background: rgba(10, 10, 40, 0.45);
+}
+
+.greeting-earlymorning::before {
+  background: rgba(200, 180, 255, 0.25);
+}
+
+/* Sunrise — warm peach glow */
+.greeting-sunrise::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 180, 120, 0.35),
+    rgba(255, 150, 90, 0.25)
+  );
+}
+
+/* Day — bright, clean, airy */
+.greeting-day::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(240, 250, 255, 0.10)
+  );
+}
+
+/* Sunset — soft rose-gold warmth */
+.greeting-sunset::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 140, 150, 0.35),
+    rgba(255, 100, 120, 0.25)
+  );
+}
+
+.greeting-text .star-shimmer {
+  position: relative;
+  display: inline-block;
+}
+
+.greeting-text .star-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.05) 60%,
+    transparent 100%
+  );
+  animation: shimmerPulse 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmerPulse {
+  0%   { opacity: 0.25; transform: scale(0.9); }
+  50%  { opacity: 0.45; transform: scale(1.05); }
+  100% { opacity: 0.25; transform: scale(0.9); }
+}
+
+.greeting-sunrise .star-shimmer::after {
+  background: radial-gradient(
+    circle,
+    rgba(255, 200, 120, 0.45),
+    rgba(255, 150, 80, 0.15) 60%,
+    transparent 100%
+  );
+}
+
+
 
 /* Frosted glass overlay for better text contrast */
 .frost-overlay {
@@ -17,12 +114,43 @@ body {
   z-index: 0;
 }
 
+/* Sunrise Bloom Layer */
+.app-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle at 50% 70%,
+    rgba(255, 200, 120, 0.45),
+    rgba(255, 150, 80, 0.25),
+    transparent 70%
+  );
+  transform: scale(1.2);
+  transition: opacity 2.5s ease, transform 3s ease;
+}
+.greeting-sunrise.app-container::after {
+  opacity: 1;
+  transform: scale(1);
+}
+@keyframes sunrisePulse {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(1.05); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.greeting-sunrise.app-container::after {
+  animation: sunrisePulse 12s ease-in-out infinite;
+}
+
+
 
 .app-shell {
   min-height: 100vh;
   padding: 24px;
   background:
-  linear-gradient(135deg, rgba(255, 200, 180, 0.12), rgba(30, 60, 148, 0.45)),
+  /*linear-gradient(135deg, rgba(255, 200, 180, 0.12), rgba(30, 60, 148, 0.45)),*/
     url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80")
       center/cover no-repeat fixed;
   position: relative;
@@ -462,7 +590,40 @@ body {
 .greeting-sunrise { color: #FFD1A1; }
 .greeting-day     { color: #ffffff; }
 .greeting-sunset  { color: #FFB6B9; }
-.greeting-night   { color: #D6E4F0; }
+
+.greeting-earlymorning {
+  background: linear-gradient(
+    135deg,
+    rgba(215, 199, 255, 0.35),
+    rgba(191, 168, 255, 0.25)
+  );
+ backdrop-filter: blur(2px); 
+ transition: background 2s ease, backdrop-filter 2s ease;
+}
+
+.greeting-night {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 15, 0.75),
+    rgba(5, 5, 25, 0.65),
+    rgba(10, 10, 40, 0.55)
+  );
+  backdrop-filter: blur(2px);
+  transition: background 2s ease, backdrop-filter 2s ease;
+}
+
+.greeting-latenight {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 5, 0.9),     /* near-black midnight */
+    rgba(0, 0, 20, 0.85),   /* deep navy */
+    rgba(5, 5, 35, 0.75)    /* starlit indigo */
+  );
+backdrop-filter: blur(2px); 
+transition: background 2s ease, backdrop-filter 2s ease;
+}
+
+
 
 .greeting-icon {
   font-size: 1.2rem;

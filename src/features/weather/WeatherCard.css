@@ -5,6 +5,32 @@
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
 }
 
+.weather-main-row {
+  display: flex;
+  flex-direction: column;   /* stack vertically */
+  align-items: center;      /* center horizontally */
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;             /* allow it to expand */
+  min-height: 200px;        /* breathing room */
+}
+
+.weather-meta-block {
+  width: 100%;
+  height: auto;
+  min-height: 150px;
+  display: flex;
+  justify-content: center;
+}
+.weather-meta-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 14px;
+  margin-bottom: 12px;
+}
+
+
 /* Cosy, bright header container */
 .weather-header {
   display: flex;
@@ -56,6 +82,8 @@
     transform: translateY(0);
   }
 }
+
+
 
 /* WeatherCard icon */
 .weather-icon {

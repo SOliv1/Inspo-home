@@ -39,8 +39,12 @@ export const loadWeather = createAsyncThunk(
       detail: `Feels like ${Math.round(
         data.main.feels_like
       )} °C • Humidity ${data.main.humidity}%`,
+      // ⭐ NEW: include the icon code from the API
+      icon: data.weather?.[0]?.icon || "01d",
     };
+
   }
+
 );
 
 const now = new Date();
@@ -56,6 +60,8 @@ const initialState = {
   time: formatTime(now),
   status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
   error: null,
+
+  icon: "01d", // default to clear day icon
 };
 
 const weatherSlice = createSlice({
@@ -82,6 +88,9 @@ const weatherSlice = createSlice({
         state.tempF = action.payload.tempF;
         state.condition = action.payload.condition;
         state.detail = action.payload.detail;
+
+        // ⭐ NEW: store the icon code in Redux
+        state.icon = action.payload.icon;
       })
       .addCase(loadWeather.rejected, (state, action) => {
         state.status = 'failed';
