@@ -26,6 +26,278 @@ body {
   --parallax-speed: 40s;
   --overlay-drift: 18s;
   --shimmer-strength: 0.35;
+
+  --chip-earlyMorning: linear-gradient(135deg, rgba(180, 210, 255, 0.45), rgba(150, 180, 255, 0.35));
+  --chip-sunrise: linear-gradient(135deg, rgba(255, 200, 150, 0.45), rgba(255, 160, 120, 0.35));
+  --chip-day: linear-gradient(135deg, rgba(255, 255, 200, 0.45), rgba(255, 245, 180, 0.35));
+  --chip-sunset: linear-gradient(135deg, rgba(255, 170, 150, 0.45), rgba(255, 120, 120, 0.35));
+  --chip-night: linear-gradient(135deg, rgba(180, 160, 255, 0.45), rgba(140, 120, 220, 0.35));
+  --chip-lateNight: linear-gradient(135deg, rgba(120, 100, 180, 0.45), rgba(90, 70, 150, 0.35));
+}
+
+.journal-puff {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;   /* ← THIS is the key fix */
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  color: rgba(255, 245, 230, 0.9);
+  animation: puffIn 0.4s ease forwards;
+  gap: 0.6rem; /* optional but helps spacing */
+}
+
+
+
+@keyframes puffIn {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes chipPoof {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0px);
+  }
+  40% {
+    transform: scale(1.1);
+    opacity: 0.8;
+    filter: blur(2px);
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+.todo-chip.completed {
+  animation: chipPoof 0.5s ease forwards;
+}
+
+.delete-entry {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.2rem 0.5rem;
+  margin-left: auto;
+  cursor: pointer;
+  color: rgba(255, 245, 230, 0.9);
+  transition: background 0.2s ease;
+}
+
+.delete-entry:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.completed-list {
+  margin-top: 1rem;
+  opacity: 0.7;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+
+.new-task-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem 0;
+  padding: 0.6rem 0.8rem;
+  border-radius: 1.4rem;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+.new-task-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: rgba(255, 245, 230, 0.95);
+  font-size: 0.9rem;
+}
+
+.new-task-bar button {
+  padding: 0.35rem 0.9rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: rgba(255, 245, 230, 0.95);
+  background: rgba(255, 255, 255, 0.15);
+  transition: all 0.25s ease;
+}
+
+.new-task-bar button:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.new-task-bar.earlyMorning {
+  background: var(--chip-earlyMorning);
+  box-shadow: 0 0 10px rgba(150, 180, 255, 0.35);
+}
+
+.new-task-bar.sunrise {
+  background: var(--chip-sunrise);
+  box-shadow: 0 0 10px rgba(255, 180, 130, 0.35);
+}
+
+.new-task-bar.day {
+  background: var(--chip-day);
+  box-shadow: 0 0 10px rgba(255, 245, 180, 0.35);
+}
+
+.new-task-bar.sunset {
+  background: var(--chip-sunset);
+  box-shadow: 0 0 10px rgba(255, 140, 120, 0.35);
+}
+
+.new-task-bar.night {
+  background: var(--chip-night);
+  box-shadow: 0 0 10px rgba(160, 140, 220, 0.35);
+}
+
+.new-task-bar.lateNight {
+  background: var(--chip-lateNight);
+  box-shadow: 0 0 10px rgba(90, 70, 150, 0.35);
+}
+
+.todo-chip.earlyMorning {
+  background: var(--chip-earlyMorning);
+  box-shadow: 0 0 10px rgba(150, 180, 255, 0.35);
+}
+
+.todo-chip.lateNight {
+  background: var(--chip-lateNight);
+  box-shadow: 0 0 10px rgba(90, 70, 150, 0.35);
+}
+
+
+.greeting-mode-toggle {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.3rem 0.4rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2rem;
+  backdrop-filter: blur(10px);
+  width: fit-content;
+  margin-top: 0.8rem;
+  position: relative;
+}
+
+
+.greeting-mode-toggle button {
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  padding: 0.25rem 0.65rem;
+  border-radius: 1.2rem;
+  font-size: 0.72rem;
+  color: rgba(255, 245, 230, 0.85);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 0.15px;
+  position: relative;
+  z-index: 2;
+}
+
+
+/* WHIMSICAL — peach-gold */
+.greeting-mode-toggle button.active[data-mode="whimsical"] {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 200, 150, 0.45),
+    rgba(255, 160, 120, 0.35)
+  );
+  color: rgba(255, 245, 230, 1);
+  box-shadow:
+    0 0 8px rgba(255, 180, 130, 0.45),
+    0 0 14px rgba(255, 160, 120, 0.35);
+}
+
+/* MINIMAL — soft grey-white */
+.greeting-mode-toggle button.active[data-mode="minimal"] {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.35),
+    rgba(230, 230, 230, 0.25)
+  );
+  color: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 0 8px rgba(255, 255, 255, 0.35),
+    0 0 14px rgba(220, 220, 220, 0.25);
+}
+
+/* POETIC — lavender-rose */
+.greeting-mode-toggle button.active[data-mode="poetic"] {
+  background: linear-gradient(
+    135deg,
+    rgba(210, 170, 255, 0.45),
+    rgba(255, 180, 220, 0.35)
+  );
+  color: rgba(255, 245, 255, 1);
+  box-shadow:
+    0 0 8px rgba(210, 170, 255, 0.45),
+    0 0 14px rgba(255, 180, 220, 0.35);
+}
+
+/* CASUAL — cool blue */
+
+.todo-chip {
+  padding: 0.45rem 0.9rem;
+  border-radius: 1.4rem;
+  font-size: 0.85rem;
+  color: rgba(255, 245, 230, 0.95);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.todo-chip:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.todo-chip.sunrise {
+  background: var(--chip-sunrise);
+  box-shadow: 0 0 10px rgba(255, 180, 130, 0.35);
+}
+
+.todo-chip.day {
+  background: var(--chip-day);
+  box-shadow: 0 0 10px rgba(255, 245, 180, 0.35);
+}
+
+.todo-chip.sunset {
+  background: var(--chip-sunset);
+  box-shadow: 0 0 10px rgba(255, 140, 120, 0.35);
+}
+
+.todo-chip.night {
+  background: var(--chip-night);
+  box-shadow: 0 0 10px rgba(160, 140, 220, 0.35);
 }
 
 
@@ -165,6 +437,13 @@ body {
   z-index: 2;
 }
 
+/*.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+*/
+
 /* === LAYOUT GRID (NEW) === */
 .layout-grid {
     display: grid;
@@ -200,27 +479,21 @@ body {
 }
 
 /* === WARMER DYNAMIC GREETING STYLES ======================= */
-
 .dynamic-greeting {
-  font-size: 1.5rem;
-  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: rgba(255, 245, 230, 0.9); /* warm cream instead of white */
+  text-shadow: 0 0 4px rgba(255, 200, 150, 0.35),
+               0 0 10px rgba(255, 170, 120, 0.25);
+  transition: text-shadow 0.4s ease, color 0.4s ease;
+}
 
-  color: rgba(255, 240, 230, 0.97);
-  font-weight: 500;
-  letter-spacing: 0.35px;
-
+.greeting-night .dynamic-greeting,
+.greeting-latenight .dynamic-greeting {
   text-shadow:
-    0 0 10px rgba(255, 170, 130, 0.50),
-    0 0 18px rgba(255, 150, 110, 0.32),
-    0 2px 6px rgba(0, 0, 0, 0.30);
-
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  padding: 0.25rem 0.7rem;
-  border-radius: 6px;
-
-  opacity: 0;
-  animation: greetingFade 0.6s ease forwards;
+    0 0 10px rgba(120, 160, 255, 0.6),
+    0 0 20px rgba(80, 120, 255, 0.4);
 }
 
 
@@ -322,12 +595,9 @@ body {
   color: rgba(255, 240, 230, 0.98);
   font-weight: 600;
   letter-spacing: 0.4px;
-
   text-shadow:
-    0 0 12px rgba(255, 170, 130, 0.55),   /* warm dusk glow */
-    0 0 22px rgba(255, 150, 110, 0.35),   /* soft halo */
-    0 3px 6px rgba(0, 0, 0, 0.28);        /* grounding, but gentler */
-
+    0 0 10px rgba(255, 200, 150, 0.5),
+    0 0 20px rgba(255, 170, 120, 0.35);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   padding: 0.3rem 0.75rem;
@@ -597,7 +867,7 @@ body {
     rgba(215, 199, 255, 0.35),
     rgba(191, 168, 255, 0.25)
   );
- backdrop-filter: blur(2px); 
+ backdrop-filter: blur(2px);
  transition: background 2s ease, backdrop-filter 2s ease;
 }
 
@@ -619,22 +889,71 @@ body {
     rgba(0, 0, 20, 0.85),   /* deep navy */
     rgba(5, 5, 35, 0.75)    /* starlit indigo */
   );
-backdrop-filter: blur(2px); 
+backdrop-filter: blur(2px);
 transition: background 2s ease, backdrop-filter 2s ease;
 }
 
+.greeting-night .dynamic-greeting,
+.greeting-latenight .dynamic-greeting {
+  text-shadow:
+    0 0 10px rgba(120, 160, 255, 0.6),
+    0 0 20px rgba(80, 120, 255, 0.4);
+}
+
+.mood-silhouette {
+  background: linear-gradient(
+    to bottom,
+    #e5e5e5 0%,
+    #c7c7c7 20%,
+    #5a5a5a 60%,
+    #2b2b2b 100%
+  );
+  background-attachment: fixed;
+  background-size: cover;
+  color: #f2f2f2;
+}
+
+.greeting-sunrise .dynamic-greeting {
+  text-shadow:
+    0 0 8px rgba(255, 180, 120, 0.6),
+    0 0 16px rgba(255, 140, 80, 0.4);
+}
+
+.greeting-day .dynamic-greeting {
+  text-shadow:
+    0 0 10px rgba(255, 240, 180, 0.6),
+    0 0 22px rgba(255, 220, 140, 0.4);
+}
+
+
+.greeting-sunset .dynamic-greeting {
+  text-shadow:
+    0 0 8px rgba(255, 120, 120, 0.7),
+    0 0 16px rgba(255, 80, 80, 0.45);
+}
+
+.greeting-night .dynamic-greeting,
+.greeting-latenight .dynamic-greeting {
+  text-shadow:
+   0 0 12px rgba(150, 180, 255, 0.7), 
+   0 0 26px rgba(110, 140, 255, 0.45);
+}
 
 
 .greeting-icon {
-  font-size: 1.2rem;
-  margin-right: 0.4rem;
   display: inline-block;
-  transform: translateY(1px);
-
-  text-shadow:
-    0 0 6px rgba(255, 255, 255, 0.4),
-    0 0 10px rgba(255, 200, 150, 0.35);
+  margin-right: 0.4rem;
+  font-size: 1.8rem;
+  filter: none;
+  opacity: 0.9;
 }
+
+ .greeting-icon {
+  text-shadow:
+    0 0 8px rgba(255, 200, 150, 0.5),
+    0 0 14px rgba(255, 170, 120, 0.35);
+}
+
 
 /* Silhouette mood variants — pale luminous grey into deep charcoal */
 .mood-silhouette {
@@ -685,7 +1004,7 @@ transition: background 2s ease, backdrop-filter 2s ease;
 } */
 
 
-/* Frosted journal box */
+/* Frosted journal box 
 .journal-entries {
   backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.25);
@@ -695,8 +1014,17 @@ transition: background 2s ease, backdrop-filter 2s ease;
   width: 100%;
   min-width: 0;
   box-sizing:border-box;
-}
+} */
 
+.journal-entries {
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  max-height: 200px;
+  overflow-y: auto;
+}
 
 
 /* Responsive tweak for smaller widths */
