@@ -84,20 +84,25 @@ body {
   animation: chipPoof 0.5s ease forwards;
 }
 
-.delete-entry {
+.delete-entry,
+.delete-task {
   background: rgba(255, 255, 255, 0.15);
   border: none;
   border-radius: 0.6rem;
-  padding: 0.2rem 0.5rem;
-  margin-left: auto;
+  padding: 0.25rem 0.55rem;
   cursor: pointer;
-  color: rgba(255, 245, 230, 0.9);
-  transition: background 0.2s ease;
+  color: rgba(255, 245, 230, 0.95);
+  font-size: 0.8rem;
+  backdrop-filter: blur(4px);
+  transition: background 0.25s ease, transform 0.15s ease;
 }
 
-.delete-entry:hover {
+.delete-entry:hover,
+.delete-task:hover {
   background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.08);
 }
+
 
 .task-list {
   display: flex;
@@ -935,7 +940,7 @@ transition: background 2s ease, backdrop-filter 2s ease;
 .greeting-night .dynamic-greeting,
 .greeting-latenight .dynamic-greeting {
   text-shadow:
-   0 0 12px rgba(150, 180, 255, 0.7), 
+   0 0 12px rgba(150, 180, 255, 0.7),
    0 0 26px rgba(110, 140, 255, 0.45);
 }
 
@@ -985,46 +990,67 @@ transition: background 2s ease, backdrop-filter 2s ease;
   gap: 1.5rem;
 }
 
-/* === JOURNAL ENTRIES STYLES =====================================
-.journal-entries {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  padding: 1.5rem;
-  border-radius: 14px;
-  box-shadow:
-    0 4px 12px rgba(255, 255, 255, 0.2),
-    0 2px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-}
+/* === JOURNAL ENTRIES STYLES ====================================== */
 
 .journal-entries {
   width: 100%;
-  max-width: 700px; /* or whatever size you prefer
-  margin: 0 auto;   /* keeps it centered
-} */
+  max-width: 100%;
+  box-sizing: border-box;
 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-/* Frosted journal box 
-.journal-entries {
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 16px;
-  padding: 1.5rem;
-  min-height: 200px;
-  width: 100%;
-  min-width: 0;
-  box-sizing:border-box;
-} */
-
-.journal-entries {
-  margin-top: 0.5rem;
-  padding: 0.8rem;
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(6px);
-  max-height: 200px;
   overflow-y: auto;
 }
+
+
+.journal-input-wrapper {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+
+.journal-input {
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  border: none;
+  resize: none;
+  font-size: 1rem;
+  line-height: 1.4;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 245, 230, 0.95);
+  backdrop-filter: blur(6px);
+  outline: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.journal-input:focus {
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 0.4rem rgba(255, 255, 255, 0.25);
+}
+
+.add-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.8rem;
+  border: none;
+  background: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 245, 230, 0.95);
+  cursor: pointer;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.add-button:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: scale(1.05);
+}
+
 
 
 /* Responsive tweak for smaller widths */
