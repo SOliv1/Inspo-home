@@ -69,7 +69,7 @@ function App() {
 
   // 6. GREETING MACHINE
   let greeting = greetingSets[greetingMode][moodKey];
-  if (testGreeting) greeting = `${testGreeting}, Sara`;
+
 
   const greetingClass = mood.class;
   const greetingIcon = mood.icon(hour);
