@@ -5,7 +5,7 @@ import { WeatherPanel } from "./features/weather/WeatherPanel";
 function App() {
   // 1. STATE
   const [greetingMode, setGreetingMode] = useState("whimsical");
-  const [testGreeting, setTestGreeting] = useState("");
+
 
   const [entries, setEntries] = useState([]);
   const [journalText, setJournalText] = useState("");
