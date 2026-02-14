@@ -1002,7 +1002,7 @@ transition: background 2s ease, backdrop-filter 2s ease;
 
 /* === JOURNAL ENTRIES STYLES ====================================== */
 
-.journal-entries {
+/*.journal-entries {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -1012,6 +1012,13 @@ transition: background 2s ease, backdrop-filter 2s ease;
   background-repeat: no-repeat;
 
   overflow-y: auto;
+} */
+
+
+.journal-entries {
+  min-height: 20px; /* keeps the space stable */
+  transition: all 0.35s ease;
+  overflow: hidden;
 }
 
 
