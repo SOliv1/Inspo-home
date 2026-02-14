@@ -7,6 +7,7 @@ function App() {
   const [greetingMode, setGreetingMode] = useState("whimsical");
   const [entries, setEntries] = useState([]);
   const [journalText, setJournalText] = useState("");
+
   const [newTask, setNewTask] = useState("");
   const [tasks, setTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
@@ -32,17 +33,16 @@ function App() {
 
     // Load saved journal text on mount
     useEffect(() => {
-      const savedJournal = localStorage.getItem("journalText");
-      if (savedJournal) {
-        setJournalText(savedJournal);
+      const savedEntries = localStorage.getItem("journalEntries");
+      if (savedEntries) {
+        setEntries(JSON.parse(savedEntries));
       }
     }, []);
 
-  // Save journal text whenever it changes
+    // Save journal text whenever it changes
     useEffect(() => {
-      localStorage.setItem("journalText", journalText);
-    }, [journalText]);
-
+      localStorage.setItem("journalEntries", JSON.stringify(entries));
+    }, [entries]);
 
   // 2. TIME
   const hour = new Date().getHours();
