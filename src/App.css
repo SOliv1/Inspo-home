@@ -35,20 +35,37 @@ body {
   --chip-lateNight: linear-gradient(135deg, rgba(120, 100, 180, 0.45), rgba(90, 70, 150, 0.35));
 }
 
-.journal-puff {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;   /* ← THIS is the key fix */
-  padding: 0.6rem 1rem;
-  margin-bottom: 0.5rem;
-  border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(6px);
-  color: rgba(255, 245, 230, 0.9);
-  animation: puffIn 0.4s ease forwards;
-  gap: 0.6rem; /* optional but helps spacing */
+:root {
+--puff-earlyMorning: #8AB6FF;
+--puff-sunrise: #FFB37A;
+--puff-day: #FFE97A;
+--puff-sunset: #FF8A7A;
+--puff-night: #B39AFF;
+--puff-lateNight: #7A5FCF;
 }
 
+.puff-colourful {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+
+  background: var(--puff-color);
+  opacity: 1;
+  filter: blur(3px) brightness(1.2);
+  animation: puffFloat 1.4s ease-out forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.puff-transitional {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.4), transparent);
+  animation: puffFade 1.6s ease-out forwards;
+  pointer-events: none;
+}
 
 
 @keyframes puffIn {
@@ -126,8 +143,8 @@ body {
   padding: 0.6rem 0.8rem;
   border-radius: 1.4rem;
   backdrop-filter: blur(8px);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+ /*background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);*/
   transition: all 0.3s ease;
 }
 

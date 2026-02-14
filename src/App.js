@@ -11,6 +11,39 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
 
+    // Load saved tasks on mount
+    useEffect(() => {
+      const saved = localStorage.getItem("tasks");
+      const savedCompleted = localStorage.getItem("completedTasks");
+
+      if (saved) setTasks(JSON.parse(saved));
+      if (savedCompleted) setCompletedTasks(JSON.parse(savedCompleted));
+    }, []);
+
+    // Save active tasks whenever they change
+    useEffect(() => {
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+    }, [tasks]);
+
+    // Save completed tasks whenever they change
+    useEffect(() => {
+      localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
+    }, [completedTasks]);
+
+    // Load saved journal text on mount
+    useEffect(() => {
+      const savedJournal = localStorage.getItem("journalText");
+      if (savedJournal) {
+        setJournalText(savedJournal);
+      }
+    }, []);
+
+  // Save journal text whenever it changes
+    useEffect(() => {
+      localStorage.setItem("journalText", journalText);
+    }, [journalText]);
+
+
   // 2. TIME
   const hour = new Date().getHours();
 
@@ -25,9 +58,9 @@ function App() {
       earlyMorning: "Early morning calm, Sara"
     },
     minimal: {
-      sunrise: "Morning, Sara",
+      sunrise: "Good Morning, Sara",
       day: "Hello, Sara",
-      sunset: "Evening, Sara",
+      sunset: "Good Evening, Sara",
       night: "Good night, Sara",
       lateNight: "Still awake, Sara",
       earlyMorning: "Up early, Sara"
@@ -68,6 +101,8 @@ function App() {
   const greetingClass = mood.class;
   const greetingIcon = mood.icon(hour);
 
+
+
   // 7. SCROLL FADE EFFECT
   useEffect(() => {
     const elements = document.querySelectorAll(".fade-on-scroll");
@@ -84,7 +119,28 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
-  // 8. RETURN UI
+  // 7. PUFF EFFECT
+ function createPuff(x, y, type = "puff-colourful", moodKey) {
+  console.log("PUFF CREATED", x, y, moodKey);
+  const puff = document.createElement("div");
+  puff.classList.add(type);
+
+  // get the puff colour for the current mood
+  const puffColor = getComputedStyle(document.documentElement)
+    .getPropertyValue(`--puff-${moodKey}`);
+
+  puff.style.setProperty("--puff-color", puffColor);
+
+  puff.style.position = "fixed";
+  puff.style.left = `${x}px`;
+  puff.style.top = `${y}px`;
+
+  document.body.appendChild(puff);
+
+  setTimeout(() => puff.remove(), 1200);
+}
+
+// 8. RETURN UI
   return (
     <div className={`app-body ${greetingClass}`}>
       <main className="app-shell">
@@ -164,10 +220,12 @@ function App() {
                   >
                     <span
                       className="chip-check"
-                      onClick={() => {
+                      onClick={(e) => {
                         const updated = [...tasks];
                         updated[index].completed = true;
                         setTasks(updated);
+
+                        createPuff(e.clientX, e.clientY, "puff-colourful", moodKey);
 
                         setTimeout(() => {
                           setCompletedTasks([...completedTasks, task.text]);
@@ -217,6 +275,7 @@ function App() {
                     if (journalText.trim()) {
                       setEntries([...entries, journalText]);
                       setJournalText("");
+
                     }
                   }}
                 >
