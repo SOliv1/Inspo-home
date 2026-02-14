@@ -290,6 +290,17 @@ function App() {
                     <span className="journal-text">{entry}</span>
 
                     <button
+                      className={`clear-journal ${moodKey}`}
+                      onClick={() => {
+                        setEntries([]);
+                        localStorage.removeItem("journalEntries");
+                      }}
+                    >
+                      Clear all entries
+                    </button>
+
+
+                    <button
                       className="delete-entry"
                       onClick={() => {
                         setEntries(entries.filter((_, i) => i !== index));

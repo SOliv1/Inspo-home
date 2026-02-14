@@ -459,13 +459,6 @@ body {
   z-index: 2;
 }
 
-/*.left-column {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-*/
-
 /* === LAYOUT GRID (NEW) === */
 .layout-grid {
     display: grid;
@@ -1029,6 +1022,50 @@ transition: background 2s ease, backdrop-filter 2s ease;
   margin-top: 1rem;
 }
 
+.journal-puff {
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  animation: bubbleIn 0.4s ease-out forwards;
+}
+
+.journal-puff.sunrise {
+  box-shadow: 0 0 12px rgba(255, 180, 80, 0.4);
+}
+
+.journal-puff.day {
+  box-shadow: 0 0 12px rgba(255, 255, 120, 0.4);
+}
+
+.journal-puff.sunset {
+  box-shadow: 0 0 12px rgba(255, 120, 120, 0.4);
+}
+
+.journal-puff.night {
+  box-shadow: 0 0 12px rgba(120, 160, 255, 0.4);
+}
+
+.journal-puff.lateNight {
+  box-shadow: 0 0 12px rgba(200, 120, 255, 0.4);
+}
+
+.journal-puff.earlyMorning {
+  box-shadow: 0 0 12px rgba(180, 220, 255, 0.4);
+}
+
+@keyframes bubbleIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
 .journal-input {
   width: 100%;
@@ -1067,6 +1104,63 @@ transition: background 2s ease, backdrop-filter 2s ease;
   background: rgba(255, 255, 255, 0.28);
   transform: scale(1.05);
 }
+
+.clear-journal {
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 14px;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  opacity: 0.9;
+}
+
+/* Hover: soft lift */
+.clear-journal:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Mood‑coloured glow */
+.clear-journal.sunrise {
+  box-shadow: 0 0 10px rgba(255, 150, 80, 0.35);
+}
+
+.clear-journal.day {
+  box-shadow: 0 0 10px rgba(255, 230, 120, 0.35);
+}
+
+.clear-journal.sunset {
+  box-shadow: 0 0 10px rgba(255, 120, 120, 0.35);
+}
+
+.clear-journal.night {
+  box-shadow: 0 0 10px rgba(120, 150, 255, 0.35);
+}
+
+.clear-journal.lateNight {
+  box-shadow: 0 0 10px rgba(200, 120, 255, 0.35);
+}
+
+.clear-journal.earlyMorning {
+  box-shadow: 0 0 10px rgba(180, 220, 255, 0.35);
+}
+
+
+.clear-journal {
+  animation: fadeIn 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 
 
 
