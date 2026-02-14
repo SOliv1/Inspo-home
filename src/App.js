@@ -44,6 +44,13 @@ function App() {
       localStorage.setItem("journalEntries", JSON.stringify(entries));
     }, [entries]);
 
+   /* const handleDelete = (i) => {
+      const updated = entries.filter((_, idx) => idx !== i);
+        setEntries(updated);
+    };*/
+
+
+
   // 2. TIME
   const hour = new Date().getHours();
 
@@ -121,7 +128,7 @@ function App() {
 
   // 7. PUFF EFFECT
  function createPuff(x, y, type = "puff-colourful", moodKey) {
-  console.log("PUFF CREATED", x, y, moodKey);
+
   const puff = document.createElement("div");
   puff.classList.add(type);
 
@@ -285,6 +292,7 @@ function App() {
 
               {/* JOURNAL ENTRIES */}
               <section className="journal-entries">
+                {entries.length === 0 && ( <div className={`journal-empty ${moodKey}`}> Nothing here yet… Write a little thought above. </div> )}
                 {entries.map((entry, index) => (
                   <div key={index} className={`journal-puff ${moodKey}`}>
                     <span className="journal-text">{entry}</span>
@@ -303,11 +311,13 @@ function App() {
                     <button
                       className="delete-entry"
                       onClick={() => {
-                        setEntries(entries.filter((_, i) => i !== index));
+                        const updated = entries.filter((_, i) => i !== index);
+                        setEntries(updated);
                       }}
                     >
                       ✕
                     </button>
+
                   </div>
                 ))}
               </section>
