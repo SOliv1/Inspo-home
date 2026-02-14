@@ -1169,6 +1169,41 @@ transition: background 2s ease, backdrop-filter 2s ease;
 }
 
 
+.journal-empty {
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  opacity: 0.8;
+  text-align: center;
+  margin-bottom: 12px;
+  animation: fadeIn 0.4s ease-out forwards;
+  transform: translateY(4px);
+}
+
+/* Mood glow */
+.journal-empty.sunrise {
+  color: #ffb36b;
+}
+
+.journal-empty.day {
+  color: #ffd84d;
+}
+
+.journal-empty.sunset {
+  color: #ff7a7a;
+}
+
+.journal-empty.night {
+  color: #6a7cff;
+}
+
+.journal-empty.lateNight {
+  color: #c27cff;
+}
+
+.journal-empty.earlyMorning {
+  color: #7bbcff;
+}
 
 
 /* Responsive tweak for smaller widths */
