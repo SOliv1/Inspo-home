@@ -79,13 +79,14 @@ export function WeatherPanel() {
   // 🌦️ Developer-only weather test state
   const [testWeather, setTestWeather] = useState(null);
   const [testTimeOfDay, setTestTimeOfDay] = useState(null);
-  const [testGreeting, setTestGreeting] = useState(null);
+  const [testGreeting, setTestGreeting] = useState(null); 
 
 
 
   // Time of day logic
-  //const hour = new Date().getHours();
+  const hour = new Date().getHours();
  // Time of day logic (with test override)
+
   let timeOfDay;
 
   if (testTimeOfDay) {

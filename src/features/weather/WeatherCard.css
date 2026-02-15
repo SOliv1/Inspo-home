@@ -132,31 +132,6 @@
   transition: all 0.3s ease;
 }
 
-/* Temperature text styles for different times of day- slightly brighter emphasis in warmer tones
-.temperature {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 6px;
-}
-*/
-
-/* Warm and accessible emphasis on temperature text
- .temperature {
-font-size: 2.2rem;
-font-weight: 600;
-color: #fefefe;
-backdrop-filter: blur(4px);
-padding: 0.25rem 0.5rem;
-border-radius: 8px; }
-
-/* Soft glow effect-matches shimmer, glow of cloud style
-.temperature {
-  font-size: 2.4rem;
-  font-weight: 500;
-  color: #fff;
-  text-shadow: 0 0 8px rgba(255,255,255,0.6);
-} */
 
 .weather-temp {
   font-size: 1.25rem;
@@ -505,4 +480,203 @@ border-radius: 8px; }
   color: #fffaf3 !important;
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.35);
 }
+
+/*
+=== WEATHER PANEL STYLES — BRIGHTER + WARMER ======================= */
+/* Universal text color inside weather panel */
+
+.weather-panel {
+  margin-left: auto;
+  color: #fffaf3; /* warm white */
+  width: 260px;
+  padding: 20px;
+  border-radius: 22px;
+  backdrop-filter: blur(14px) saturate(160%);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Fade + scale animation */
+.fade-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: fadeScaleIn 0.45s ease forwards;
+}
+
+@keyframes fadeScaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Top row: city + date/time */
+.weather-location-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.weather-city,
+.weather-temp,
+.weather-condition {
+  color: #f9fafb;
+}
+
+.weather-date,
+.weather-time,
+.weather-feels,
+.weather-detail,
+.weather-description {
+  color: #010308;
+}
+
+.weather-meta-top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.weather-date,
+.weather-time {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.mood-night .weather-time {
+  color: #bcd7ff;
+  text-shadow: 0 0 8px rgba(120,160,255,0.4);
+}
+
+.mood-dawn .weather-time {
+  color: #ffdfc8;
+}
+
+
+.weather-time::before {
+  content: "🕒";
+  margin-right: 6px;
+  opacity: 0.8;
+}
+
+
+/* Middle row: temp + condition */
+.weather-main-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.weather-temp-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.weather-temp {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.weather-feels {
+  font-size: 0.8rem;
+  color: #6b7280;
+};
+
+.weather-meta-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.weather-condition {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* feels like ... */
+.weather-detail {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.3px;
+
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.35),
+    0 0 8px rgba(180, 200, 255, 0.2);
+
+  opacity: 0.95;
+}
+
+@keyframes detailFade {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 0.95; transform: translateY(0); }
+}
+
+
+
+/* weather icons */
+.weather-icon {
+  display: inline-block;
+  transform: translateY(0);
+  transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
+}
+
+.weather-icon:hover {
+  transform: translateY(-6px);
+}
+
+.weather-icon svg {
+  stroke-width: 2.5px;
+  filter: drop-shadow(0 3px 3px rgba(0,0,0,0.15));
+  @keyframes floatCloud {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+  .weather-icon svg,
+  .weather-header svg {
+    animation: floatCloud 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmerGlow {
+  0%   { box-shadow: 0 0 12px rgba(255, 255, 255, 0.3); }
+  50%  { box-shadow: 0 0 18px rgba(255, 255, 255, 0.5); }
+  100% { box-shadow: 0 0 12px rgba(255, 255, 255, 0.3); }
+}
+  .weather-icon,
+  .weather-header {
+    animation: shimmerGlow 4s ease-in-out infinite;
+  }
+
+}
+
+/* Descriptive sentence under panel */
+.weather-description {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: #4b5563;
+}
+
+/* Small interactive feel on hover */
+.weather-card {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.weather-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 22px 55px rgba(15, 23, 42, 0.22),
+    0 0 0 1px rgba(148, 163, 184, 0.22);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+
+
 
