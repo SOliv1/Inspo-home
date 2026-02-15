@@ -1,12 +1,85 @@
     /* === GLOBAL STYLES ===================================== */
-
-body {
-  margin: 0;
+body { 
+  margin: 0; 
   padding: 0;
-  min-height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #f9fafb;
+
+ }
+    /* Add breathing room to the whole page */
+body {
+  padding-top: 0 20px;
+  padding-bottom: 0 120px;
+  max-width: 900px;
+  margin: 0 auto;
 }
+
+.app-header {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 16px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+
+/* Mini Menu */
+.mini-menu {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 10px 22px;
+  border-radius: 14px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 9999;
+}
+
+.mini-menu a {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s ease;
+}
+
+.mini-menu a:hover {
+  opacity: 0.7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Hero Image */
+.hero img {
+  width: 100%;
+  height: 60vh; /* change to 100vh for full screen */
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 40px 0;
+  margin-top: 80px;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.social-icons {
+  margin-top: 15px;
+  height: 40px; /* reserves space for icons */
+}
+
 
 /* Smooth transitions for background and text colors */
 .app-container {
@@ -651,6 +724,14 @@ body {
   border-radius: 6px;                   /* soft shape */
 }
 
+/* Divider */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+  margin: 40px 0;
+  backdrop-filter: blur(4px);
+}
 
 
 /* Card container
@@ -1333,6 +1414,20 @@ transition: background 2s ease, backdrop-filter 2s ease;
   }
 }
 
+/* === FOOTER STYLES ====================================== 
+
+.site-footer {
+  text-align: center;
+  padding: 40px 0;
+  margin-top: 60px;
+  color: #555;
+  font-size: 0.9rem;
+}
+*/
+.social-icons {
+  margin-top: 15px;
+  height: 40px; /* reserves space even before icons are added */
+}
 
 
 /* Responsive tweak for smaller widths */

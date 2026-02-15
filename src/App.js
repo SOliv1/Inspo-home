@@ -150,16 +150,25 @@ function App() {
 // 8. RETURN UI
   return (
     <div className={`app-body ${greetingClass}`}>
+
       <main className="app-shell">
         <div className="frost-overlay"></div>
 
         <div className="app-content">
           <div className="main-grid">
-
             {/* LEFT COLUMN */}
             <div className="left-column">
 
               <header className="app-header">
+
+                <nav class="mini-menu"> 
+                  <a href="#todos">To‑Dos</a> 
+                  <a href="#thoughts">Thoughts</a> 
+                  <a href="#weather">Weather</a> 
+                  <a href="#time">Time</a>
+                  <a href="#footer">Footer</a> 
+                </nav>
+
                 <div className={greetingClass}>
                   <p className="dynamic-greeting">
                     <span className="greeting-icon">{greetingIcon}</span>
@@ -198,6 +207,10 @@ function App() {
               </header>
 
               {/* NEW TASK BAR */}
+              <div id="todos">
+                {/* your to‑do UI */}
+              </div>
+
               <div className={`new-task-bar ${moodKey}`}>
                 <input
                   type="text"
@@ -266,7 +279,15 @@ function App() {
                 ))}
               </div>
 
+              <div className="section-divider"></div>
+
+
               {/* JOURNAL INPUT */}
+
+              <div id="thoughts">
+                {/* your journal UI */}
+              </div>
+
               <div className={`journal-input-wrapper ${moodKey}`}>
                 <input
                   className="journal-input"
@@ -326,20 +347,34 @@ function App() {
 
             {/* RIGHT COLUMN */}
             <div className="right-column">
+              <div id="time">
+                {/* your time + date display */}
+              </div>
               <WeatherPanel />
             </div>
 
           </div>
 
           <footer className="QuotesFooter">
+            <footer id="footer">
+              {/* footer content */}
+            </footer>
+
             <p className="inspo-quote fade-on-scroll">
               “The only way to do great work is to love what you do.”
             </p>
             <p className="quote-author">– Steve Jobs</p>
+            <div className="siteFooter">
+              <p>Made with care by Sara for KUK @ 2026</p>
+            </div>
+            <div class="social-icons">
+                {/* Add icons later */}
+            </div>
           </footer>
         </div>
       </main>
     </div>
+
   );
 }
 
