@@ -538,19 +538,48 @@
   gap: 2px;
 }
 
-.weather-date,
+/* Date and time styles */
+.weather-datetime {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+}
+
 .weather-time {
-  font-size: 0.75rem;
-  color: #6b7280;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--moodTextStrong);
+  text-shadow: 0 0 6px rgba(0,0,0,0.18);
+}
+
+.weather-date {
+  margin-top: 2px;
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.85;
+  color: var(--moodTextSoft);
 }
 
 .mood-night .weather-time {
-  color: #bcd7ff;
-  text-shadow: 0 0 8px rgba(120,160,255,0.4);
+  color: #cfe1ff;
+  text-shadow: 0 0 10px rgba(140,170,255,0.45);
 }
 
 .mood-dawn .weather-time {
-  color: #ffdfc8;
+  color: #ffd8c2;
+}
+
+.mood-day .weather-time {
+  color: #ffffff;
+}
+
+.mood-evening .weather-time {
+  color: #ffe4f2;
 }
 
 

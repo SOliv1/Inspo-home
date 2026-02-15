@@ -74,6 +74,19 @@ export function WeatherPanel() {
     status,
   } = useSelector((state) => state.weather);
 
+  // Format time + date for display
+  const formattedTime = time ? new Date(time).toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit"
+  }) : "";
+
+  const formattedDate = date ? new Date(date).toLocaleDateString([], {
+    weekday: "long",
+    month: "long",
+    day: "numeric"
+  }) : "";
+
+
 
 
   // 🌦️ Developer-only weather test state
@@ -245,10 +258,11 @@ function getGreetingFromTime(timeOfDay) {
       {/* Weather UI */}
       <div className="weather-location-row">
         <span className="weather-city">{city}</span>
-        <div className="weather-meta-top">
-          <span className="weather-date">{date}</span>
-          <span className="weather-time">{time}</span>
-        </div>
+        <div className="weather-datetime">
+        <div className="weather-time">{formattedTime}</div>
+        <div className="weather-date">{formattedDate}</div>
+      </div>
+
       </div>
 
 { /* Display the main weather condition, and if the detail is different, show it in a smaller font below. For example, if the condition is "Rain" and the detail is "Feels like 10 °C • Humidity 80%", it will show "Rain" prominently and the detail text below it. This allows users to quickly grasp the main weather condition while still having access to additional information at a glance. */}

@@ -608,41 +608,7 @@ html {
 }
 
 /* === WEATHER PANEL STYLES ===================================== */
-.weather-location-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.5rem;
-}
 
-.weather-meta-top {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.1rem;
-}
-
-.weather-city {
-  font-weight: 700;
-}
-
-/* Date and time chips */
-.weather-datetime {
-  background: rgba(255,255,255,0.15);
-  padding: 8px 14px;
-  border-radius: 12px;
-  display: inline-block;
-  backdrop-filter: blur(6px);
-}
-
-.mood-night .weather-time {
-  color: #bcd7ff;
-  text-shadow: 0 0 8px rgba(120,160,255,0.4);
-}
-
-.mood-dawn .weather-time {
-  color: #ffdfc8;
-}
 
 
 .App-link {
