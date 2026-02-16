@@ -100,20 +100,20 @@ export function WeatherPanel() {
   const hour = new Date().getHours();
  // Time of day logic (with test override)
 
-  let timeOfDay;
+ let timeOfDay;
 
-  if (testTimeOfDay) {
-    timeOfDay = testTimeOfDay;   // manual override
-  } else {
-    const hour = new Date().getHours();
+if (testTimeOfDay) {
+  timeOfDay = testTimeOfDay;   // manual override
+} else {
+  const hour = new Date().getHours();
 
-    if (hour >= 2 && hour < 5) timeOfDay = "early morning";
-    else if (hour >= 5 && hour < 9) timeOfDay = "sunrise";
-    else if (hour >= 9 && hour < 17) timeOfDay = "day";
-    else if (hour >= 17 && hour < 20) timeOfDay = "sunset";
-    else if (hour >= 24 && hour < 2) timeOfDay = "late night";
-    else timeOfDay = "night";
-  }
+  if (hour >= 0 && hour < 2) timeOfDay = "late night";
+  else if (hour >= 2 && hour < 5) timeOfDay = "early morning";
+  else if (hour >= 5 && hour < 9) timeOfDay = "sunrise";
+  else if (hour >= 9 && hour < 17) timeOfDay = "day";
+  else if (hour >= 17 && hour < 20) timeOfDay = "sunset";
+  else timeOfDay = "night";
+}
 
 
  const iconColorMap = {
