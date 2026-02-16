@@ -75,10 +75,8 @@ export function WeatherPanel() {
   } = useSelector((state) => state.weather);
 
   // Format time + date for display
-  const formattedTime = time ? new Date(time).toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit"
-  }) : "";
+  const formattedTime = time || "";
+
 
   const formattedDate = date ? new Date(date).toLocaleDateString([], {
     weekday: "long",
