@@ -12,6 +12,9 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
 
+
+
+
     // Load saved tasks on mount
     useEffect(() => {
       const saved = localStorage.getItem("tasks");
@@ -108,6 +111,20 @@ function App() {
   const greetingClass = mood.class;
   const greetingIcon = mood.icon(hour);
 
+  // --- SEASON LOGIC ---
+
+  function getSeasonFromMonth() {
+    const month = new Date().getMonth(); // 0 = Jan, 11 = Dec
+
+    if (month === 11 || month <= 1) return "winter";
+    if (month >= 2 && month <= 4) return "spring";
+    if (month >= 5 && month <= 7) return "summer";
+    return "autumn";
+  }
+
+  // React state: starts with automatic season
+  const [seasonKey, setSeasonKey] = useState(getSeasonFromMonth());
+
 
 
   // 7. SCROLL FADE EFFECT
@@ -151,7 +168,19 @@ function App() {
   return (
     <div className={`app-body ${greetingClass}`}>
 
-      <main className="app-shell">
+      <main className={`app-shell ${seasonKey} ${moodKey}`}>
+        <div className="season-buttons">
+            {["winter", "spring", "summer", "autumn"].map(s => (
+            <button
+              key={s}
+              className={seasonKey === s ? "active" : ""}
+              onClick={() => setSeasonKey(s)}
+            >
+              {s.charAt(0).toUpperCase() + s.slice(1)}
+            </button>
+          ))}
+        </div>
+
         <div className="frost-overlay"></div>
 
         <div className="app-content">
