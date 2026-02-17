@@ -638,20 +638,8 @@ html {
 }
 
 
-
-
-/* -------------------------
-   WINTER
---------------------------*/
-/*Winter */
-/*.app-shell.winter {
-  background-image: url("");
-  background-image: url("https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=1600&q=80");
-  background-position: top center;
-}*/
-
 /* Winter Day */
-/*.app-shell.mood.winter,*/
+
 .app-shell.winter.day,
 .app-shell.winter.sunrise,
 .app-shell.winter.earlyMorning {
@@ -679,7 +667,7 @@ background-position: top center;
   background-position: top center;
   background-repeat: no-repeat;
 
-}*/
+}
 
 
 /* SPRING — Bright Fresh (Night) */
@@ -692,29 +680,20 @@ background-position: top center;
   background-repeat: no-repeat;
 }
 
-
-
-
-
-
-
 /* -------------------------
    SUMMER
 --------------------------*/
 
-/* Summer Day */
+/* SUMMER — High Peaks + Light Haze (Day) */
 .app-shell.summer.day,
 .app-shell.summer.sunrise,
 .app-shell.summer.earlyMorning {
-  background-image: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80");
+  background-image: url("https://images.unsplash.com/photo-1666698585869-3e2553a2462d?q=80&w=2788&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
 }
 
-/* Summer Night */
-.app-shell.summer.sunset,
-.app-shell.summer.night,
-.app-shell.summer.lateNight {
-  background-image: url("https://images.unsplash.com/photo-1500048993953-d23a436266cf?auto=format&fit=crop&w=1600&q=80");
-}
 
 /* -------------------------
    AUTUMN
@@ -783,9 +762,6 @@ background-position: top center;
 .app-shell.lateNight .season-buttons button.active {
   box-shadow: 0 0 10px rgba(180, 120, 255, 0.6);
 }
-
-
-
 
 
 /*APP CONTENT*/
