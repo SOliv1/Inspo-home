@@ -458,6 +458,7 @@ function App() {
               <div id="time">
                 {/* your time + date display */}
               </div>
+              <div id="weather"></div>
               <WeatherPanel />
             </div>
 
