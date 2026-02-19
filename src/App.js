@@ -448,6 +448,7 @@ function App() {
               </section>
 
             </div>
+            <a href="#top" className="back-to-top">Back to top ↑</a>
             <div className="section-divider"></div>
 
 
