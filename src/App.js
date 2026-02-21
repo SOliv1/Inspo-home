@@ -12,47 +12,37 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
 
+  // Load saved tasks on mount
+  useEffect(() => {
+    const saved = localStorage.getItem("tasks");
+    const savedCompleted = localStorage.getItem("completedTasks");
 
+    if (saved) setTasks(JSON.parse(saved));
+    if (savedCompleted) setCompletedTasks(JSON.parse(savedCompleted));
+  }, []);
 
+  // Save active tasks whenever they change
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
-    // Load saved tasks on mount
-    useEffect(() => {
-      const saved = localStorage.getItem("tasks");
-      const savedCompleted = localStorage.getItem("completedTasks");
+  // Save completed tasks whenever they change
+  useEffect(() => {
+    localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
+  }, [completedTasks]);
 
-      if (saved) setTasks(JSON.parse(saved));
-      if (savedCompleted) setCompletedTasks(JSON.parse(savedCompleted));
-    }, []);
+  // Load saved journal text on mount
+  useEffect(() => {
+    const savedEntries = localStorage.getItem("journalEntries");
+    if (savedEntries) {
+      setEntries(JSON.parse(savedEntries));
+    }
+  }, []);
 
-    // Save active tasks whenever they change
-    useEffect(() => {
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-    }, [tasks]);
-
-    // Save completed tasks whenever they change
-    useEffect(() => {
-      localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
-    }, [completedTasks]);
-
-    // Load saved journal text on mount
-    useEffect(() => {
-      const savedEntries = localStorage.getItem("journalEntries");
-      if (savedEntries) {
-        setEntries(JSON.parse(savedEntries));
-      }
-    }, []);
-
-    // Save journal text whenever it changes
-    useEffect(() => {
-      localStorage.setItem("journalEntries", JSON.stringify(entries));
-    }, [entries]);
-
-    /*const handleDelete = (i) => {
-      const updated = entries.filter((_, idx) => idx !== i);
-        setEntries(updated);
-    }; */
-
-
+  // Save journal text whenever it changes
+  useEffect(() => {
+    localStorage.setItem("journalEntries", JSON.stringify(entries));
+  }, [entries]);
 
   // 2. TIME
   const hour = new Date().getHours();
@@ -85,6 +75,10 @@ function App() {
     }
   };
 
+  // EVERGREEN QUOTE
+  const evergreenQuote =
+    "There's a quiet wisdom inside you. Listen, and follow where it leads.";
+
   // 4. MOODS
   const moods = {
     night: { class: "greeting-night", icon: () => "🌌" },
@@ -112,19 +106,19 @@ function App() {
   const greetingIcon = mood.icon(hour);
 
   // --- SEASON LOGIC ---
-
   function getSeasonFromMonth() {
-    const month = new Date().getMonth(); // 0 = Jan, 11 = Dec
-
+    const month = new Date().getMonth();
     if (month === 11 || month <= 1) return "winter";
     if (month >= 2 && month <= 4) return "spring";
     if (month >= 5 && month <= 7) return "summer";
     return "autumn";
   }
 
-  // React state: starts with automatic season
-  const [seasonKey, setSeasonKey] = useState(getSeasonFromMonth());
-  const [manualSeason, setManualSeason] = useState(false);
+ const [seasonKey, setSeasonKey] = useState(getSeasonFromMonth());
+const [manualSeason, setManualSeason] = useState(false);
+
+const quote = seasonalQuotes[seasonKey];
+
 
   useEffect(() => {
     if (!manualSeason) {
@@ -135,15 +129,24 @@ function App() {
   useEffect(() => {
     const shell = document.querySelector(".app-shell");
     shell.classList.add("fade-transition");
-    const timeout = setTimeout(() => shell.classList.remove("fade-transition"), 800);
+    const timeout = setTimeout(
+      () => shell.classList.remove("fade-transition"),
+      800
+    );
     return () => clearTimeout(timeout);
   }, [seasonKey]);
 
+  // Seasonal quotes
+  const seasonalQuotes = {
+    winter: "Even the quiet season has its glow.",
+    spring: "New beginnings bloom softly.",
+    summer: "Warmth finds its way into everything.",
+    autumn: "Let go gently, and let beauty remain."
+  };
 
 
 
-
-  // 7. SCROLL FADE EFFECT
+  // SCROLL FADE EFFECT
   useEffect(() => {
     const elements = document.querySelectorAll(".fade-on-scroll");
     const observer = new IntersectionObserver(
@@ -159,34 +162,29 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
-  // 7. PUFF EFFECT
- function createPuff(x, y, type = "puff-colourful", moodKey) {
+  // PUFF EFFECT
+  function createPuff(x, y, type = "puff-colourful", moodKey) {
+    const puff = document.createElement("div");
+    puff.classList.add(type);
 
-  const puff = document.createElement("div");
-  puff.classList.add(type);
+    const puffColor = getComputedStyle(document.documentElement)
+      .getPropertyValue(`--puff-${moodKey}`);
 
-  // get the puff colour for the current mood
-  const puffColor = getComputedStyle(document.documentElement)
-    .getPropertyValue(`--puff-${moodKey}`);
+    puff.style.setProperty("--puff-color", puffColor);
+    puff.style.position = "fixed";
+    puff.style.left = `${x}px`;
+    puff.style.top = `${y}px`;
 
-  puff.style.setProperty("--puff-color", puffColor);
+    document.body.appendChild(puff);
 
-  puff.style.position = "fixed";
-  puff.style.left = `${x}px`;
-  puff.style.top = `${y}px`;
+    setTimeout(() => puff.remove(), 1200);
+  }
 
-  document.body.appendChild(puff);
-
-  setTimeout(() => puff.remove(), 1200);
-}
-
-// 8. RETURN UI
+  // --- JSX ---
   return (
     <div className={`app-body ${greetingClass}`}>
-
       <main className={`app-shell ${seasonKey} ${moodKey}`}>
         <div className="season-controls">
-
           <div className="season-buttons">
             <button
               className={`winter ${seasonKey === "winter" ? "active" : ""}`}
@@ -241,31 +239,24 @@ function App() {
 
             {!manualSeason && (
               <button
-                  className="auto-button"
-                  onClick={() => setSeasonKey(getSeasonFromMonth())}
+                className="auto-button"
+                onClick={() => setSeasonKey(getSeasonFromMonth())}
               >
-                  Auto
-                </button>
-              )}
-            </div>
-
+                Auto
+              </button>
+            )}
           </div>
+        </div>
 
+        <div className="frost-overlay"></div>
 
-
-
-
-      <div className="frost-overlay"></div>
         <div className="app-content">
           <div className="main-grid">
             {/* LEFT COLUMN */}
             <div className="left-column">
-
               <header className="app-header">
-
-                <nav class="mini-menu">
+                <nav className="mini-menu">
                   <div id="top"></div>
-
                   <a href="#todos">To‑Dos</a>
                   <a href="#thoughts">Thoughts</a>
                   <a href="#weather">Weather</a>
@@ -278,11 +269,16 @@ function App() {
                     <span className="greeting-icon">{greetingIcon}</span>
                     {greeting}
                   </p>
+                  <p className="evergreen-quote">{evergreenQuote}</p>
 
-                  {/* TOGGLE BUTTONS */}
-                  <div className="greeting-mode-toggle" data-mode={greetingMode}>
+                  <div
+                    className="greeting-mode-toggle"
+                    data-mode={greetingMode}
+                  >
                     <button
-                      className={greetingMode === "whimsical" ? "active" : ""}
+                      className={
+                        greetingMode === "whimsical" ? "active" : ""
+                      }
                       onClick={() => setGreetingMode("whimsical")}
                     >
                       Whimsical
@@ -311,22 +307,23 @@ function App() {
               </header>
 
               {/* NEW TASK BAR */}
-              <div id="todos">
-                {/* your to‑do UI */}
-              </div>
+              <div id="todos"></div>
 
               <div className={`new-task-bar ${moodKey}`}>
                 <input
                   type="text"
                   placeholder="Add a new task…"
                   value={newTask}
-                  onChange={(e) => setNewTask(e.target.value)}
+                  onChange={e => setNewTask(e.target.value)}
                 />
 
                 <button
                   onClick={() => {
                     if (newTask.trim()) {
-                      setTasks([...tasks, { text: newTask, completed: false }]);
+                      setTasks([
+                        ...tasks,
+                        { text: newTask, completed: false }
+                      ]);
                       setNewTask("");
                     }
                   }}
@@ -340,20 +337,32 @@ function App() {
                 {tasks.map((task, index) => (
                   <div
                     key={index}
-                    className={`todo-chip ${moodKey} ${task.completed ? "completed" : ""}`}
+                    className={`todo-chip ${moodKey} ${
+                      task.completed ? "completed" : ""
+                    }`}
                   >
                     <span
                       className="chip-check"
-                      onClick={(e) => {
+                      onClick={e => {
                         const updated = [...tasks];
                         updated[index].completed = true;
                         setTasks(updated);
 
-                        createPuff(e.clientX, e.clientY, "puff-colourful", moodKey);
+                        createPuff(
+                          e.clientX,
+                          e.clientY,
+                          "puff-colourful",
+                          moodKey
+                        );
 
                         setTimeout(() => {
-                          setCompletedTasks([...completedTasks, task.text]);
-                          setTasks(tasks.filter((_, i) => i !== index));
+                          setCompletedTasks([
+                            ...completedTasks,
+                            task.text
+                          ]);
+                          setTasks(
+                            tasks.filter((_, i) => i !== index)
+                          );
                         }, 500);
                       }}
                     >
@@ -365,7 +374,9 @@ function App() {
                     <button
                       className="delete-task"
                       onClick={() => {
-                        setTasks(tasks.filter((_, i) => i !== index));
+                        setTasks(
+                          tasks.filter((_, i) => i !== index)
+                        );
                       }}
                     >
                       ✕
@@ -385,12 +396,8 @@ function App() {
 
               <div className="section-divider"></div>
 
-
               {/* JOURNAL INPUT */}
-
-              <div id="thoughts">
-                {/* your journal UI */}
-              </div>
+              <div id="thoughts"></div>
 
               <div className={`journal-input-wrapper ${moodKey}`}>
                 <input
@@ -398,7 +405,7 @@ function App() {
                   type="text"
                   placeholder="Write a little thought…"
                   value={journalText}
-                  onChange={(e) => setJournalText(e.target.value)}
+                  onChange={e => setJournalText(e.target.value)}
                 />
 
                 <button
@@ -407,7 +414,6 @@ function App() {
                     if (journalText.trim()) {
                       setEntries([...entries, journalText]);
                       setJournalText("");
-
                     }
                   }}
                 >
@@ -417,9 +423,17 @@ function App() {
 
               {/* JOURNAL ENTRIES */}
               <section className="journal-entries">
-                {entries.length === 0 && ( <div className={`journal-empty ${moodKey}`}> Nothing here yet… Write a little thought above. </div> )}
+                {entries.length === 0 && (
+                  <div className={`journal-empty ${moodKey}`}>
+                    Nothing here yet… Write a little thought above.
+                  </div>
+                )}
+
                 {entries.map((entry, index) => (
-                  <div key={index} className={`journal-entry ${moodKey}`}>
+                  <div
+                    key={index}
+                    className={`journal-entry ${moodKey}`}
+                  >
                     <span className="journal-text">{entry}</span>
 
                     <button
@@ -432,84 +446,87 @@ function App() {
                       Clear all entries
                     </button>
 
-
                     <button
                       className="delete-entry"
                       onClick={() => {
-                        const updated = entries.filter((_, i) => i !== index);
+                        const updated = entries.filter(
+                          (_, i) => i !== index
+                        );
                         setEntries(updated);
                       }}
                     >
                       ✕
                     </button>
-
                   </div>
                 ))}
               </section>
 
-            </div>
-            <a href="#top" className="back-to-top">Back to top ↑</a>
-            <div className="section-divider"></div>
+              <a href="#top" className="back-to-top">
+                Back to top ↑
+              </a>
 
+              <div className="section-divider"></div>
 
-
-
-            {/* RIGHT COLUMN */}
-            <div className="right-column">
-              <div id="time">
-                {/* your time + date display */}
+              {/* RIGHT COLUMN */}
+              <div className="right-column">
+                <div id="time"></div>
+                <div id="weather"></div>
+                <WeatherPanel />
               </div>
-              <div id="weather"></div>
-              <WeatherPanel />
             </div>
 
-          </div>
+            {/* FOOTER */}
+            <footer className="QuotesFooter">
+              <a href="#top" className="back-to-top">
+                Back to top ↑
+              </a>
 
-          <footer className="QuotesFooter">
-            <a href="#top" className="back-to-top">Back to top ↑</a>
-            <div className="section-divider"></div>
+              <div className="section-divider"></div>
 
+              <div id="footer">
+                <p className="inspo-quote fade_on_scroll">
+                  "The Only way to do great work is to love what you do."
+                </p>
+              </div>
 
-            <div id="footer">
-              <p className="inspo-quote fade_on_scroll">
-                "The Only way to do great work is to love what you do."
-              </p>
-            </div>
-            <p className="quote-author">– Steve Jobs</p>
-            <div className="siteFooter">
+              <p className="quote-author">– Steve Jobs</p>
+
+              <div className="siteFooter">
                 <p>Made with care by Sara for KUK @ 2026</p>
-            </div>
+              </div>
 
-            <div className="section-divider"></div>
+              <div className="section-divider"></div>
 
-            <div class="social-icons">
-                {/* Add icons later */}
-              <div className="social-links">
-                <a
+              <div className="social-icons">
+                <div className="social-links">
+                  <a
                     href="https://instagram.com/so.co13"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-icon instagram"
-                >
+                  >
                     Instagram
-                </a>
+                  </a>
 
-                <a
+                  <a
                     href="https://facebook.com/sara.J.oliver.7"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-icon facebook"
-                >
+                  >
                     Facebook
-                </a>
-              </div>
+                  </a>
+                </div>
 
-            </div>
-          </footer>
+                <div>
+                  <p>{quote}</p>
+                </div>
+              </div>
+            </footer>
+          </div>
         </div>
       </main>
     </div>
-
   );
 }
 
