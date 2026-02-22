@@ -466,7 +466,6 @@ html {
   --autumn-accent: #ffb07c;
 }
 
-
 /* Auto/Manual toggle */
 .season-mode {
   display: flex;
@@ -476,19 +475,20 @@ html {
   font-size: 0.9rem;
 }
 
-.auto-button {
-  padding: 4px 10px;
-  border-radius: 8px;
-  border: none;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  color: #fffaf3;
-  cursor: pointer;
-  transition: background 0.25s ease;
+.season-buttons button.winter:hover {
+  box-shadow: 0 0 12px var(--winter-accent);
 }
 
-.auto-button:hover {
-  background: rgba(255, 255, 255, 0.3);
+.season-buttons button.spring:hover {
+  box-shadow: 0 0 12px var(--spring-accent);
+}
+
+.season-buttons button.summer:hover {
+  box-shadow: 0 0 12px var(--summer-accent);
+}
+
+.season-buttons button.autumn:hover {
+  box-shadow: 0 0 12px var(--autumn-accent);
 }
 
 /* Fade transition */
@@ -1286,6 +1286,8 @@ background-position: top center;
   transition: transform 0.35s ease, text-shadow 0.4s ease, opacity 0.3s ease;
 }
 
+/* Title Styles */
+
 .app-title:hover {
   transform: translateY(-1px);
   text-shadow:
@@ -1293,8 +1295,27 @@ background-position: top center;
     0 0 30px rgba(255, 170, 130, 0.5),
     0 4px 12px rgba(0, 0, 0, 0.55);
 }
+.app-shell.earlyMorning .app-title {
+  text-shadow: 0 0 14px rgba(255, 220, 180, 0.6);
+}
 
+.app-shell.day .app-title {
+  text-shadow: 0 0 14px rgba(200, 230, 255, 0.6);
+}
 
+.app-shell.dusk .app-title {
+  text-shadow: 0 0 16px rgba(255, 180, 140, 0.65);
+}
+
+.app-shell.night .app-title {
+  text-shadow: 0 0 18px rgba(160, 180, 255, 0.55);
+}
+
+.app-shell.moon .app-title {
+  text-shadow: 0 0 20px rgba(220, 220, 255, 0.7);
+}
+
+/* Sub-title text styles */
 .app-subtitle {
   font-size: 1rem;
   margin: 0;
@@ -1315,6 +1336,29 @@ background-position: top center;
 
   transition: text-shadow 0.4s ease, opacity 0.3s ease;
 }
+
+/* Sub-title Shimmer */
+
+.app-shell.earlyMorning .app-subtitle {
+  text-shadow: 0 0 10px rgba(255, 220, 180, 0.55);
+}
+
+.app-shell.day .app-subtitle {
+  text-shadow: 0 0 10px rgba(200, 230, 255, 0.55);
+}
+
+.app-shell.dusk .app-subtitle {
+  text-shadow: 0 0 12px rgba(255, 180, 140, 0.6);
+}
+
+.app-shell.night .app-subtitle {
+  text-shadow: 0 0 12px rgba(160, 180, 255, 0.5);
+}
+
+.app-shell.moon .app-subtitle {
+  text-shadow: 0 0 14px rgba(220, 220, 255, 0.65);
+}
+
 
 /* subtle seasonal shimmer on hover */
 .header-left:hover .app-subtitle {
