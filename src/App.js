@@ -130,6 +130,9 @@ function App() {
   const [manualSeason, setManualSeason] = useState(false);
   const quote = seasonalQuotes[seasonKey]
 
+  const moonPhase = Math.floor((new Date().getDate() % 29) / 7); 
+
+
 
   useEffect(() => {
     if (!manualSeason) {
@@ -285,7 +288,16 @@ function App() {
                     <span className="greeting-icon">{greetingIcon}</span>
                     {greeting}
                   </p>
-                  <p className="evergreen-quote">{evergreenQuote}</p>
+                  <p key={`evergreen-${seasonKey}-${moodKey}`}
+                    className={`evergreen-quote ${seasonKey} ${moodKey} moon-${moonPhase}`}
+                  >
+                    {evergreenQuote}
+                  </p>
+
+                  <p key={seasonKey} className={`seasonal-whisper ${seasonKey}`}>
+                    {quote}
+                  </p>
+
                   <p key={seasonKey} className={`seasonal-whisper ${seasonKey}`}>
                       {quote}
                   </p>

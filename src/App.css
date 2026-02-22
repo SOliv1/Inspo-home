@@ -865,15 +865,186 @@ background-position: top center;
 
 
 /* Evergreen Quote */
+
 .evergreen-quote {
-  margin-top: 0.5rem;
-  font-size: 1.1rem;
-  font-weight: 300;
-  opacity:0.75;
-  letter-spacing: 0.75;
-  max-width: 40ch;
-  animation: fadeIn 1.2s ease forwards;
+  font-size: 1rem;
+  opacity: 0;
+  margin-top: 0.3rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.35);
+  animation:
+    evergreenFade 1.4s ease forwards,
+    evergreenGlow 6s ease-in-out infinite;
 }
+
+/* Fade in before the whisper */
+@keyframes evergreenFade {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+    letter-spacing: 0.4px;
+  }
+  100% {
+    opacity: 0.9;
+    transform: translateY(0);
+    letter-spacing: 0;
+  }
+}
+
+/* Soft, slow glow */
+@keyframes evergreenGlow {
+  0%   { filter: drop-shadow(0 0 3px rgba(255,255,255,0.2)); }
+  50%  { filter: drop-shadow(0 0 7px rgba(255,255,255,0.45)); }
+  100% { filter: drop-shadow(0 0 3px rgba(255,255,255,0.2)); }
+}
+
+.evergreen-quote:hover {
+  text-shadow: 0 0 15px rgba(255,255,255,0.55);
+  filter: brightness(1.15);
+  transition: text-shadow 0.4s ease, filter 0.4s ease;
+}
+
+/* Night-only pulse */
+.evergreen-quote.night,
+.evergreen-quote.lateNight {
+  animation:
+    evergreenFade 1.4s ease forwards,
+    evergreenGlow 6s ease-in-out infinite;
+}
+
+/* Gradient shimmer overlay */
+.evergreen-quote {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.6),
+    rgba(255,255,255,0.9),
+    rgba(255,255,255,0.6)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation:
+    evergreenFade 1.4s ease forwards,
+    shimmer 12s ease-in-out infinite;
+}
+
+/* Slow shimmer */
+@keyframes shimmer {
+  0%   { background-position: 0% 0; }
+  50%  { background-position: 100% 0; }
+  100% { background-position: 0% 0; }
+}
+
+/* ------------------------------------------------------ */
+/*  MOON PHASE GRADIENTS — UNIVERSAL VARIABLES            */
+/* ------------------------------------------------------ */
+
+:root {
+  --moon-new: linear-gradient(
+    135deg,
+    rgba(10, 10, 20, 0.9),
+    rgba(25, 25, 40, 0.8)
+  );
+
+  --moon-waxing: linear-gradient(
+    135deg,
+    rgba(40, 60, 120, 0.85),
+    rgba(90, 110, 160, 0.75)
+  );
+
+  --moon-full: linear-gradient(
+    135deg,
+    rgba(180, 200, 255, 0.9),
+    rgba(230, 240, 255, 0.85)
+  );
+
+  --moon-waning: linear-gradient(
+    135deg,
+    rgba(60, 50, 100, 0.85),
+    rgba(30, 20, 60, 0.75)
+  );
+}
+
+/* ------------------------------------------------------ */
+/*  MOON PHASE BACKGROUND CLASSES                         */
+/* ------------------------------------------------------ */
+
+.moon-new {
+  background: var(--moon-new);
+}
+
+.moon-waxing {
+  background: var(--moon-waxing);
+}
+
+.moon-full {
+  background: var(--moon-full);
+}
+
+.moon-waning {
+  background: var(--moon-waning);
+}
+
+/* Optional soft glow for full moon */
+.moon-full {
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
+
+/* ------------------------------------------------------ */
+/*  MOON PHASE GRADIENTS — UNIVERSAL VARIABLES            */
+/* ------------------------------------------------------ */
+
+:root {
+  --moon-new: linear-gradient(
+    135deg,
+    rgba(10, 10, 20, 0.9),
+    rgba(25, 25, 40, 0.8)
+  );
+
+  --moon-waxing: linear-gradient(
+    135deg,
+    rgba(40, 60, 120, 0.85),
+    rgba(90, 110, 160, 0.75)
+  );
+
+  --moon-full: linear-gradient(
+    135deg,
+    rgba(180, 200, 255, 0.9),
+    rgba(230, 240, 255, 0.85)
+  );
+
+  --moon-waning: linear-gradient(
+    135deg,
+    rgba(60, 50, 100, 0.85),
+    rgba(30, 20, 60, 0.75)
+  );
+}
+
+/* ------------------------------------------------------ */
+/*  MOON PHASE BACKGROUND CLASSES                         */
+/* ------------------------------------------------------ */
+
+.moon-new {
+  background: var(--moon-new);
+}
+
+.moon-waxing {
+  background: var(--moon-waxing);
+}
+
+.moon-full {
+  background: var(--moon-full);
+}
+
+.moon-waning {
+  background: var(--moon-waning);
+}
+
+/* Optional soft glow for full moon */
+.moon-full {
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
+}
+
 
 /*Seasonal Quote*/
 
