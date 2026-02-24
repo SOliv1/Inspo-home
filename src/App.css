@@ -449,11 +449,9 @@ html {
 
 /* Container */
 .season-controls {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  margin-top: 80px;
 }
+
 
 
 /* Season buttons base styling */

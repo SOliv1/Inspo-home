@@ -106,9 +106,6 @@ function App() {
   console.warn("Invalid moodKey:", moodKey);
   }
 
-  const safeMood = mood || { class: "", icon: () => null };
-
-
 
 
   // 6. GREETING MACHINE
