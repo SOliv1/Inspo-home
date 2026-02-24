@@ -445,7 +445,9 @@ html {
 }
 
 
-/* --- SEASON CONTROLS --- */
+/* ======================
+    SEASONAL CONTROLS
+   =========================== */
 
 /* Container */
 .season-controls {
@@ -976,7 +978,7 @@ background-position: top center;
 }
 
 
-/*Seasonal Quote*/
+/* SEASONAL QUOTE */
 
 .seasonal-quote {
   position: fixed;

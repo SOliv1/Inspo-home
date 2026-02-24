@@ -200,8 +200,8 @@ function App() {
         <div className="twinkle-star" style={{ top: "5%", left: "60%" }}></div>
         <div className="twinkle-star" style={{ top: "25%", left: "10%" }}></div>
         <div className="twinkle-star" style={{ top: "8%", left: "35%" }}></div>
+         {/* ⭐ Twinkling stars & Shooting Star */}
 
-         {/* ⭐ Shooting star */}
         <div className="shooting-star"></div>
       </div>
     )}
@@ -272,8 +272,9 @@ function App() {
           </div>
         </div>
 
-        <div className="frost-overlay"></div>
+          {/* FROST OVERLAY */}
 
+        <div className="frost-overlay"></div>
         <div className="app-content">
           <div className="main-grid">
             {/* LEFT COLUMN */}
