@@ -190,6 +190,8 @@ function App() {
 
   // --- JSX ---
   return (
+    <>
+    <div id="top"></div>  
     <div className={`app-container ${moodKey}`}>
       {moodKey === "lateNight" && (
       <div className="night-sky">
