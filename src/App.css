@@ -3,7 +3,6 @@ body {
   margin: 100vh;
   padding: 100%;
   margin: 0;
-
   display: flex;
   flex-direction: colunm;
   aligh-items: centre;
@@ -17,14 +16,14 @@ html { height: 100%;
 
     /* Add breathing room to the whole page */
 
-.app-container {
+.app-container, main, .page {
   width: 100%;
-  max-width: 900%; /* keeps your beautiful reading width */
-  max-width: 900px;
+  max-width: 100%; /* keeps your beautiful reading width */
+  min-height: 100vh;
   flex: 1;
   position: relative;
   z-index: 2;
-  padding: 0 60px 120px 60px;
+  padding: 0 10px 120px 10px;
 }
 
 /* ===========================
@@ -141,10 +140,6 @@ CREATIVE PREVIEWS PSHOOTING STAR
     0 0 10px rgba(200, 140, 90, 0.22),
     0 0 18px rgba(160, 100, 60, 0.16);
 }
-
-
-
-
 
 
 /* ===========================
@@ -314,9 +309,10 @@ html {
 
 /* Footer */
 .site-footer {
+  width: 100%;
   text-align: center;
   padding: 40px 0;
-  margin-top: 80px;
+  margin-top: auto;
   color: #555;
   font-size: 0.9rem;
 }
@@ -2162,15 +2158,16 @@ transition: background 2s ease, backdrop-filter 2s ease;
 /* === FOOTER STYLES ======================================*/
 
 .site-footer {
+  width: 100%;  
   text-align: center;
   padding: 40px 0;
-  margin-top: 60px;
+  margin-top: auto;
   color: #555;
   font-size: 0.9rem;
 }
 
 .back-to-top {
-  display: inline-block;
+  display: block;
   margin-top: 2rem;
   color: #ffd1dc;
   text-decoration: none;
