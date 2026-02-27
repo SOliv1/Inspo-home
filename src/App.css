@@ -1,35 +1,54 @@
     /* === GLOBAL STYLES ===================================== */
-body {
-  margin: 100vh;
-  padding: 100%;
+
+
+    * {
   margin: 0;
-  display: flex;
-  flex-direction: colunm;
-  aligh-items: centre;
-  padding: 0 40px 120px 40px; /* wider breathing room */
+  padding: 0;
   box-sizing: border-box;
 }
 
-html { 
-    height: 100%;
-    scroll-behavior: smooth;
+  body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center; /* corrected spelling */
+  justify-content: center; /* optional */
+  box-sizing: border-box;
+  min-height: 100vh;
+  width: 100%;
 }
-
 
     /* Add breathing room to the whole page */
 
-.app-container, main, .page {
+.app-container, main {
   width: 100%;
-  max-width: 100%; /* keeps your beautiful reading width */
+  max-width: none;
+  margin: 0;
   min-height: 100vh;
   flex: 1;
   position: relative;
   z-index: 2;
-  padding: 0 10px 120px 10px;
+  padding: 0; /* remove all padding */
 }
 
+/*
+.app-container {
+  outline: 3px solid red;
+}
+
+body {
+  outline: 3px solid blue;
+}
+
+.app-content {
+  outline: 3px solid green;
+} */
+
+
+
+
 /* ===========================
-CREATIVE PREVIEWS PSHOOTING STAR
+CREATIVE PREVIEWS SHOOTING STAR
  & TWINKLING STARS
    =========================== */
 
@@ -566,25 +585,6 @@ html {
 
 /* Sunrise Bloom Layer */
 
-.app-container::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0;
-  background: radial-gradient(
-    circle at 50% 70%,
-    rgba(255, 200, 120, 0.45),
-    rgba(255, 150, 80, 0.25),
-    transparent 70%
-  );
-  transform: scale(1.2);
-  transition: opacity 2.5s ease, transform 3s ease;
-}
-.greeting-sunrise.app-container::after {
-  opacity: 1;
-  transform: scale(1);
-}
 @keyframes sunrisePulse {
   0%   { transform: scale(1); opacity: 1; }
   50%  { transform: scale(1.05); opacity: 0.9; }
@@ -2160,7 +2160,7 @@ transition: background 2s ease, backdrop-filter 2s ease;
 /* === FOOTER STYLES ======================================*/
 
 .site-footer {
-  width: 100%;  
+  width: 100%;
   text-align: center;
   padding: 40px 0;
   margin-top: auto;

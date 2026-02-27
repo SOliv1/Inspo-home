@@ -184,13 +184,16 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  // --- JSX --- //
 
 
-  // --- JSX ---
-  return (
-    <>
+return (
+  <>
     <div id="top"></div>
+
+    {/* OPEN app-container */}
     <div className={`app-container ${moodKey}`}>
+
       {moodKey === "lateNight" && (
         <div className="night-sky">
           <div className="twinkle-star" style={{ top: "12%", left: "15%" }}></div>
@@ -200,188 +203,174 @@ function App() {
           <div className="twinkle-star" style={{ top: "5%", left: "60%" }}></div>
           <div className="twinkle-star" style={{ top: "25%", left: "10%" }}></div>
           <div className="twinkle-star" style={{ top: "8%", left: "35%" }}></div>
-            {/* ⭐ Twinkling stars & Shooting Star */}
 
           <div className="shooting-star"></div>
         </div>
       )}
 
-    <div className={`app-body ${greetingClass}`}>
-      <main className={`app-shell ${seasonKey} ${moodKey}`}>
-        <div className="season-controls">
-          <div className="season-buttons">
+      {/* OPEN app-body */}
+      <div className={`app-body ${greetingClass}`}>
+
+        {/* OPEN app-shell */}
+        <main className={`app-shell ${seasonKey} ${moodKey}`}>
+
+          {/* SEASON CONTROLS */}
+          <div className="season-controls">
+            <div className="season-buttons">
               <button
                 className={`winter ${seasonKey === "winter" ? "active" : ""}`}
-                onClick={() => {
-                  setManualSeason(true);
-                  setSeasonKey("winter");
-                }}
+                onClick={() => { setManualSeason(true); setSeasonKey("winter"); }}
               >
                 ❄️ Winter
               </button>
 
               <button
                 className={`spring ${seasonKey === "spring" ? "active" : ""}`}
-                onClick={() => {
-                  setManualSeason(true);
-                  setSeasonKey("spring");
-                }}
+                onClick={() => { setManualSeason(true); setSeasonKey("spring"); }}
               >
                 🌸 Spring
               </button>
 
               <button
                 className={`summer ${seasonKey === "summer" ? "active" : ""}`}
-                onClick={() => {
-                  setManualSeason(true);
-                  setSeasonKey("summer");
-                }}
+                onClick={() => { setManualSeason(true); setSeasonKey("summer"); }}
               >
                 ☀️ Summer
               </button>
 
               <button
                 className={`autumn ${seasonKey === "autumn" ? "active" : ""}`}
-                onClick={() => {
-                  setManualSeason(true);
-                  setSeasonKey("autumn");
-                }}
+                onClick={() => { setManualSeason(true); setSeasonKey("autumn"); }}
               >
                 🍁 Autumn
               </button>
-          </div>
+            </div>
 
-          <div className="season-mode">
-            <label>
-              <input
-                type="checkbox"
-                checked={manualSeason}
-                onChange={() => setManualSeason(!manualSeason)}
-              />
-              Manual Season
-            </label>
+            <div className="season-mode">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={manualSeason}
+                  onChange={() => setManualSeason(!manualSeason)}
+                />
+                Manual Season
+              </label>
 
-            {!manualSeason && (
-              <button
-                className="auto-button"
-                onClick={() => setSeasonKey(getSeasonFromMonth())}
-              >
-                Auto
-              </button>
-            )}
+              {!manualSeason && (
+                <button
+                  className="auto-button"
+                  onClick={() => setSeasonKey(getSeasonFromMonth())}
+                >
+                  Auto
+                </button>
+              )}
+            </div>
           </div>
-        </div>
 
           {/* FROST OVERLAY */}
+          <div className="frost-overlay"></div>
 
-        <div className="frost-overlay"></div>
-        <div className="app-content">
-          <div className="main-grid">
-            {/* LEFT COLUMN */}
-            <div className="left-column">
+          {/* OPEN app-content */}
+          <div className="app-content">
 
-              <header className="app-header">
-                <nav className="mini-menu">
-                  <div id="top"></div>
-                  <a href="#todos">To‑Dos</a>
-                  <a href="#thoughts">Thoughts</a>
-                  <a href="#weather">Weather</a>
-                  <a href="#time">Time</a>
-                  <a href="#footer">Footer</a>
-                </nav>
+            {/* OPEN main-grid */}
+            <div className="main-grid">
 
-                <div className={greetingClass}>
-                  <p className="dynamic-greeting">
-                    <span className="greeting-icon">{greetingIcon}</span>
-                    {greeting}
-                  </p>
-                  <p key={`evergreen-${seasonKey}-${moodKey}`}
-                    className={`evergreen-quote ${seasonKey} ${moodKey} moon-${moonPhase}`}
-                  >
-                    {evergreenQuote}
-                  </p>
+              {/* LEFT COLUMN */}
+              <div className="left-column">
 
-                  <p key={seasonKey} className={`seasonal-whisper ${seasonKey}`}>
-                    {quote}
-                  </p>
+                <header className="app-header">
+                  <nav className="mini-menu">
+                    {/* REMOVE duplicate #top */}
+                    <a href="#todos">To‑Dos</a>
+                    <a href="#thoughts">Thoughts</a>
+                    <a href="#weather">Weather</a>
+                    <a href="#time">Time</a>
+                    <a href="#footer">Footer</a>
+                  </nav>
 
-                  <div
-                    className="greeting-mode-toggle"
-                    data-mode={greetingMode}
-                  >
-                    <button
-                      className={
-                        greetingMode === "whimsical" ? "active" : ""
-                      }
-                      onClick={() => setGreetingMode("whimsical")}
+                  <div className={greetingClass}>
+                    <p className="dynamic-greeting">
+                      <span className="greeting-icon">{greetingIcon}</span>
+                      {greeting}
+                    </p>
+
+                    <p
+                      key={`evergreen-${seasonKey}-${moodKey}`}
+                      className={`evergreen-quote ${seasonKey} ${moodKey} moon-${moonPhase}`}
                     >
-                      Whimsical
-                    </button>
+                      {evergreenQuote}
+                    </p>
 
-                    <button
-                      className={greetingMode === "minimal" ? "active" : ""}
-                      onClick={() => setGreetingMode("minimal")}
-                    >
-                      Minimal
-                    </button>
+                    <p key={seasonKey} className={`seasonal-whisper ${seasonKey}`}>
+                      {quote}
+                    </p>
 
-                    <button
-                      className={greetingMode === "poetic" ? "active" : ""}
-                      onClick={() => setGreetingMode("poetic")}
-                    >
-                      Poetic
-                    </button>
+                    <div className="greeting-mode-toggle" data-mode={greetingMode}>
+                      <button
+                        className={greetingMode === "whimsical" ? "active" : ""}
+                        onClick={() => setGreetingMode("whimsical")}
+                      >
+                        Whimsical
+                      </button>
+
+                      <button
+                        className={greetingMode === "minimal" ? "active" : ""}
+                        onClick={() => setGreetingMode("minimal")}
+                      >
+                        Minimal
+                      </button>
+
+                      <button
+                        className={greetingMode === "poetic" ? "active" : ""}
+                        onClick={() => setGreetingMode("poetic")}
+                      >
+                        Poetic
+                      </button>
+                    </div>
                   </div>
+
+                  <h1 className="app-title">Daily Checklist</h1>
+                  <p className="app-subtitle">Light, colourful to-dos for a focused day.</p>
+                </header>
+
+                {/* NEW TASK BAR */}
+                <div id="todos"></div>
+                <div className={`new-task-bar ${moodKey}`}>
+                  <input
+                    type="text"
+                    placeholder="Add a new task…"
+                    value={newTask}
+                    onChange={e => setNewTask(e.target.value)}
+                  />
+
+                  <button
+                    onClick={() => {
+                      if (newTask.trim()) {
+                        setTasks([...tasks, { text: newTask, completed: false }]);
+                        setNewTask("");
+                      }
+                    }}
+                  >
+                    Add
+                  </button>
                 </div>
 
-                <h1 className="app-title">Daily Checklist</h1>
-                <p className="app-subtitle">
-                  Light, colourful to-dos for a focused day.
-                </p>
-              </header>
-
-              {/* NEW TASK BAR */}
-              <div id="todos"></div>
-              <div className={`new-task-bar ${moodKey}`}>
-                <input
-                  type="text"
-                  placeholder="Add a new task…"
-                  value={newTask}
-                  onChange={e => setNewTask(e.target.value)}
-                />
-
-                <button
-                  onClick={() => {
-                    if (newTask.trim()) {
-                      setTasks([
-                        ...tasks,
-                        { text: newTask, completed: false }
-                      ]);
-                      setNewTask("");
-                    }
-                  }}
-                >
-                  Add
-                </button>
-              </div>
-
-              {/* ACTIVE TASKS */}
-              <div className="task-list">
-                {tasks.map((task, index) => (
-                  <div
-                    key={index}
-                    className={`task-gem gem-${moodKey}
-                      ${task.completed ?
-                       " completed" : ""}`
-                      }
-                  >
+                {/* ACTIVE TASKS */}
+                <div className="task-list">
+                  {tasks.map((task, index) => (
+                    <div
+                      key={index}
+                      className={`task-gem gem-${moodKey} ${task.completed ? "completed" : ""}`}
+                    >
                       <div className="gem-core">
                         <div className="gem-glow"></div>
                         <div className="gem-body"></div>
                       </div>
+
                       <span
                         className="gem-check"
-                        onClick={e => {
+                        onClick={() => {
                           const updated = [...tasks];
                           updated[index].completed = true;
                           setTasks(updated);
@@ -396,98 +385,90 @@ function App() {
                       </span>
 
                       <span className="task-text">{task.text}</span>
+
                       <button
                         className="delete-task"
+                        onClick={() => setTasks(tasks.filter((_, i) => i !== index))}
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  ))}
+                </div>
+
+                {/* COMPLETED TASKS */}
+                <div className="completed-list">
+                  {completedTasks.map((task, index) => (
+                    <div key={index} className="completed-item">
+                      {task}
+                    </div>
+                  ))}
+                </div>
+
+                {/* JOURNAL INPUT */}
+                <div id="thoughts"></div>
+
+                <div className={`journal-input-wrapper ${moodKey}`}>
+                  <input
+                    className="journal-input"
+                    type="text"
+                    placeholder="Write a little thought…"
+                    value={journalText}
+                    onChange={e => setJournalText(e.target.value)}
+                  />
+
+                  <button
+                    className="add-button"
+                    onClick={() => {
+                      if (journalText.trim()) {
+                        setEntries([...entries, journalText]);
+                        setJournalText("");
+                      }
+                    }}
+                  >
+                    Add
+                  </button>
+                </div>
+
+                {/* JOURNAL ENTRIES */}
+                <section className="journal-entries">
+                  {entries.length === 0 && (
+                    <div className={`journal-empty ${moodKey}`}>
+                      Nothing here yet… Write a little thought above.
+                    </div>
+                  )}
+
+                  {entries.map((entry, index) => (
+                    <div key={index} className={`journal-entry ${moodKey}`}>
+                      <span className="journal-text">{entry}</span>
+
+                      <button
+                        className={`clear-journal ${moodKey}`}
                         onClick={() => {
-                          setTasks(
-                            tasks.filter((_, i) => i !== index)
-                          );
+                          setEntries([]);
+                          localStorage.removeItem("journalEntries");
+                        }}
+                      >
+                        Clear all entries
+                      </button>
+
+                      <button
+                        className="delete-entry"
+                        onClick={() => {
+                          const updated = entries.filter((_, i) => i !== index);
+                          setEntries(updated);
                         }}
                       >
                         ✕
                       </button>
-                  </div>
-                ))}
+                    </div>
+                  ))}
+                </section>
+
+                <a href="#top" className="back-to-top">Back to top ↑</a>
+
+                <div className="section-divider"></div>
               </div>
-              {/* COMPLETED TASKS */}
-              <div className="completed-list">
-                {completedTasks.map((task, index) => (
-                  <div key={index} className="completed-item">
-                    {task}
-                  </div>
-                ))}
-              </div>
-
-              {/* JOURNAL INPUT */}
-              <div id="thoughts"></div>
-
-              <div className={`journal-input-wrapper ${moodKey}`}>
-                <input
-                  className="journal-input"
-                  type="text"
-                  placeholder="Write a little thought…"
-                  value={journalText}
-                  onChange={e => setJournalText(e.target.value)}
-                />
-
-                <button
-                  className="add-button"
-                  onClick={() => {
-                    if (journalText.trim()) {
-                      setEntries([...entries, journalText]);
-                      setJournalText("");
-                    }
-                  }}
-                >
-                  Add
-                </button>
-              </div>
-
-              {/* JOURNAL ENTRIES */}
-              <section className="journal-entries">
-                {entries.length === 0 && (
-                  <div className={`journal-empty ${moodKey}`}>
-                    Nothing here yet… Write a little thought above.
-                  </div>
-                )}
-
-                {entries.map((entry, index) => (
-                  <div
-                    key={index}
-                    className={`journal-entry ${moodKey}`}
-                  >
-                    <span className="journal-text">{entry}</span>
-
-                    <button
-                      className={`clear-journal ${moodKey}`}
-                      onClick={() => {
-                        setEntries([]);
-                        localStorage.removeItem("journalEntries");
-                      }}
-                    >
-                      Clear all entries
-                    </button>
-
-                    <button
-                      className="delete-entry"
-                      onClick={() => {
-                        const updated = entries.filter(
-                          (_, i) => i !== index
-                        );
-                        setEntries(updated);
-                      }}
-                    >
-                      ✕
-                    </button>
-                  </div>
-                ))}
-              </section>
-
-              <a href="#top" className="back-to-top">
-                Back to top ↑
-              </a>
-
-              <div className="section-divider"></div>
 
               {/* RIGHT COLUMN */}
               <div className="right-column">
@@ -495,13 +476,13 @@ function App() {
                 <div id="weather"></div>
                 <WeatherPanel />
               </div>
+
             </div>
+            {/* CLOSE main-grid */}
 
             {/* FOOTER */}
             <footer className="QuotesFooter">
-              <a href="#top" className="back-to-top">
-                Back to top ↑
-              </a>
+              <a href="#top" className="back-to-top">Back to top ↑</a>
 
               <a
                 href="https://699c6d8509f37a00082221e8--inspo-home-cinamatic.netlify.app/"
@@ -511,8 +492,6 @@ function App() {
               >
                 🌌 Galaxy Stars Version
               </a>
-
-
 
               <div className="section-divider"></div>
 
@@ -552,12 +531,22 @@ function App() {
                 </div>
               </div>
             </footer>
+
           </div>
-        </div>
-      </main>
+          {/* CLOSE app-content */}
+
+        </main>
+        {/* CLOSE app-shell */}
+
+      </div>
+      {/* CLOSE app-body */}
+
     </div>
+    {/* CLOSE app-container */}
+
   </>
-  );
+);
+
 }
 
-export default App;
+export default App
