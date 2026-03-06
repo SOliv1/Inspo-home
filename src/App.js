@@ -205,7 +205,6 @@ function getTimeOfDay() {
     return () => observer.disconnect();
   }, []);
 
-<<<<<<< HEAD
   // --- Seasonal & Time Helpers ---
   const currentSeason = getSeason(); // e.g., 'winter', 'spring', etc.
   const currentTime = getTimeOfDay(); // e.g., 'night', 'morning', etc.
@@ -242,41 +241,6 @@ function getTimeOfDay() {
       <main className={`app-shell ${seasonKey} ${moodKey}`}>
         <div className="season-controls">
           <div className="season-buttons">
-=======
-  // --- JSX --- //
-
-
-return (
-  <>
-    <div id="top"></div>
-
-    {/* OPEN app-container */}
-    <div className={`app-container ${moodKey}`}>
-
-      {moodKey === "lateNight" && (
-        <div className="night-sky">
-          <div className="twinkle-star" style={{ top: "12%", left: "15%" }}></div>
-          <div className="twinkle-star" style={{ top: "18%", left: "55%" }}></div>
-          <div className="twinkle-star" style={{ top: "22%", left: "75%" }}></div>
-          <div className="twinkle-star" style={{ top: "8%", left: "35%" }}></div>
-          <div className="twinkle-star" style={{ top: "5%", left: "60%" }}></div>
-          <div className="twinkle-star" style={{ top: "25%", left: "10%" }}></div>
-          <div className="twinkle-star" style={{ top: "8%", left: "35%" }}></div>
-
-          <div className="shooting-star"></div>
-        </div>
-      )}
-
-      {/* OPEN app-body */}
-      <div className={`app-body ${greetingClass}`}>
-
-        {/* OPEN app-shell */}
-        <main className={`app-shell ${seasonKey} ${moodKey}`}>
-
-          {/* SEASON CONTROLS */}
-          <div className="season-controls">
-            <div className="season-buttons">
->>>>>>> 03822aa733205d792ce611b1dc5e811a8750492c
               <button
                 className={`winter ${seasonKey === "winter" ? "active" : ""}`}
                 onClick={() => { setManualSeason(true); setSeasonKey("winter"); }}
@@ -330,7 +294,6 @@ return (
           {/* FROST OVERLAY */}
           <div className="frost-overlay"></div>
 
-<<<<<<< HEAD
         <div className="frost-overlay"></div>
         <div className="app-content">
           <div className="main-grid">
@@ -347,26 +310,6 @@ return (
                   <a href="#time">Time</a>
                   <a href="#footer">Footer</a>
                 </nav>
-=======
-          {/* OPEN app-content */}
-          <div className="app-content">
-
-            {/* OPEN main-grid */}
-            <div className="main-grid">
->>>>>>> 03822aa733205d792ce611b1dc5e811a8750492c
-
-              {/* LEFT COLUMN */}
-              <div className="left-column">
-
-                <header className="app-header">
-                  <nav className="mini-menu">
-                    {/* REMOVE duplicate #top */}
-                    <a href="#todos">To‑Dos</a>
-                    <a href="#thoughts">Thoughts</a>
-                    <a href="#weather">Weather</a>
-                    <a href="#time">Time</a>
-                    <a href="#footer">Footer</a>
-                  </nav>
 
                   <div className={greetingClass}>
                     <p className="dynamic-greeting">
@@ -561,14 +504,7 @@ return (
 
             {/* FOOTER */}
             <footer className="QuotesFooter">
-<<<<<<< HEAD
-
-              <a href="#top" className="back-to-top">
-                Back to top ↑
-              </a>
-=======
               <a href="#top" className="back-to-top">Back to top ↑</a>
->>>>>>> 03822aa733205d792ce611b1dc5e811a8750492c
 
               <a
                 href="https://699c6d8509f37a00082221e8--inspo-home-cinamatic.netlify.app/"
@@ -616,21 +552,6 @@ return (
               </div>
 
             </footer>
-<<<<<<< HEAD
-            </div> {/* closes main-grid */}
-          </div> {/* closes app-content */}
-          </main>
-
-          </div> {/* closes app-body */}
-          </div> {/* closes app-container */}
-          </>
-          );
-          }
-
-export default App;
-
-
-=======
 
           </div>
           {/* CLOSE app-content */}
@@ -651,4 +572,3 @@ export default App;
 }
 
 export default App
->>>>>>> 03822aa733205d792ce611b1dc5e811a8750492c
