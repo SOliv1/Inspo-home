@@ -3,9 +3,14 @@ import "./App.css";
 import { WeatherPanel } from "./features/weather/WeatherPanel";
 import silverLogo from './assets/logo-silver.png';
 import warmLogo from './assets/logo-warm.png';
+import {
+  getSeason,
+  getSeasonalOrb,
+  getSeasonalAccent,
+  getSeasonalGreeting,
+} from './utils/season';
 
-
-
+import { seasonalQuotes } from './utils/season';
 
 
 function App() {
@@ -135,14 +140,6 @@ function getTimeOfDay() {
   const greetingIcon = mood.icon(hour);
 
 
-  // Seasonal quotes
-  const seasonalQuotes = {
-    winter: "Even the quiet season has its glow.",
-    spring: "New beginnings bloom softly.",
-    summer: "Warmth finds its way into everything.",
-    autumn: "Let go gently, and let beauty remain."
-  }
-
   // --- SEASON LOGIC ---
   function getSeasonFromMonth() {
     const month = new Date().getMonth();
@@ -154,8 +151,7 @@ function getTimeOfDay() {
 
   const [seasonKey, setSeasonKey] = useState(getSeasonFromMonth());
   const [manualSeason, setManualSeason] = useState(false);
-  const quote = seasonalQuotes[seasonKey]
-
+  const quote = seasonalQuotes[seasonKey];
   const moonPhase = Math.floor((new Date().getDate() % 29) / 7);
 
   useEffect(() => {
@@ -212,6 +208,9 @@ function getTimeOfDay() {
   currentSeason === 'winter' || currentTime === 'night' || currentTime === 'dawn'
     ? silverLogo
     : warmLogo;
+
+
+
 
 
   // --- JSX ---
@@ -305,7 +304,7 @@ function getTimeOfDay() {
                      {/* GLOWING MOUNTAIN ORB */}
                 <img
                    src={logoSrc}
-                  className={`top-logo ${logoSrc === silverLogo ? 'silver' : 'warm'}`} alt="Glowing Mountain Logo Orb" 
+                  className={`top-logo ${logoSrc === silverLogo ? 'silver' : 'warm'}`} alt="Glowing Mountain Logo Orb"
                 />
 
                 <nav className="mini-menu">
