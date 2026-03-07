@@ -3,7 +3,6 @@
   "short_name": "Seasonal Glow App",
   "start_url": "/",
   "display": "standalone",
-  
   "icons": [
   {
     "src": "favicon.png",
