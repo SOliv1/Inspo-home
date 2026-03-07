@@ -1862,6 +1862,7 @@ background-position: top center;
   transition: background 2s ease, backdrop-filter 2s ease;
   border-radius: 20px; /* soft, cinematic rounding */
   padding: 18px 24px;  /* generous breathing room */
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.12); /* moonlit softness */
 }
 
 .greeting-latenight {
