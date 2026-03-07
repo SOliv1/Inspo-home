@@ -5,7 +5,13 @@
     <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon.png" />
 
 
-    <!-- Standard Favicons --
+    <!--Standard Favicons -->
+    <link rel="icon" type="image/png" href="/orbs/autumn/ember-arc-orb.png">
+    <link rel="icon" type="image/png" href="/orbs/winter/silver-moon-orb.png">
+    <link rel="icon" type="image/png" href="/orbs/spring/blush-curtain-orb.png">
+    <link rel="icon" type="image/png" href="/orbs/summer/solar-flare-orb.png">
+
+<!--
     <link rel="icon" type="image/png" sizes="32x32" href="icons/transparent-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icons/transparent-16.png">
 
@@ -46,6 +52,26 @@
 <html lang="en">
   <head>
     <title>My Seasonal Glow - Inspo-Home-Cinematic</Inspo-Home></title>
+    <script>
+      const month = new Date().getMonth(); // 0 = Jan, 1 = Feb, ..., 11 = Dec
+      let orbPath = 'autumn/ember-arc-orb.png'; // default
+
+      if ([11, 0, 1].includes(month)) {
+        orbPath = 'winter/silver-moon-orb.png'; // Dec–Feb
+      } else if (month === 2) {
+        orbPath = 'spring/blush-curtain-orb.png'; // March
+      } else if ([5, 6, 7].includes(month)) {
+        orbPath = 'summer/solar-flare-orb.png'; // Jun–Aug
+      }
+
+      const link = document.createElement('link');
+      link.rel = 'icon';
+      link.type = 'image/png';
+      link.href = `/orbs/${orbPath}`;
+      document.head.appendChild(link);
+    </script>
+
+
   </head>
 
   <body class="mood-silhouette">
