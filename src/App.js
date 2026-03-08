@@ -211,7 +211,8 @@ function getSeasonFromMonth() {
     : warmLogo;
 
   // --- Seasonal Taglines ---
-const [tagline, setTagline] = useState("");
+const [tagline, setTagline] = useState("Welcome to your Seasonal Glow");
+
 
 // Update tagline whenever mood or season changes
 useEffect(() => {
