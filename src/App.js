@@ -211,55 +211,35 @@ function getSeasonFromMonth() {
     : warmLogo;
 
   // --- Seasonal Taglines ---
+const [tagline, setTagline] = useState("");
 
-  const [tagline, setTagline] = useState("");
+// Update tagline whenever mood or season changes
+useEffect(() => {
+  setTagline(getTagline(moodKey));
+}, [moodKey, seasonKey]);
 
-  useEffect(() => {
-    const line = getTagline("moodKey");
-    setTagline(line);
-  }, [moodKey]);
-
-  useEffect(() => {
+// Rotate tagline every 45 seconds
+useEffect(() => {
   const update = () => setTagline(getTagline(moodKey));
-
-  update(); // initial tagline
-
-  const interval = setInterval(update, 45000); // 45 seconds
-
+  const interval = setInterval(update, 45000);
   return () => clearInterval(interval);
 }, [moodKey]);
 
-          // Set Intervals
-  useEffect(() => {
-    const update = () => setTagline(getTagline(moodKey));
-
-    update();
-
-    const interval = setInterval(update, 45000);
-
-    return () => clearInterval(interval);
-  }, [moodKey, seasonKey]);
-
-      // Shimmer classes
-  useEffect(() => {
-  setTagline(getTagline(moodKey));
-
+// Shimmer animation
+useEffect(() => {
   const el = document.querySelector('.cinematic-tagline');
-  el?.classList.add('shimmer');
-  setTimeout(() => el?.classList.remove('shimmer'), 1400);
-}, [moodKey, seasonKey]);
-    // Pulse classes
-  useEffect(() => {
+  if (!el) return;
+  el.classList.add('shimmer');
+  setTimeout(() => el.classList.remove('shimmer'), 1400);
+}, [tagline]);
+
+// Pulse animation
+useEffect(() => {
   const el = document.querySelector('.cinematic-tagline');
-  el?.classList.add('glow-pulse');
-  setTimeout(() => el?.classList.remove('glow-pulse'), 1600);
+  if (!el) return;
+  el.classList.add('glow-pulse');
+  setTimeout(() => el.classList.remove('glow-pulse'), 1600);
 }, [moodKey]);
-
-
-
-
-
-
 
 
   // --- JSX ---
