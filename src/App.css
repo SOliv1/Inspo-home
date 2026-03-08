@@ -652,6 +652,7 @@ html {
   );
 }
 
+
 /* Greeting Tag Lines Mood Colours */
 
 .cinematic-tagline {
@@ -681,17 +682,27 @@ html {
 .earlyMorning .cinematic-tagline {
   color: #f6d8ff;
 }
+/* Seasonal Glow */
+
+.spring {
+  --seasonal-glow: rgba(255, 183, 213, 0.4);
+}
+
+.summer {
+  --seasonal-glow: rgba(255, 211, 107, 0.4);
+}
+
+.autumn {
+  --seasonal-glow: rgba(255, 158, 122, 0.4);
+}
+
+.winter {
+  --seasonal-glow: rgba(207, 228, 255, 0.4);
+}
 
 
-/* Frosted glass overlay for better text contrast
 
-.frost-overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: -2; /* behind night sky
-  opacity: 0.15; /* or whatever you want
-} */
+
 
 /* Sunrise Bloom Layer */
 
