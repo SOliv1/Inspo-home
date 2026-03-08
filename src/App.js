@@ -219,6 +219,39 @@ function getSeasonFromMonth() {
     setTagline(line);
   }, [moodKey]);
 
+  useEffect(() => {
+  const update = () => setTagline(getTagline(moodKey));
+
+  update(); // initial tagline
+
+  const interval = setInterval(update, 45000); // 45 seconds
+
+  return () => clearInterval(interval);
+}, [moodKey]);
+
+          // Set Intervals
+  useEffect(() => {
+    const update = () => setTagline(getTagline(moodKey));
+
+    update();
+
+    const interval = setInterval(update, 45000);
+
+    return () => clearInterval(interval);
+  }, [moodKey, seasonKey]);
+
+      // Shimmer classes
+  useEffect(() => {
+  setTagline(getTagline(moodKey));
+
+  const el = document.querySelector('.cinematic-tagline');
+  el?.classList.add('shimmer');
+  setTimeout(() => el?.classList.remove('shimmer'), 1400);
+}, [moodKey, seasonKey]);
+
+
+
+
 
   // --- JSX ---
 

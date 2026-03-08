@@ -652,8 +652,16 @@ html {
   );
 }
 
+/* ===========================
+   GREETING TAGLINES SYSTEM
+   =========================== */
 
 /* Greeting Tag Lines Mood Colours */
+.cinematic-tagline {
+  color: inherit; /* mood colour */
+  filter: drop-shadow(0 0 10px var(--seasonal-glow));
+
+}
 
 .cinematic-tagline {
   animation-delay: 0.3s;
@@ -661,6 +669,7 @@ html {
 
 .sunrise .cinematic-tagline {
   color: #ffcf8f;
+
 }
 
 .day .cinematic-tagline {
@@ -682,22 +691,74 @@ html {
 .earlyMorning .cinematic-tagline {
   color: #f6d8ff;
 }
-/* Seasonal Glow */
 
+/* Seasonal Glow */
 .spring {
   --seasonal-glow: rgba(255, 183, 213, 0.4);
+  filter: drop-shadow(0 0 6px var(--seasonal-glow));
+
 }
 
 .summer {
   --seasonal-glow: rgba(255, 211, 107, 0.4);
+  filter: drop-shadow(0 0 3px var(--seasonal-glow));
+
 }
 
 .autumn {
   --seasonal-glow: rgba(255, 158, 122, 0.4);
+  filter: drop-shadow(0 0 10px var(--seasonal-glow));
+
 }
 
 .winter {
   --seasonal-glow: rgba(207, 228, 255, 0.4);
+  filter: drop-shadow(0 0 10px var(--seasonal-glow));
+
+}
+  /* Fade */
+.cinematic-tagline {
+  opacity: 0;
+  animation: taglineFade 1.2s ease forwards;
+}
+
+@keyframes taglineFade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes taglineShimmer {
+  0% { filter: drop-shadow(0 0 2px var(--seasonal-glow)); }
+  50% { filter: drop-shadow(0 0 12px var(--seasonal-glow)); }
+  100% { filter: drop-shadow(0 0 2px var(--seasonal-glow)); }
+}
+/* Shimmer */
+.cinematic-tagline.shimmer {
+  animation: taglineShimmer 1.4s ease;
+}
+/* float */
+@keyframes taglineFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+.cinematic-tagline {
+  animation: taglineFloat 6s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0% { filter: drop-shadow(0 0 4px var(--seasonal-glow)); }
+  50% { filter: drop-shadow(0 0 14px var(--seasonal-glow)); }
+  100% { filter: drop-shadow(0 0 4px var(--seasonal-glow)); }
+}
+  /* Pulse */
+.cinematic-tagline.glow-pulse {
+  animation: glowPulse 1.6s ease;
 }
 
 
