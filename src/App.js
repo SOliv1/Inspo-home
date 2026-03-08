@@ -248,6 +248,15 @@ function getSeasonFromMonth() {
   el?.classList.add('shimmer');
   setTimeout(() => el?.classList.remove('shimmer'), 1400);
 }, [moodKey, seasonKey]);
+    // Pulse classes
+  useEffect(() => {
+  const el = document.querySelector('.cinematic-tagline');
+  el?.classList.add('glow-pulse');
+  setTimeout(() => el?.classList.remove('glow-pulse'), 1600);
+}, [moodKey]);
+
+
+
 
 
 

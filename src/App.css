@@ -716,7 +716,7 @@ html {
   filter: drop-shadow(0 0 10px var(--seasonal-glow));
 
 }
-  /* Fade */
+      /* Fade */
 .cinematic-tagline {
   opacity: 0;
   animation: taglineFade 1.2s ease forwards;
@@ -738,11 +738,11 @@ html {
   50% { filter: drop-shadow(0 0 12px var(--seasonal-glow)); }
   100% { filter: drop-shadow(0 0 2px var(--seasonal-glow)); }
 }
-/* Shimmer */
+      /* Shimmer */
 .cinematic-tagline.shimmer {
   animation: taglineShimmer 1.4s ease;
 }
-/* float */
+    /* float */
 @keyframes taglineFloat {
   0% { transform: translateY(0); }
   50% { transform: translateY(-2px); }
