@@ -241,7 +241,6 @@ useEffect(() => {
   setTimeout(() => el.classList.remove('glow-pulse'), 1600);
 }, [moodKey]);
 
-
   // --- JSX ---
 
   return (
