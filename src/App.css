@@ -656,6 +656,27 @@ html {
    GREETING TAGLINES SYSTEM
    =========================== */
 
+   .tagline-orb-wrapper {
+  position: absolute;
+  top: 52%;          /* adjust to sit near your orb */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  pointer-events: none; /* keeps it non-interactive */
+  z-index: 5;          /* above the mountain, below overlays */
+}
+
+.cinematic-tagline {
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: var(--accent-glow);
+  text-shadow: 0 0 12px var(--accent-glow);
+  transition: opacity 0.4s ease;
+}
+
+
 /* Greeting Tag Lines Mood Colours */
 .cinematic-tagline {
   color: inherit; /* mood colour */

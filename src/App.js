@@ -115,7 +115,6 @@ function App() {
   console.warn("Invalid moodKey:", moodKey);
   };
 
-
   // --- Logo Seasonal Date
 function getSeason() {
   const month = new Date().getMonth(); // 0 = Jan, 11 = Dec
@@ -211,44 +210,45 @@ function getSeasonFromMonth() {
     : warmLogo;
 
   // --- Seasonal Taglines ---
-const [tagline, setTagline] = useState("Welcome to your Seasonal Glow");
+  const [tagline, setTagline] = useState("Welcome to your Seasonal Glow");
 
 
-// Update tagline whenever mood or season changes
-useEffect(() => {
-  setTagline(getTagline(moodKey));
-}, [moodKey, seasonKey]);
+  // Update tagline whenever mood or season changes
+  useEffect(() => {
+    setTagline(getTagline(moodKey));
+  }, [moodKey, seasonKey]);
 
-// Rotate tagline every 45 seconds
-useEffect(() => {
-  const update = () => setTagline(getTagline(moodKey));
-  const interval = setInterval(update, 45000);
-  return () => clearInterval(interval);
-}, [moodKey]);
+  // Rotate tagline every 45 seconds
+  useEffect(() => {
+    const update = () => setTagline(getTagline(moodKey));
+    const interval = setInterval(update, 45000);
+    return () => clearInterval(interval);
+  }, [moodKey]);
 
-// Shimmer animation
-useEffect(() => {
-  const el = document.querySelector('.cinematic-tagline');
-  if (!el) return;
-  el.classList.add('shimmer');
-  setTimeout(() => el.classList.remove('shimmer'), 1400);
-}, [tagline]);
+  // Shimmer animation
+  useEffect(() => {
+    const el = document.querySelector('.cinematic-tagline');
+    if (!el) return;
+    el.classList.add('shimmer');
+    setTimeout(() => el.classList.remove('shimmer'), 1400);
+  }, [tagline]);
 
-// Pulse animation
-useEffect(() => {
-  const el = document.querySelector('.cinematic-tagline');
-  if (!el) return;
-  el.classList.add('glow-pulse');
-  setTimeout(() => el.classList.remove('glow-pulse'), 1600);
-}, [moodKey]);
+  // Pulse animation
+  useEffect(() => {
+    const el = document.querySelector('.cinematic-tagline');
+    if (!el) return;
+    el.classList.add('glow-pulse');
+    setTimeout(() => el.classList.remove('glow-pulse'), 1600);
+  }, [moodKey]);
 
   // --- JSX ---
 
   return (
-    <>
+  <>
     <div id="top"></div>
-    <div className={`app-container ${moodKey} ${seasonKey}`}></div>
+    <div className={`app-container ${moodKey} ${seasonKey}`}>
 
+      {/* NIGHT SKY */}
       <div className="night-sky">
         <div className="twinkle-star" style={{ top: "12%", left: "15%" }}></div>
         <div className="twinkle-star" style={{ top: "18%", left: "55%" }}></div>
@@ -258,39 +258,39 @@ useEffect(() => {
         <div className="twinkle-star" style={{ top: "25%", left: "10%" }}></div>
         <div className="twinkle-star" style={{ top: "8%", left: "35%" }}></div>
          {/* ⭐ Twinkling stars & Shooting Star */}
-
         <div className="shooting-star"></div>
       </div>
-    )
 
-    <div className="sky-fade"></div>
-    <div className="sky-fade-sides"></div>
+      <div className="sky-fade"></div>
+      <div className="sky-fade-sides"></div>
 
-    <div className={`app-body ${greetingClass}`}>
-      <main className={`app-shell ${seasonKey} ${moodKey}`}>
-        <div className="season-controls">
-          <div className="season-buttons">
+      {/* APP BODY */}
+      <div className={`app-body ${greetingClass}`}>
+
+        {/* APP SHELL */}
+        <div className={`app-shell ${seasonKey} ${moodKey}`}>
+
+          {/* SEASON CONTROLS */}
+          <div className="season-controls">
+            <div className="season-buttons">
               <button
                 className={`winter ${seasonKey === "winter" ? "active" : ""}`}
                 onClick={() => { setManualSeason(true); setSeasonKey("winter"); }}
               >
                 ❄️ Winter
               </button>
-
               <button
                 className={`spring ${seasonKey === "spring" ? "active" : ""}`}
                 onClick={() => { setManualSeason(true); setSeasonKey("spring"); }}
               >
                 🌸 Spring
               </button>
-
               <button
                 className={`summer ${seasonKey === "summer" ? "active" : ""}`}
                 onClick={() => { setManualSeason(true); setSeasonKey("summer"); }}
               >
                 ☀️ Summer
               </button>
-
               <button
                 className={`autumn ${seasonKey === "autumn" ? "active" : ""}`}
                 onClick={() => { setManualSeason(true); setSeasonKey("autumn"); }}
@@ -320,32 +320,40 @@ useEffect(() => {
             </div>
           </div>
 
-          {/* FROST OVERLAY */}
+          {/* FROST OVERLAYS */}
+          <div className="frost-overlay"></div>
           <div className="frost-overlay"></div>
 
-        <div className="frost-overlay"></div>
-        <div className="app-content">
-          <div className="main-grid">
+          {/* APP CONTENT */}
+          <div className="app-content">
 
-            {/* LEFT COLUMN */}
-            <div className="left-column">
-              <header className="app-header">
+            {/* MAIN GRID */}
+            <main className="main-grid">
 
-                     {/* GLOWING MOUNTAIN ORB */}
-                <img
-                   src={logoSrc}
-                  className={`top-logo ${logoSrc === silverLogo ? 'silver' : 'warm'}`} alt="Glowing Mountain Logo Orb"
-                />
+              {/* LEFT COLUMN */}
+              <div className="left-column">
+                <header className="app-header">
+                  {/* ORB */}
+                  <img
+                    src={logoSrc}
+                    className={`top-logo ${logoSrc === silverLogo ? "silver" : "warm"}`}
+                    alt="Glowing Mountain Logo Orb"
+                  />
 
-                <nav className="mini-menu">
-                  <div id="top"></div>
-                  <a href="#todos">To‑Dos</a>
-                  <a href="#thoughts">Thoughts</a>
-                  <a href="#weather">Weather</a>
-                  <a href="#time">Time</a>
-                  <a href="#footer">Footer</a>
-                </nav>
+                  {/* TAGLINE */}
+                  <div className="cinematic-tagline">{tagline}</div>
 
+                  {/* MENU */}
+                  <nav className="mini-menu">
+                    <div id="top"></div>
+                    <a href="#todos">To‑Dos</a>
+                    <a href="#thoughts">Thoughts</a>
+                    <a href="#weather">Weather</a>
+                    <a href="#time">Time</a>
+                    <a href="#footer">Footer</a>
+                  </nav>
+
+                  {/* GREETING */}
                   <div className={greetingClass}>
                     <p className="dynamic-greeting">
                       <span className="greeting-icon">{greetingIcon}</span>
@@ -387,9 +395,8 @@ useEffect(() => {
                     </div>
                   </div>
 
-                    <h1 className="app-title">Daily Checklist</h1>
-                  <div className="cinematic-tagline">{tagline}</div>
-              </header>
+                  <h1 className="app-title">Daily Checklist</h1>
+                </header>
 
                 {/* NEW TASK BAR */}
                 <div id="todos"></div>
@@ -464,7 +471,6 @@ useEffect(() => {
 
                 {/* JOURNAL INPUT */}
                 <div id="thoughts"></div>
-
                 <div className={`journal-input-wrapper ${moodKey}`}>
                   <input
                     className="journal-input"
@@ -523,8 +529,8 @@ useEffect(() => {
                 </section>
 
                 <a href="#top" className="back-to-top">Back to top ↑</a>
-
                 <div className="section-divider"></div>
+
               </div>
 
               {/* RIGHT COLUMN */}
@@ -534,8 +540,8 @@ useEffect(() => {
                 <WeatherPanel />
               </div>
 
-            </div>
-            {/* CLOSE main-grid */}
+            </main>
+            {/* END MAIN GRID */}
 
             {/* FOOTER */}
             <footer className="QuotesFooter">
@@ -566,42 +572,27 @@ useEffect(() => {
 
               <div className="social-icons">
                 <div className="social-links">
-                  <a
-                    href="https://instagram.com/so.co13"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-icon instagram"
-                  >
-                    Instagram
-                  </a>
-
-                  <a
-                    href="https://facebook.com/sara.J.oliver.7"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-icon facebook"
-                  >
-                    Facebook
-                  </a>
+                  <a href="https://instagram.com/so.co13" target="_blank" rel="noopener noreferrer" className="social-icon instagram">Instagram</a>
+                  <a href="https://facebook.com/sara.J.oliver.7" target="_blank" rel="noopener noreferrer" className="social-icon facebook">Facebook</a>
                 </div>
               </div>
 
             </footer>
 
           </div>
-          {/* CLOSE app-content */}
+          {/* END APP CONTENT */}
 
-        </main>
-        {/* CLOSE app-shell */}
+        </div>
+        {/* END APP SHELL */}
 
       </div>
-      {/* CLOSE app-body */}
+      {/* END APP BODY */}
 
     </div>
-    {/* CLOSE app-container */}
+    {/* END APP CONTAINER */}
 
   </>
-  )
+)
 
 }
 
