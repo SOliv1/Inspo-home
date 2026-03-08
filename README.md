@@ -20,6 +20,21 @@ The Seasonal App is a personalised, time‑aware interface designed to enhance u
 - Persistent user inputs (checklists, notes, reflections)
 - Curated, cinematic imagery for each season
 - Lightweight, responsive interface suitable for daily use
+- A tagline that is:
+
+  . mood‑aware
+
+  . season‑aware
+
+  . glowing atmospherically
+
+  . rotating ambiently
+
+  . fading in cinematically
+
+  . emotionally coherent
+
+  . alive
 
 ### 3. Technologies Used
 Frontend Framework
