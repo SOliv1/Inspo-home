@@ -213,19 +213,21 @@ function getSeasonFromMonth() {
   const [tagline, setTagline] = useState("Welcome to your Seasonal Glow");
 
 
-  // Update tagline whenever mood or season changes
+  /*Update tagline whenever mood or season changes
   useEffect(() => {
+    setTagline("TEST TAGLINE");
+
     setTagline(getTagline(moodKey));
   }, [moodKey, seasonKey]);
 
-  // Rotate tagline every 45 seconds
+  /*Rotate tagline every 45 seconds
   useEffect(() => {
     const update = () => setTagline(getTagline(moodKey));
     const interval = setInterval(update, 45000);
     return () => clearInterval(interval);
   }, [moodKey]);
 
-  // Shimmer animation
+  /* Shimmer animation
   useEffect(() => {
     const el = document.querySelector('.cinematic-tagline');
     if (!el) return;
@@ -239,7 +241,7 @@ function getSeasonFromMonth() {
     if (!el) return;
     el.classList.add('glow-pulse');
     setTimeout(() => el.classList.remove('glow-pulse'), 1600);
-  }, [moodKey]);
+  }, [moodKey]); */
 
   // --- JSX ---
 
@@ -333,16 +335,18 @@ function getSeasonFromMonth() {
               {/* LEFT COLUMN */}
               <div className="left-column">
                 <header className="app-header">
-                  {/* ORB */}
-                  <img
-                    src={logoSrc}
-                    className={`top-logo ${logoSrc === silverLogo ? "silver" : "warm"}`}
-                    alt="Glowing Mountain Logo Orb"
-                  />
+                  <div className="orb-wrapper">
+                    {/* ORB */}
+                    <img
+                      src={logoSrc}
+                      className={`top-logo ${logoSrc === silverLogo ? "silver" : "warm"}`}
+                      alt="Glowing Mountain Logo Orb"
+                    />
+                    {/* TAGLINE */}
+                    <div className="cinematic-tagline">{tagline}</div>
 
-                  {/* TAGLINE */}
-                  <div className="cinematic-tagline">{tagline}</div>
 
+                  </div>
                   {/* MENU */}
                   <nav className="mini-menu">
                     <div id="top"></div>

@@ -656,32 +656,28 @@ html {
    GREETING TAGLINES SYSTEM
    =========================== */
 
-   .tagline-orb-wrapper {
+
+.orb-wrapper {
+  position: relative; /* anchor for tagline */
+  z-index: 2000;      /* above frost, sky fades, etc. */
+}
+
+.cinematic-tagline {
   position: absolute;
-  top: 52%;          /* adjust to sit near your orb */
+  bottom: -18px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  text-align: center;
-  pointer-events: none; /* keeps it non-interactive */
-  z-index: 5;          /* above the mountain, below overlays */
-}
-
-.cinematic-tagline {
-  font-size: 1.3rem;
-  font-weight: 300;
-  letter-spacing: 0.5px;
-  color: var(--accent-glow);
-  text-shadow: 0 0 12px var(--accent-glow);
-  transition: opacity 0.4s ease;
+  transform: translateX(-50%);
+  z-index: 3000;
+  color: white;
+  opacity: 1;
 }
 
 
-/* Greeting Tag Lines Mood Colours */
+/* Greeting Tag Lines Mood Colours 
 .cinematic-tagline {
-  color: inherit; /* mood colour */
+  color: inherit; /* mood colour 
   filter: drop-shadow(0 0 10px var(--seasonal-glow));
-
+  z-index: 2000;
 }
 
 .cinematic-tagline {
@@ -712,6 +708,8 @@ html {
 .earlyMorning .cinematic-tagline {
   color: #f6d8ff;
 }
+*/
+
 
 /* Seasonal Glow */
 .spring {
@@ -737,54 +735,6 @@ html {
   filter: drop-shadow(0 0 10px var(--seasonal-glow));
 
 }
-      /* Fade */
-.cinematic-tagline {
-  opacity: 0;
-  animation: taglineFade 1.2s ease forwards;
-}
-
-@keyframes taglineFade {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes taglineShimmer {
-  0% { filter: drop-shadow(0 0 2px var(--seasonal-glow)); }
-  50% { filter: drop-shadow(0 0 12px var(--seasonal-glow)); }
-  100% { filter: drop-shadow(0 0 2px var(--seasonal-glow)); }
-}
-      /* Shimmer */
-.cinematic-tagline.shimmer {
-  animation: taglineShimmer 1.4s ease;
-}
-    /* float */
-@keyframes taglineFloat {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-2px); }
-  100% { transform: translateY(0); }
-}
-.cinematic-tagline {
-  animation: taglineFloat 6s ease-in-out infinite;
-}
-@keyframes glowPulse {
-  0% { filter: drop-shadow(0 0 4px var(--seasonal-glow)); }
-  50% { filter: drop-shadow(0 0 14px var(--seasonal-glow)); }
-  100% { filter: drop-shadow(0 0 4px var(--seasonal-glow)); }
-}
-  /* Pulse */
-.cinematic-tagline.glow-pulse {
-  animation: glowPulse 1.6s ease;
-}
-
-
-
-
 
 /* Sunrise Bloom Layer */
 
@@ -1766,6 +1716,8 @@ background-position: top center;
 
 /* Header layout */
 .app-header {
+  position: relative;
+  z-index: 20;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
