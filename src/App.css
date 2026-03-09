@@ -60,6 +60,18 @@ html {
   box-sizing: border-box;
 }
 
+/* GLOBAL LAYOUT AREA — not inside .orb-wrapper */
+.welcome-block {
+  text-align: center;
+}
+
+/* Full-width adjustment */
+@media (min-width: 1400px) {
+  .welcome-block {
+    margin-top: -6vh; /* adjust as needed */
+  }
+}
+
 /* Optional future layout structure:
 .app-body {
   width: 100%;
@@ -656,10 +668,10 @@ html {
    GREETING TAGLINES SYSTEM
    =========================== */
 
-
-.orb-wrapper {
-  position: relative; /* anchor for tagline */
-  z-index: 2000;      /* above frost, sky fades, etc. */
+/* Default: perfect as-is */
+.welcome-block {
+  text-align: center;
+  margin-top: 0;
 }
 
 .cinematic-tagline {
@@ -673,9 +685,9 @@ html {
 }
 
 
-/* Greeting Tag Lines Mood Colours 
+/* Greeting Tag Lines Mood Colours
 .cinematic-tagline {
-  color: inherit; /* mood colour 
+  color: inherit; /* mood colour
   filter: drop-shadow(0 0 10px var(--seasonal-glow));
   z-index: 2000;
 }

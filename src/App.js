@@ -212,7 +212,6 @@ function getSeasonFromMonth() {
   // --- Seasonal Taglines ---
   const [tagline, setTagline] = useState("Welcome to your Seasonal Glow");
 
-
   /*Update tagline whenever mood or season changes
   useEffect(() => {
     setTagline("TEST TAGLINE");
