@@ -1,6 +1,8 @@
+
 // ------------------------------
 // Seasonal Helpers (exported)
 // ------------------------------
+
 
 export const getSeason = () => {
   const month = new Date().getMonth();
@@ -49,6 +51,8 @@ export const getSeasonalGreeting = () => {
 
   return greetings[season];
 };
+
+
 
 export const getSeasonalQuote = () => {
   const season = getSeason();

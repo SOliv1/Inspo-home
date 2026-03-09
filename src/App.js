@@ -149,16 +149,22 @@ function getSeasonFromMonth() {
     return "autumn";
   }
 
-  const [seasonKey, setSeasonKey] = useState(getSeasonFromMonth());
+  const [seasonKey, setSeasonKey] = useState(getSeasonFromMonth() || "spring");
+  const quote =
+  (seasonalQuotes && seasonalQuotes[seasonKey]) ||
+  (seasonalQuotes && seasonalQuotes.spring) ||
+  "Default fallback quote";
   const [manualSeason, setManualSeason] = useState(false);
-  const quote = seasonalQuotes[seasonKey];
+
+
   const moonPhase = Math.floor((new Date().getDate() % 29) / 7);
 
   useEffect(() => {
     if (!manualSeason) {
-      setSeasonKey(getSeasonFromMonth());
+      setSeasonKey(getSeasonFromMonth() || "spring");
     }
   }, [manualSeason]);
+
 
   useEffect(() => {
     const shell = document.querySelector(".app-shell");
@@ -247,7 +253,13 @@ function getSeasonFromMonth() {
   return (
   <>
     <div id="top"></div>
-    <div className={`app-container ${moodKey} ${seasonKey}`}>
+    <div
+      className={`app-container
+      ${moodKey === "silhouette" ? "" : (moodKey || "")}
+      ${seasonKey || ""}
+      moon-${moonPhase || ""}`
+      }
+    >
 
       {/* NIGHT SKY */}
       <div className="night-sky">
@@ -322,7 +334,7 @@ function getSeasonFromMonth() {
           </div>
 
           {/* FROST OVERLAYS */}
-          <div className="frost-overlay"></div>
+          {/*<div className="frost-overlay"></div> */}
           <div className="frost-overlay"></div>
 
           {/* APP CONTENT */}
@@ -363,12 +375,21 @@ function getSeasonFromMonth() {
                       {greeting}
                     </p>
 
+                        {/*  EVERGREEN-QUOTE */}
                     <p
-                      key={`evergreen-${seasonKey}-${moodKey}`}
-                      className={`evergreen-quote ${seasonKey} ${moodKey} moon-${moonPhase}`}
+                      key={`evergreen-${seasonKey || ""}-${moodKey || ""}`}
+                      className={`evergreen-quote shimmer ${seasonKey || ""} ${moodKey || ""} moon-${moonPhase || ""}`}
                     >
                       {evergreenQuote}
                     </p>
+
+                    {/* NIGHT TIME ONLY OPTION
+                    <p
+                      key={`evergreen-${seasonKey}-${moodKey}`}
+                      className={`evergreen-quote ${isNight ? "shimmer" : ""} ${seasonKey} ${moodKey} moon-${moonPhase}`}
+                    >
+                      {evergreenQuote}
+                    </p> */}
 
                     <p key={seasonKey} className={`seasonal-whisper ${seasonKey}`}>
                       {quote}
