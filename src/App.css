@@ -1957,46 +1957,36 @@ background-position: top center;
 /* ========================MOOD BACKGROUND STYLES
    =========================== */
 
-.mood-silhouette.earlyMorning {
+.mood-silhouette.earlyMorning::before {
   background: linear-gradient(to bottom, #ffe7c8, #ffd4a3, #f9a87a, #d97b5f);
 }
 
-.mood-silhouette.day {
+.mood-silhouette.day::before {
   background: linear-gradient(to bottom, #e8f6ff, #cfe8ff, #a7d0ff);
 }
 
-.mood-silhouette.dusk {
+.mood-silhouette.sunset::before {
   background: linear-gradient(to bottom, #ffcfb3, #ff9e8a, #d86b7a);
 }
 
-.mood-silhouette.night {
+.mood-silhouette.night::before {
   background: linear-gradient(to bottom, #1a1a2e, #16213e, #0f3460);
 }
 
-.mood-silhouette.moon {
+.mood-silhouette.moon::before {
   background: linear-gradient(to bottom, #e8e8f0, #cfcfe0, #b5b5c8);
 }
 
-
-.mood-silhouette.earlyMorning {
-  background: linear-gradient(to bottom, #ffe7c8, #ffd4a3, #f9a87a, #d97b5f);
+.mood-silhouette.lateNight::before {
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 0, 30, 0.78),   /* black-plum top */
+    rgba(12, 0, 20, 0.72),   /* velvet core */
+    rgba(5, 0, 12, 0.66)     /* inky bottom */
+  );
+  backdrop-filter: blur(3.5px);
 }
 
-.mood-silhouette.day {
-  background: linear-gradient(to bottom, #e8f6ff, #cfe8ff, #a7d0ff);
-}
-
-.mood-silhouette.dusk {
-  background: linear-gradient(to bottom, #ffcfb3, #ff9e8a, #d86b7a);
-}
-
-.mood-silhouette.night {
-  background: linear-gradient(to bottom, #1a1a2e, #16213e, #0f3460);
-}
-
-.mood-silhouette.moon {
-  background: linear-gradient(to bottom, #e8e8f0, #cfcfe0, #b5b5c8);
-}
 
 
 .greeting-sunrise .dynamic-greeting {
@@ -2066,6 +2056,18 @@ background-position: top center;
   background-attachment: fixed;
   background-size: cover;
   color: #f2f2f2;
+}
+.mood-silhouette {
+  position: relative;
+  z-index: 0;
+}
+.mood-silhouette::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 1;
 }
 
 

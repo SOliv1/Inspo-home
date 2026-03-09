@@ -152,7 +152,7 @@ function getSeasonFromMonth() {
   const [seasonKey, setSeasonKey] = useState(getSeasonFromMonth() || "spring");
   const quote =
   (seasonalQuotes && seasonalQuotes[seasonKey]) ||
-  (seasonalQuotes && seasonalQuotes.spring) ||
+  (seasonalQuotes && seasonalQuotes.winter) ||
   "Default fallback quote";
   const [manualSeason, setManualSeason] = useState(false);
 
@@ -175,6 +175,7 @@ function getSeasonFromMonth() {
     );
     return () => clearTimeout(timeout);
   }, [seasonKey]);
+
 
 
   useEffect(() => {
@@ -255,11 +256,13 @@ function getSeasonFromMonth() {
     <div id="top"></div>
     <div
       className={`app-container
-      ${moodKey === "silhouette" ? "" : (moodKey || "")}
-      ${seasonKey || ""}
-      moon-${moonPhase || ""}`
+        mood-silhouette
+        ${moodKey || ""}
+        ${seasonKey || ""}
+        moon-${moonPhase || ""}`
       }
     >
+
 
       {/* NIGHT SKY */}
       <div className="night-sky">
@@ -334,7 +337,7 @@ function getSeasonFromMonth() {
           </div>
 
           {/* FROST OVERLAYS */}
-          {/*<div className="frost-overlay"></div> */}
+          <div className="frost-overlay"></div>
           <div className="frost-overlay"></div>
 
           {/* APP CONTENT */}
