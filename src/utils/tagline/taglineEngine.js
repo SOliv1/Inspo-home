@@ -30,14 +30,14 @@ const taglines = {
       "Let the light guide you to the task that matters."
     ],
     tender: [
-      "Move gently; the moment is already enough.",
+      "Move gently ~ the moment is already enough.",
       "Let your focus settle like light on still water."
     ]
   },
 
   night: {
     warm: [
-      "The scene is set—start where your heart feels steady."
+      "The scene is set ~ start where your heart feels steady."
     ],
     tender: [
       "Let clarity arrive in small, kind pieces.",

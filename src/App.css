@@ -449,7 +449,9 @@ html {
   --shimmer-strength: 0.35;
 }
 
-
+    /* ======================
+        TASKS SYSTEMS 
+      =========================== */
 .delete-entry,
 .delete-task {
   background: rgba(255, 255, 255, 0.15);
@@ -685,10 +687,9 @@ html {
   opacity: 1;
 }
 
-
-/* Greeting Tag Lines Mood Colours
+/* Greeting Tag Lines Mood Colours */
 .cinematic-tagline {
-  color: inherit; /* mood colour
+  color: inherit; /* mood colour */
   filter: drop-shadow(0 0 10px var(--seasonal-glow));
   z-index: 2000;
 }
@@ -698,33 +699,112 @@ html {
 }
 
 .sunrise .cinematic-tagline {
-  color: #ffcf8f;
-
+  color: #ffd7a3; /* warm peach-gold */
 }
 
 .day .cinematic-tagline {
-  color: #ffd966;
+  color: #ffe89b; /* soft luminous gold */
 }
 
 .sunset .cinematic-tagline {
-  color: #ff9e7a;
+  color: #ffb08a; /* cinematic coral-amber */
 }
 
 .night .cinematic-tagline {
-  color: #b0c4ff;
+  color: #b8caff; /* moonlit periwinkle */
 }
 
 .lateNight .cinematic-tagline {
-  color: #d7d7ff;
+  color: #e2d9ff; /* soft lavender frost */
 }
 
 .earlyMorning .cinematic-tagline {
-  color: #f6d8ff;
+  color: #f8e1ff; /* pale dawn lilac */
 }
-*/
 
+.winter .cinematic-tagline {
+  color: #dff3ff; /* icy frost blue */
+  filter: drop-shadow(0 0 12px rgba(180, 220, 255, 0.6));
+}
 
-/* Seasonal Glow */
+.summer .cinematic-tagline {
+  color: #ffe8a6; /* soft sun-gold */
+  filter: drop-shadow(0 0 12px rgba(255, 210, 120, 0.55));
+}
+  /*  Moon Phases Shift with the Sky */
+.moon-0 .cinematic-tagline { color: #cfcfe8; } /* new moon */
+.moon-1 .cinematic-tagline { color: #d6d6f0; }
+.moon-2 .cinematic-tagline { color: #deddf7; }
+.moon-3 .cinematic-tagline { color: #e6e5ff; } /* full moon glow */
+.moon-4 .cinematic-tagline { color: #dcd8ff; }
+.moon-5 .cinematic-tagline { color: #d2d0f5; }
+.moon-6 .cinematic-tagline { color: #c8c8ea; }
+
+ /* Subtle — soft breathing glow tied to seasonal glow variable */
+.cinematic-tagline.glow-seasonal {
+  animation: seasonalPulse 4.5s ease-in-out infinite;
+}
+
+@keyframes seasonalPulse {
+  0%   { text-shadow: 0 0 6px var(--seasonal-glow); }
+  50%  { text-shadow: 0 0 14px var(--seasonal-glow); }
+  100% { text-shadow: 0 0 6px var(--seasonal-glow); }
+}
+
+/* Winter Frost Sparkle */
+.winter .cinematic-tagline {
+  position: relative;
+  color: #dff3ff;
+  text-shadow: 0 0 12px rgba(200, 230, 255, 0.7);
+}
+
+.winter .cinematic-tagline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.35), transparent 60%),
+              radial-gradient(circle at 80% 70%, rgba(255,255,255,0.25), transparent 70%);
+  opacity: 0;
+  animation: frostSparkle 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes frostSparkle {
+  0%   { opacity: 0; }
+  40%  { opacity: 0.4; }
+  60%  { opacity: 0.25; }
+  100% { opacity: 0; }
+}
+
+/* Summer Heat-Haze Shimmer */
+.summer .cinematic-tagline {
+  color: #ffe8a6;
+  text-shadow: 0 0 10px rgba(255, 200, 120, 0.55);
+  animation: heatHaze 3.5s ease-in-out infinite;
+}
+
+@keyframes heatHaze {
+  0%   { filter: blur(0px) brightness(1); }
+  50%  { filter: blur(0.8px) brightness(1.08); }
+  100% { filter: blur(0px) brightness(1); }
+}
+
+/* Lunar Shimmer */
+[class*="moon-"] .cinematic-tagline {
+  animation: lunarShimmer 5s ease-in-out infinite;
+}
+
+@keyframes lunarShimmer {
+  0%   { text-shadow: 0 0 6px rgba(220, 220, 255, 0.4); }
+  50%  { text-shadow: 0 0 14px rgba(230, 230, 255, 0.7); }
+  100% { text-shadow: 0 0 6px rgba(220, 220, 255, 0.4); }
+}
+
+/* ======================
+    SEASONAL GLOWS
+   =========================== */
+
+/* SEASONAL GLOW */
 .spring {
   --seasonal-glow: rgba(255, 183, 213, 0.4);
   filter: drop-shadow(0 0 6px var(--seasonal-glow));
@@ -776,16 +856,6 @@ html {
   border-radius: 1.6rem;
   padding: 0.8rem 1.2rem;
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 14px rgba(20, 20, 40, 0.35);
-  transition: background 0.4s ease, box-shadow 0.4s ease;
-}
-
-/*
-.greeting-latenight {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 1.2rem;
-  padding: 0.9rem 1.3rem;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 14px rgba(20, 20, 40, 0.35);
   transition: background 0.4s ease, box-shadow 0.4s ease;

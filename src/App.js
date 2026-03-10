@@ -219,35 +219,54 @@ function getSeasonFromMonth() {
   // --- Seasonal Taglines ---
   const [tagline, setTagline] = useState("Welcome to your Seasonal Glow");
 
-  /*Update tagline whenever mood or season changes
   useEffect(() => {
-    setTagline("TEST TAGLINE");
-
     setTagline(getTagline(moodKey));
-  }, [moodKey, seasonKey]);
-
-  /*Rotate tagline every 45 seconds
-  useEffect(() => {
-    const update = () => setTagline(getTagline(moodKey));
-    const interval = setInterval(update, 45000);
-    return () => clearInterval(interval);
   }, [moodKey]);
 
-  /* Shimmer animation
+
+  // --- Rotate tagline every 45 seconds ---
   useEffect(() => {
-    const el = document.querySelector('.cinematic-tagline');
-    if (!el) return;
-    el.classList.add('shimmer');
-    setTimeout(() => el.classList.remove('shimmer'), 1400);
+  const interval = setInterval(() => {
+    setTagline(getTagline(moodKey));
+  }, 45000);
+
+  return () => clearInterval(interval);
+  }, [moodKey]);
+
+
+  // --- Shimmer animation ---
+  useEffect(() => {
+  const el = document.querySelector('.cinematic-tagline');
+  if (!el) return;
+
+  el.classList.add('shimmer');
+  const timeout = setTimeout(() => el.classList.remove('shimmer'), 1400);
+
+  return () => clearTimeout(timeout);
   }, [tagline]);
 
-  // Pulse animation
+
+  //--- Pulse animation ---
   useEffect(() => {
-    const el = document.querySelector('.cinematic-tagline');
-    if (!el) return;
-    el.classList.add('glow-pulse');
-    setTimeout(() => el.classList.remove('glow-pulse'), 1600);
-  }, [moodKey]); */
+  const el = document.querySelector('.cinematic-tagline');
+  if (!el) return;
+
+  el.classList.add('glow-pulse');
+  const timeout = setTimeout(() => el.classList.remove('glow-pulse'), 1600);
+
+  return () => clearTimeout(timeout);
+  }, [moodKey]);
+
+  //--- Season Changes ---
+  useEffect(() => {
+  const el = document.querySelector('.cinematic-tagline');
+  if (!el) return;
+
+  el.classList.add('glow-seasonal');
+  }, [seasonKey]);
+
+
+
 
   // --- JSX ---
 
@@ -622,5 +641,6 @@ function getSeasonFromMonth() {
 )
 
 }
+
 
 export default App
